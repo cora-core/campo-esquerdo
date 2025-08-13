@@ -1,3 +1,6 @@
+'use client'
+
+
 import React from 'react';
 
 type ButtonProps = {
@@ -7,6 +10,7 @@ type ButtonProps = {
     size?: 'small' | 'medium' | 'large';
     disabled?: boolean;
     className?: string;
+    scrollTo?: string;
 }
 
 export function Button({
@@ -15,7 +19,9 @@ export function Button({
                            variant = 'primary',
                            size = 'medium',
                            disabled = false,
-                           className = ''
+                           className = '',
+                           scrollTo
+
                        }: ButtonProps) {
     const baseStyles = 'font-medium font-bold tracking-wide rounded-none transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
 
@@ -32,10 +38,27 @@ export function Button({
 
     const disabledStyles = disabled ? 'opacity-50 cursor-not-allowed' : '';
 
+    const handleClick = () => {
+        if (scrollTo) {
+            const lenis = window.lenis;
+            if (lenis) {
+                lenis.scrollTo(scrollTo, {
+                    offset: 0,
+                    duration: 1.5,
+                    easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+                });
+            }
+        }
+
+        if (onClick) {
+            onClick();
+        }
+    };
+
     return (
         <button
             className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${disabledStyles} ${className}`}
-            onClick={onClick}
+            onClick={handleClick}
             disabled={disabled}
         >
             {children}
