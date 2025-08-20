@@ -1,12 +1,15 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
+import AnimatedArrows from "./BGArrows";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const controls = useAnimation();
+  const sobreContainerRef = useRef<HTMLDivElement>(null);
+  const mentoriasRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,8 +26,28 @@ export default function Home() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [isOpen, controls]);
+
+  useEffect(() => {
+    const handleSobreScroll = () => {
+      // This will be handled by CSS only now
+    };
+
+    const sobreContainer = sobreContainerRef.current;
+    if (sobreContainer) {
+      sobreContainer.addEventListener('scroll', handleSobreScroll);
+    }
+    
+    return () => {
+      if (sobreContainer) {
+        sobreContainer.removeEventListener('scroll', handleSobreScroll);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -44,7 +67,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="border p-2">Campo Esquerdo 2025 mam-rj</div>
+      <AnimatedArrows></AnimatedArrows>
+      <div className="border min-h-[5vh] pl-2">Campo Esquerdo 2025 mam-rj</div>
       <div className="flex flex-1 relative">
         {/* Site  */}
         <div 
@@ -56,9 +80,9 @@ export default function Home() {
           }}
           onClick={openSite}
         >
-          <div className="border-b p-2 h-[50px] flex items-center"><span>site</span></div>
-          <div className="flex-1 p-2"><span>Main content area</span></div>
-          <div className="border-t p-2 h-[50px] flex items-center"><span>Footer</span></div>
+          <div className="border-b border-l min-h-[5vh] pl-2 flex items-center"><span>site</span></div>
+          <div className="flex-1 p-2 min-h-[85vh] border-l " ><span>Main content area</span></div>
+          <div className="border-t border-l border-b min-h-[5vh] pl-2 flex items-center"></div>
         </div>
         
         {/* Sobre */}
@@ -79,7 +103,7 @@ export default function Home() {
           }}
           onClick={openSobre}
         >
-          <div className="border-b p-2 h-[50px] flex items-center">
+          <div className="border-b pl-2 min-h-[5vh] items-center">
             <motion.span
               transition={{ 
                 type: "spring", 
@@ -92,7 +116,11 @@ export default function Home() {
             </motion.span>
           </div>
           
-          <div className="flex-1 p-2 overflow-y-auto">
+          <div 
+            ref={sobreContainerRef}
+            className="overflow-y-auto"
+            style={{ height: 'calc(100% - 5vh)' }}
+          >
             <motion.div
               transition={{ 
                 type: "spring", 
@@ -101,29 +129,28 @@ export default function Home() {
                 mass: 1
               }}
             >
-              <p>This is the about section content.</p>
-              {isOpen && (
-                <>
-                  <p className="mt-4">Scroll down to see the drawer open gradually.</p>
-                  <div className="h-[200vh] mt-4 flex items-center justify-center">
-                    <p>Keep scrolling...</p>
-                  </div>
-                </>
-              )}
+              <div className="min-h-[85vh]">This is the about section content.</div>
+              
+              {/* Mentorias Section with proper sticky positioning */}
+              <div className="relative">
+                <div 
+                  ref={mentoriasRef}
+                  className="sticky top-0 border-b border-t flex items-center min-h-[5vh] pl-2 bg-black z-10"
+                >
+                  Mentorias
+                </div>
+                
+                {/* Content below mentorias */}
+                {isOpen && (
+                  <>
+                    <p className="mt-4">Scroll down to see the drawer open gradually.</p>
+                    <div className="h-[200vh] mt-4 flex items-center justify-center">
+                      <p>Keep scrolling...</p>
+                    </div>
+                  </>
+                )}
+              </div>
             </motion.div>
-          </div>
-          
-          <div className="border-t p-2 h-[50px] flex items-center">
-            <motion.span
-              transition={{ 
-                type: "spring", 
-                stiffness: 100, 
-                damping: 15,
-                mass: 1
-              }}
-            >
-              Footer info
-            </motion.span>
           </div>
         </motion.div>
       </div>
