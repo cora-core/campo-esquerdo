@@ -3,11 +3,46 @@
 import React, { useEffect, useRef } from 'react';
 import { engine, createTimeline, utils } from 'animejs';
 import * as THREE from 'three';
+import { useTheme } from '@/contexts/ThemeContext';
 
 engine.useDefaultMainLoop = false;
 
 const AnimatedArrows = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { bgColor, arrowColor } = useTheme();
+  const sceneRef = useRef<THREE.Scene | null>(null);
+  const arrowsRef = useRef<THREE.Mesh[]>([]);
+  const createArrowMaterialRef = useRef<() => THREE.MeshBasicMaterial>(() => new THREE.MeshBasicMaterial({ color: 0x9fce98 }));
+
+  useEffect(() => {
+    const getArrowColorFromTheme = (color: string) => {
+      const colorMap: Record<string, number> = {
+        'text-[#ffffff]': 0xffffff,
+        'text-[#2f3032]': 0x2f3032,
+        'text-[#9fce98]': 0x9fce98,
+        'text-[#eec2db]': 0xeec2db,
+        'text-[#8a8e80]': 0x8a8e80,
+        'text-[#a5a3a4]': 0xa5a3a4,
+        'text-[#d8dcdf]': 0xd8dcdf,
+        'border-[#ffffff]': 0xffffff,
+        'border-[#2f3032]': 0x2f3032,
+        'border-[#9fce98]': 0x9fce98,
+        'border-[#eec2db]': 0xeec2db,
+        'border-[#8a8e80]': 0x8a8e80,
+        'border-[#a5a3a4]': 0xa5a3a4,
+        'border-[#d8dcdf]': 0xd8dcdf,
+      };
+      
+      return colorMap[color] || 0x9fce98;
+    };
+
+    createArrowMaterialRef.current = () => {
+      return new THREE.MeshBasicMaterial({ 
+        color: getArrowColorFromTheme(arrowColor),
+        transparent: false
+      });
+    };
+  }, [arrowColor]);
 
   useEffect(() => {
     const $container = containerRef.current;
@@ -15,9 +50,10 @@ const AnimatedArrows = () => {
 
     const { width, height } = $container.getBoundingClientRect();
 
-    // Three.js setup
     const renderer = new THREE.WebGLRenderer({ alpha: true });
     const scene = new THREE.Scene();
+    sceneRef.current = scene;
+    
     const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
     
     renderer.setSize(width, height);
@@ -25,7 +61,6 @@ const AnimatedArrows = () => {
     $container.appendChild(renderer.domElement);
     camera.position.z = 5;
 
-    // Arrow geometry
     function createArrowGeometry() {
       const arrowShape = new THREE.Shape();
       arrowShape.moveTo(-0.8, -0.05);
@@ -46,21 +81,16 @@ const AnimatedArrows = () => {
       return new THREE.ExtrudeGeometry(arrowShape, extrudeSettings);
     }
 
-    // Solid white material
-    const baseMaterial = new THREE.MeshBasicMaterial({ 
-      color: 0xffffff,
-      transparent: false
-    });
-
-    const arrows = [];
+    const arrows: THREE.Mesh[] = [];
+    arrowsRef.current = arrows;
+    
     const WAVE_SIZE = 20; 
     const MAX_ARROWS = 100;
     let activeArrows = 0;
 
     function createArrow(fadeIn = true) {
-      const arrow = new THREE.Mesh(createArrowGeometry(), baseMaterial.clone());
+      const arrow = new THREE.Mesh(createArrowGeometry(), createArrowMaterialRef.current());
       
-      // Spawn position
       const x = utils.random(-width/80, width/80);
       const y = utils.random(-height/80, height/80);
       const z = utils.random(-50, -40);
@@ -68,7 +98,6 @@ const AnimatedArrows = () => {
       arrow.position.set(x, y, z);
       arrow.scale.set(0.6, 0.6, 0.6);
 
-      // Random 3D direction
       const randomRotation = new THREE.Quaternion();
       randomRotation.setFromAxisAngle(
         new THREE.Vector3(
@@ -80,9 +109,7 @@ const AnimatedArrows = () => {
       );
       arrow.setRotationFromQuaternion(randomRotation);
 
-      // Fade in effect
       if (fadeIn) {
-        arrow.material = baseMaterial.clone();
         arrow.material.transparent = true;
         arrow.material.opacity = 0;
         
@@ -93,8 +120,7 @@ const AnimatedArrows = () => {
         .init();
       }
       
-      // Slower movement (increased duration)
-      const duration = utils.random(15000, 20000); // 15-20 seconds
+      const duration = utils.random(15000, 20000);
       createTimeline({
         defaults: { loop: true, duration, easing: 'linear' },
       })
@@ -119,11 +145,9 @@ const AnimatedArrows = () => {
         }
       }
       
-      // Shorter wave interval
-      setTimeout(spawnWave, 1000); // Waves every set ms
+      setTimeout(spawnWave, 1000);
     }
 
-    // Start wave spawning
     spawnWave();
 
     function render() {
@@ -154,14 +178,52 @@ const AnimatedArrows = () => {
     return () => {
       renderer.setAnimationLoop(null);
       window.removeEventListener('resize', handleResize);
-      $container.removeChild(renderer.domElement);
+      if ($container.contains(renderer.domElement)) {
+        $container.removeChild(renderer.domElement);
+      }
+      
+      arrows.forEach(arrow => {
+        if (sceneRef.current && arrow.parent === sceneRef.current) {
+          sceneRef.current.remove(arrow);
+        }
+      });
     };
   }, []);
+
+  useEffect(() => {
+    const getArrowColorFromTheme = (color: string) => {
+      const colorMap: Record<string, number> = {
+        'text-[#ffffff]': 0xffffff,
+        'text-[#2f3032]': 0x2f3032,
+        'text-[#9fce98]': 0x9fce98,
+        'text-[#eec2db]': 0xeec2db,
+        'text-[#8a8e80]': 0x8a8e80,
+        'text-[#a5a3a4]': 0xa5a3a4,
+        'text-[#d8dcdf]': 0xd8dcdf,
+        'border-[#ffffff]': 0xffffff,
+        'border-[#2f3032]': 0x2f3032,
+        'border-[#9fce98]': 0x9fce98,
+        'border-[#eec2db]': 0xeec2db,
+        'border-[#8a8e80]': 0x8a8e80,
+        'border-[#a5a3a4]': 0xa5a3a4,
+        'border-[#d8dcdf]': 0xd8dcdf,
+      };
+      
+      return colorMap[color] || 0x9fce98;
+    };
+
+    const newColor = getArrowColorFromTheme(arrowColor);
+    arrowsRef.current.forEach(arrow => {
+      if (arrow.material instanceof THREE.MeshBasicMaterial) {
+        arrow.material.color.set(newColor);
+      }
+    });
+  }, [arrowColor]);
 
   return (
     <div 
       ref={containerRef} 
-      className="fixed inset-0 -z-10" 
+      className={`fixed inset-0 -z-10 ${bgColor}`}
       style={{ pointerEvents: 'none' }}
     />
   );
