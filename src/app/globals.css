@@ -1,8 +1,34 @@
 @import "tailwindcss";
 
+/* MS UI Gothic - Primary font for all weights/styles */
+@font-face {
+  font-family: 'msgothic';
+  src: url('/fonts/MS-UIGothic-02.ttf') format('truetype');
+  font-weight: 400; 
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'msgothic';
+  src: url('/fonts/MS-UIGothic-02.ttf') format('truetype');
+  font-weight: 700; 
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'msgothic';
+  src: url('/fonts/MS-UIGothic-02.ttf') format('truetype');
+  font-weight: 400; 
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-custom: 'msgothic', 'MS UI Gothic', sans-serif;
 }
 
 @theme inline {
@@ -10,6 +36,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-custom: var(--font-custom);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +49,10 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-custom), Arial, Helvetica, sans-serif;
+}
+
+/* Single utility class for UI Gothic */
+.font-ui-gothic {
+  font-family: 'msgothic', 'MS UI Gothic', sans-serif;
 }
