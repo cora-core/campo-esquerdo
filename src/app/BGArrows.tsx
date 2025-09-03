@@ -119,14 +119,14 @@ const AnimatedArrows = () => {
       if (fadeIn) {
         arrow.material.transparent = true;
         arrow.material.opacity = 0;
-        createTimeline({ defaults: { duration: 800, easing: 'easeOutQuad' } })
+        createTimeline({ defaults: { duration: 800, ease: 'easeOutQuad' } })
           .add(arrow.material, { opacity: 1 }, 0)
           .init();
       }
 
       // floating motion
       const duration = utils.random(15000, 20000);
-      createTimeline({ defaults: { loop: true, duration, easing: 'linear' } })
+      createTimeline({ defaults: { loop: true, duration, ease: 'linear' } })
         .add(arrow.position, {
           z: 30,
           x: x + utils.random(-3, 3),
