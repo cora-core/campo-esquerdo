@@ -21,7 +21,6 @@
   font-family: 'msgothic';
   src: url('/fonts/MS-UIGothic-02.ttf') format('truetype');
   font-weight: 400; 
-  font-style: italic;
   font-display: swap;
 }
 
@@ -51,6 +50,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-custom), Arial, Helvetica, sans-serif;
 }
+
 
 /* Single utility class for UI Gothic */
 .font-ui-gothic {

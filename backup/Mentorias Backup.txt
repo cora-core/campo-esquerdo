@@ -1,0 +1,210 @@
+{isOpen && (
+    <div className="flex h-full" style={{ height: 'calc(100vh - 15vh)' }}>
+      {/* Names column container - now using flex-row for side-by-side layout */}
+      <div className="flex flex-row h-full w-full">
+        {/* Mari Herzer Column */}
+        <motion.div
+          className={`border-r h-full flex flex-col ${text} cursor-pointer relative overflow-hidden`}
+          onClick={() => {
+            const newOpenColumns = [false, false, false, false, false];
+            newOpenColumns[0] = !openColumns[0];
+            setOpenColumns(newOpenColumns);
+          }}
+          initial={false}
+          animate={{ width: openColumns[0] ? "20rem" : "4rem" }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+        >
+          <div className="flex h-full pt-6 justify-start">
+            <div className="flex items-start justify-center" style={{ writingMode: 'vertical-lr', transform: 'rotate(180deg)' }}>
+              <span className="whitespace-nowrap">MARI HERZER</span>
+            </div>
+          </div>
+          <AnimatePresence>
+            {openColumns[0] && (
+              <motion.div
+                className="absolute left-16 top-0 bottom-0 right-0 flex"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2, delay: 0.3 }}
+              >
+                <div className="flex-1 p-4 overflow-hidden">
+                  <div className="bg-gray-200 h-48 w-full mb-4 flex items-center justify-center">
+                    Image Placeholder
+                  </div>
+                  <p className="text-sm">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
+                  </p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Kaloan Column */}
+        <motion.div
+          className={`border-r h-full flex flex-col ${text} cursor-pointer relative overflow-hidden`}
+          onClick={() => {
+            const newOpenColumns = [false, false, false, false, false];
+            newOpenColumns[1] = !openColumns[1];
+            setOpenColumns(newOpenColumns);
+          }}
+          initial={false}
+          animate={{ width: openColumns[1] ? "20rem" : "4rem" }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+        >
+          <div className="flex h-full pt-6 justify-start">
+            <div className="flex items-start justify-center" style={{ writingMode: 'vertical-lr', transform: 'rotate(180deg)' }}>
+              <span className="whitespace-nowrap">KALOAN</span>
+            </div>
+          </div>
+          <AnimatePresence>
+            {openColumns[1] && (
+              <motion.div
+                className="absolute left-16 top-0 bottom-0 right-0 flex"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2, delay: 0.3 }}
+              >
+                <div className="flex-1 p-4 overflow-hidden">
+                  <div className="bg-gray-200 h-48 w-full mb-4 flex items-center justify-center">
+                    Image Placeholder
+                  </div>
+                  <p className="text-sm">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
+                  </p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Valesuchi Column */}
+        <motion.div
+          className={`border-r h-full flex flex-col ${text} cursor-pointer relative overflow-hidden`}
+          onClick={() => {
+            const newOpenColumns = [false, false, false, false, false];
+            newOpenColumns[2] = !openColumns[2];
+            setOpenColumns(newOpenColumns);
+          }}
+          initial={false}
+          animate={{ width: openColumns[2] ? "20rem" : "4rem" }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+        >
+          <div className="flex h-full pt-6 justify-start">
+            <div className="flex items-start justify-center" style={{ writingMode: 'vertical-lr', transform: 'rotate(180deg)' }}>
+              <span className="whitespace-nowrap">VALESUCHI</span>
+            </div>
+          </div>
+          <AnimatePresence>
+            {openColumns[2] && (
+              <motion.div
+                className="absolute left-16 top-0 bottom-0 right-0 flex"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2, delay: 0.3 }}
+              >
+                <div className="flex-1 p-4 overflow-hidden">
+                  <div className="bg-gray-200 h-48 w-full mb-4 flex items-center justify-center">
+                    Image Placeholder
+                  </div>
+                  <p className="text-sm">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
+                  </p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Capetini Column */}
+        <motion.div
+          className={`border-r h-full flex flex-col ${text} cursor-pointer relative overflow-hidden`}
+          onClick={() => {
+            const newOpenColumns = [false, false, false, false, false];
+            newOpenColumns[3] = !openColumns[3];
+            setOpenColumns(newOpenColumns);
+          }}
+          initial={false}
+          animate={{ width: openColumns[3] ? "20rem" : "4rem" }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+        >
+          <div className="flex h-full pt-6 justify-start">
+            <div className="flex items-start justify-center" style={{ writingMode: 'vertical-lr', transform: 'rotate(180deg)' }}>
+              <span className="whitespace-nowrap">CAPETINI</span>
+            </div>
+          </div>
+          <AnimatePresence>
+            {openColumns[3] && (
+              <motion.div
+                className="absolute left-16 top-0 bottom-0 right-0 flex"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2, delay: 0.3 }}
+              >
+                <div className="flex-1 p-4 overflow-hidden">
+                  <div className="bg-gray-200 h-48 w-full mb-4 flex items-center justify-center">
+                    Image Placeholder
+                  </div>
+                  <p className="text-sm">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
+                  </p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Numa Gama Column */}
+        <motion.div
+          className={`border-r h-full flex flex-col ${text} cursor-pointer relative overflow-hidden`}
+          onClick={() => {
+            const newOpenColumns = [false, false, false, false, false];
+            newOpenColumns[4] = !openColumns[4];
+            setOpenColumns(newOpenColumns);
+          }}
+          initial={false}
+          animate={{ width: openColumns[4] ? "20rem" : "4rem" }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+        >
+          <div className="flex h-full pt-6 justify-start">
+            <div className="flex items-start justify-center" style={{ writingMode: 'vertical-lr', transform: 'rotate(180deg)' }}>
+              <span className="whitespace-nowrap">NUMA GAMA</span>
+            </div>
+          </div>
+          <AnimatePresence>
+            {openColumns[4] && (
+              <motion.div
+                className="absolute left-16 top-0 bottom-0 right-0 flex"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2, delay: 0.3 }}
+              >
+                <div className="flex-1 p-4 overflow-hidden">
+                  <div className="bg-gray-200 h-48 w-full mb-4 flex items-center justify-center">
+                    Image Placeholder
+                  </div>
+                  <p className="text-sm">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
+                  </p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      </div>
+    </div>
+  )}
+</div>
+              
+            </motion.div>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
