@@ -430,7 +430,7 @@ export default function Home() {
   {isOpen && (
     <div className="flex h-full" style={{ height: 'calc(100vh - 15vh)' }}>
       {/* Names column container - now using flex-row for side-by-side layout */}
-      <div className="flex flex-row h-full w-full">
+      <div className="flex flex-col">
        
 
       <div className={`font-msgothic text-sm min-w-[155vh] max-w-[40vh] columns-2 gap-8 px-4 py-6 text-[21px] leading-[16px] overflow-hidden ${text}`}>
@@ -441,11 +441,27 @@ export default function Home() {
                  <span className="pl-2"> 1 - Residência artística semipresencial com chamada aberta para artistas sonoras e do corpo, com acompanhamento das artistas que fizeram parte das interações passadas do projeto.  <br />  <br />
                 <span className="pl-2"> 2 - Ciclo de Seminários e Oficinas abertos ao público no Museu de Arte Moderna do Rio de Janeiro com artistas e pesquisadores, convidados. </span>  <br /> <br />
                 <span className="pl-2"> 3 - Construção de um sistema de som que será usado nas próximas manifestações do projeto </span>  <br /> <br />
-                <span className="pl-2"> 4 - Apresentação dos trabalhos dos artistas selecionados na residência artística numa experiência de escuta aos moldes do primeiro Campo Esquerdo em 2023: “Espaço efêmero de escuta ininterrupta”.  </span>  <br /> <br />
-</span>
-            
-               
-              </div>  
+                <span className="pl-2"> 4 - Apresentação dos trabalhos dos artistas selecionados na residência artística numa experiência de escuta aos moldes do primeiro Campo Esquerdo em 2023: “Espaço efêmero de escuta ininterrupta”.  </span>  <br /> <br /></span>
+             </div> 
+            <div className="font-msgothic text-sm max-w-[80vh] px-4 py-6 text-[21px] leading-[16px] mt-8 text-center mx-auto">
+  <p className="mb-4">
+    Para fazer parte da residência, inscreva-se na chamada aberta aqui:
+  </p>
+  <div className="mb-4 flex justify-center">
+    {/* Space for button */}
+       <a
+      href="https://docs.google.com/forms/d/e/1FAIpQLSfAlhyPX9oKMl6cMtd9-Ka9T_sC8cSqvdqmq9AXpiiNu5T1UA/viewform?usp=dialog"
+      target="_blank"
+      rel="noopener noreferrer"
+    >  <br /> 
+      <img src="/inscrevabutton.png" alt="Inscreva-se" className="w-full max-w-[200px]"/>  <br /> 
+    </a>  
+  </div>
+  <p>
+    Se não deseja ou não possa participar da residência, porém tem interesse de contribuir voluntariamente para o projeto, escreva um email para: <a href="mailto:campo.esquerdo@gmail.com" className="underline">campo.esquerdo@gmail.com</a>
+  </p> 
+</div>
+
       </div>
     </div>
   )}

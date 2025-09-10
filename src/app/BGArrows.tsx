@@ -86,7 +86,7 @@ const AnimatedArrows = () => {
     arrowsRef.current = arrows;
 
     const WAVE_SIZE = 60;
-    const MAX_ARROWS = 25;
+    const MAX_ARROWS = 35;
     let activeArrows = 5; // track active arrows
 
     
@@ -107,17 +107,17 @@ const AnimatedArrows = () => {
   const z = utils.random(-50, -40); 
 
   sprite.position.set(x, y, z);
-  sprite.scale.set(13.2, 13.2, 13.2); // Adjust scale as needed
+  sprite.scale.set(15.2, 15.2, 13.2); // Adjust scale as needed
 
   // fade-in
   if (fadeIn) {
-    createTimeline({ defaults: { duration: 1600, ease: 'easeOutQuad' } })
-      .add(sprite.material, { opacity: 1 }, 0)
+    createTimeline({ defaults: { duration: 3600, ease: 'easeOutQuad' } }) 
+      .add(sprite.material, { opacity: 1 }, 0) // fade in 0
       .init();
   }
 
   // floating motion
-  const duration = utils.random(15000, 20000);
+  const duration = utils.random(7200, 15600); // 
   createTimeline({ defaults: { loop: true, duration, ease: 'linear' } })
     .add(sprite.position, {
       z: 30,
