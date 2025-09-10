@@ -21,7 +21,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setThemeState] = useState({
     bgColor: 'bg-[#ffffff]',
     textColor: 'text-[#2f3032]',
-    borderColor: 'border-[#9fce98]',
+    borderColor: 'border-[#000000]', 
     arrowColor: 'text-[#9fce98]'
   });
 

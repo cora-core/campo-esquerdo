@@ -99,8 +99,8 @@ export const ThemeSelector = () => {
             <div className={`text-xs font-medium mb-2 ${textColor}`}>Preset Themes</div>
             <div className="space-y-1">
               {[
-                { name: 'Default', bg: '#ffffff', text: '#2f3032', border: '#9fce98', arrow: '#9fce98' },
-                { name: 'Dark Mode', bg: '#2f3032', text: '#ffffff', border: '#eec2db', arrow: '#eec2db' },
+                { name: 'Default', bg: '#ffffff', text: '#2f3032', border: '#000000ff', arrow: '#000000ff' },
+                { name: 'Dark Mode', bg: '#2f3032', text: '#ffffff', border: '#000000ff', arrow: '#eec2db' },
                 { name: 'Pink Theme', bg: '#eec2db', text: '#2f3032', border: '#9fce98', arrow: '#9fce98' },
                 { name: 'Green Theme', bg: '#9fce98', text: '#2f3032', border: '#eec2db', arrow: '#eec2db' },
               ].map((preset) => (
