@@ -1,5 +1,6 @@
 "use client";
 
+
 import React, { useEffect, useRef, useState } from "react";
 
 interface BouncingTextProps {
@@ -20,7 +21,11 @@ export default function BouncingText({ isMobile = false }: BouncingTextProps) {
     y: isMobile ? 1 : 2 
   });
 
+const [isBouncing, setIsBouncing] = useState(true);
+
   useEffect(() => {
+
+      if (!isBouncing) return; // 👈 don't animate if stopped
     let frame: number;
 
     const update = () => {
@@ -48,7 +53,7 @@ export default function BouncingText({ isMobile = false }: BouncingTextProps) {
 
     frame = requestAnimationFrame(update);
     return () => cancelAnimationFrame(frame);
-  }, [pos, vel]);
+  }, [pos, vel, isBouncing]); // 👈 include isBouncing
 
   const handleMouseDown = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -101,25 +106,140 @@ export default function BouncingText({ isMobile = false }: BouncingTextProps) {
       return;
     }
     
-    window.open(
-      "https://docs.google.com/forms/d/e/1FAIpQLSfAlhyPX9oKMl6cMtd9-Ka9T_sC8cSqvdqmq9AXpiiNu5T1UA/viewform",
-      "_blank"
-    );
+const baseLine = linePattern[Math.floor(Math.random() * linePattern.length)];
+const randomDx = baseLine.dx + (Math.random() - 0.5) * 2; 
+const randomDy = baseLine.dy + (Math.random() - 0.5) * 2; 
+
+
+
+
+
+
+    // start filling on click
+progressivelyFillLines();
+setIsBouncing(false); // 👈 stop movement
+
+
+isDragging.current = false;
     
-    isDragging.current = false;
+    setTimeout(() => {
+  window.open(
+    "https://docs.google.com/forms/d/e/1FAIpQLSfAlhyPX9oKMl6cMtd9-Ka9T_sC8cSqvdqmq9AXpiiNu5T1UA/viewform",
+    "_blank"
+  );
+}, 1000); // delay in milliseconds (2000ms = 2 seconds)
+
+    
+    
   };
 
-  const lines = [
-    { text: "CHAMADA", dx: 20 },
-    { text: "ABERTA", dx: 10 },
-    { text: "CHAMADA", dx: 30 },
-    { text: "ABERTA", dx: 40 },
-    { text: "CHAMADA", dx: 50 },
-    { text: "ABERTA", dx: 60 },
-    { text: "CHAMA", dx: 70 },
-    { text: "DA", dx: 80 },
-    { text: "A", dx: 90 },
-  ];
+  // const lines = [
+  //   { text: "CHAMADA", dx: 20 },
+  //   { text: "ABERTA", dx: 10 },
+  //   { text: "CHAMADA", dx: 30 },
+  //   { text: "ABERTA", dx: 40 },
+  //   { text: "CHAMADA", dx: 50 },
+  //   { text: "ABERTA", dx: 60 },
+  //   { text: "CHAMA", dx: 70 },
+  //   { text: "DA", dx: 80 },
+  //   { text: "A", dx: 90 },
+  // ];
+  
+
+
+  
+// replace your current const lines = [...] with:
+
+
+
+const [lines, setLines] = useState<{ text: string; dx: number; y?: number }[]>([
+  { text: "CHAMADA", dx: 20, y: 0 },
+  { text: "ABERTA", dx: 10, y: 18 },
+]);
+
+
+
+
+// add below the state above
+const linePattern: { text: string; dx: number; dy: number }[] = [ 
+  { text: "CHAMADA", dx: 20, dy:0},
+  { text: "ABERTA", dx: 10, dy:0 },
+  { text: "CHAMADA", dx: 30, dy:0 },
+  { text: "ABERTA", dx: 40, dy:0},
+  { text: "CHAMADA", dx: 50, dy:0},
+  { text: "ABERTA", dx: 60, dy:0},
+  { text: "CHAMA", dx: 70, dy:0},
+  { text: "DA", dx: 80, dy:0},
+  { text: "A", dx: 90, dy:0},
+  { text: "CHAMADA", dx: -20, dy:20}, 
+  { text: "ABERTA", dx: -10, dy:20 },
+  { text: "CHAMADA", dx: -30, dy:20 },
+  { text: "ABERTA", dx: -40   , dy:20},
+  { text: "CHAMADA", dx: -50, dy:20},
+  { text: "ABERTA", dx: -60, dy:20},
+  { text: "CHAMA", dx: -70, dy:20},
+  { text: "DA", dx: -80, dy:20},
+  { text: "A", dx: -90, dy:20},
+];
+
+
+
+
+
+
+
+const fillingRef = useRef(false);
+const intervalRef = useRef<number | null>(null);
+
+const LINE_HEIGHT = 18; 
+const PADDING = 20;
+
+const getTargetLineCount = () => {
+  if (!containerRef.current) return lines.length;
+  const { height } = containerRef.current.getBoundingClientRect();
+  const available = Math.max(0, height - PADDING * 2);
+  return Math.max(lines.length, Math.floor(available / LINE_HEIGHT));
+};
+
+const getLineByIndex = (i: number) => linePattern[i % linePattern.length];
+
+const progressivelyFillLines = () => {
+  if (fillingRef.current) return; // guard: don't start twice
+  fillingRef.current = true;
+
+  const target = getTargetLineCount();
+  let i = lines.length; // continue from current count
+
+  intervalRef.current = window.setInterval(() => {
+    i += 1; 
+    setLines(prev => {
+      if (prev.length >= target) {
+        if (intervalRef.current) {
+          clearInterval(intervalRef.current);
+          intervalRef.current = null;
+        }
+        fillingRef.current = false;
+        return prev;
+      }
+      // pick a random line from the pattern
+const baseLine = linePattern[Math.floor(Math.random() * linePattern.length)];
+
+// add some horizontal randomness
+const randomDx = baseLine.dx + (Math.random() - 0.5) * 40; // ±20px jitter
+
+const lastY = prev[prev.length - 1]?.y ?? 0;
+const randomY = lastY + LINE_HEIGHT + (Math.random() - 0.5) * 10; // ±5px
+
+return [...prev, { text: baseLine.text, dx: randomDx, y: randomY }];
+
+    });
+  }, 10); 
+};
+
+
+
+
+
 
   return (
     <div ref={containerRef} className="w-full h-full relative overflow-hidden">
@@ -200,7 +320,7 @@ export default function BouncingText({ isMobile = false }: BouncingTextProps) {
           dominantBaseline="hanging"
         >
           {lines.map((line, i) => (
-            <tspan key={i} x={line.dx} dy={i === 0 ? 0 : 18}>
+            <tspan key={i} x={line.dx} dy={i === 0 ? 0 : 18}> 
               {line.text}
             </tspan>
           ))}
