@@ -38,7 +38,7 @@
   --font-custom: var(--font-custom);
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: default) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;

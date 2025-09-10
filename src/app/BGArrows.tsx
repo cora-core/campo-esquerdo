@@ -63,7 +63,7 @@ const AnimatedArrows = () => {
       shape.lineTo(-0.8, -0.05);
     }
 
-    return new THREE.ExtrudeGeometry(shape, { steps: 1, depth: 0.2, bevelEnabled: false });
+    return new THREE.ExtrudeGeometry(shape, { steps: 1, depth: 0.2, bevelEnabled: false }); 
   }
 
   useEffect(() => {
@@ -76,7 +76,7 @@ const AnimatedArrows = () => {
     const scene = new THREE.Scene();
     sceneRef.current = scene;
 
-    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000); 
     renderer.setSize(width, height);
     renderer.setPixelRatio(window.devicePixelRatio);
     $container.appendChild(renderer.domElement);
@@ -85,9 +85,9 @@ const AnimatedArrows = () => {
     const arrows: THREE.Object3D[] = [];
     arrowsRef.current = arrows;
 
-    const WAVE_SIZE = 50;
-    const MAX_ARROWS = 30;
-    let activeArrows = 25; // track active arrows
+    const WAVE_SIZE = 60;
+    const MAX_ARROWS = 25;
+    let activeArrows = 5; // track active arrows
 
     
 
@@ -139,7 +139,7 @@ const AnimatedArrows = () => {
   arrows.push(createAssetSprite(assetIndex));
 }
       }
-      setTimeout(spawnWave, 200);
+      setTimeout(spawnWave, 100); 
     }
 
     spawnWave();
