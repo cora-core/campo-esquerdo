@@ -67,47 +67,52 @@ const AnimatedArrows = () => {
   }
 
   useEffect(() => {
-    const $container = containerRef.current;
-    if (!$container) return;
+  const $container = containerRef.current;
+  if (!$container) return;
 
-    const { width, height } = $container.getBoundingClientRect();
+  const { width, height } = $container.getBoundingClientRect();
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true });
-    const scene = new THREE.Scene();
-    sceneRef.current = scene;
+  const renderer = new THREE.WebGLRenderer({ alpha: true });
+  const scene = new THREE.Scene();
+  sceneRef.current = scene;
 
-    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000); 
-    renderer.setSize(width, height);
-    renderer.setPixelRatio(window.devicePixelRatio);
-    $container.appendChild(renderer.domElement);
-    camera.position.z = 5;
+  const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000); 
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  $container.appendChild(renderer.domElement);
+  camera.position.z = 5;
 
-    const arrows: THREE.Object3D[] = [];
-    arrowsRef.current = arrows;
+  const arrows: THREE.Object3D[] = [];
+  arrowsRef.current = arrows;
 
-    const WAVE_SIZE = 60;
-    const MAX_ARROWS = 35;
-    let activeArrows = 5; // track active arrows
+  const WAVE_SIZE = 60;
+  const MAX_ARROWS = 35;
+  let activeArrows = 5; // track active arrows
 
-    
-
-   function createAssetSprite(assetIndex: number, fadeIn = true) {
-  const assetPaths = [
-    '/assets/2.png',
-    '/assets/3.png',
-    '/assets/4.png',
-    '/assets/5.png',
+  // 🔹 cache textures once
+  const textureLoader = new THREE.TextureLoader();
+  const textures = [
+    textureLoader.load('/assets/2.png'),
+    textureLoader.load('/assets/3.png'),
+    textureLoader.load('/assets/4.png'),
+    textureLoader.load('/assets/5.png'),
   ];
-  const texture = new THREE.TextureLoader().load(assetPaths[assetIndex]);
-  const material = new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: fadeIn ? 0 : 1 });
+
+  function createAssetSprite(assetIndex: number, fadeIn = true) {
+    const material = new THREE.SpriteMaterial({
+      map: textures[assetIndex],   // 🔹 use cached texture
+      transparent: true,
+      opacity: fadeIn ? 0 : 1,
+    });
   const sprite = new THREE.Sprite(material);
 
-  const x = utils.random(-width / 80, width / 80); 
-  const y = utils.random(-height / 80, height / 80);
+const xOffset = -width / 200; 
+const x = utils.random(-width / 120, width / 80); // asymmetric: more range to the right
+const y = utils.random(-height / 120, height / 120);
   const z = utils.random(-50, -40); 
 
   sprite.position.set(x, y, z);
-  sprite.scale.set(15.2, 15.2, 13.2); // Adjust scale as needed
+  sprite.scale.set(12.2, 12.2, 12.2); // Adjust scale as needed
 
   // fade-in
   if (fadeIn) {
@@ -139,7 +144,7 @@ const AnimatedArrows = () => {
   arrows.push(createAssetSprite(assetIndex));
 }
       }
-      setTimeout(spawnWave, 100); 
+      setTimeout(spawnWave, 150); 
     }
 
     spawnWave();

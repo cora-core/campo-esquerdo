@@ -5,6 +5,7 @@ import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import AnimatedArrows from "./BGArrows";
 import { useThemeClasses } from "@/hooks/useThemeClasses";
 import BouncingText from "@/components/BouncingText";
+import StickyWrapper from "@/components/StickyWrapper";
 
 /* Simple breakpoint hook (md: 768px) */
 function useIsMobile(breakpoint = 768) {
@@ -107,33 +108,31 @@ export default function Home() {
     return (
       <div className="min-h-screen flex flex-col">
         <AnimatedArrows />
-        <div className={`font-ui-gothic flex items-center border min-h-[10vh] pl-2 text-[3rem] ${text} ${border}`}>
-          CAMPO ESQUERDO 2025 MAM-RJ <img src="/logo.png" alt="icon" className="ml-2 w-6 h-6" />
+        <div className={`font-ui-gothic top-0 border-b border-t flex items-center min-h-[5vh] text-lg pl-2 bg-white ${text} ${border}`}>
+          CAMPO ESQUERDO 
         </div>
 
         {/* SITE (top) */}
         <div id="site" className="flex flex-col border-l border-r">
-          <div className={`items-center border-b min-h-[5vh] pl-2 text-lg flex items-center ${text} ${border}`} onClick={openSite}>
-            <span>SITE</span>
-          </div>
-          <div className={`p-2 min-h-[40vh] ${text}`} style={{ height: '40vh' }}>
+         
+          <div className={`p-2 min-h-[76vh] ${text}`} style={{ height: '40vh' }}>
             {/* Pass isMobile prop to BouncingText */}
             <BouncingText isMobile={true} />
           </div>
-          <div className={`border-t min-h-[5vh] pl-2 flex items-center ${text} ${border}`}></div>
+          
         </div>
 
         {/* SOBRE (below) */}
-        <div id="sobre" className={`flex flex-col border-t ${text} ${border}`} onClick={openSobre}>
-          <div className={`border-b pl-2 min-h-[5vh] flex items-center text-lg ${text} ${border}`}>
+       
+          <div className={`font-ui-gothic sticky top-0 border-b border-t flex items-center min-h-[5vh] text-lg pl-2 bg-white ${text} ${border}`}>
             SOBRE
           </div>
 
-          <div ref={sobreContainerRef} className="overflow-y-auto">
+          <div ref={sobreContainerRef} className="font-msgothic leading-[16px] overflow-y-auto bg-white ">
             <div>
-              <div className={`text-sm ${text}`}>
+              <div className={`font-msgothic leading-[16px] overflow-y-auto bg-white ${text}`}>
                 <span className="mb-2 pl-2">
-                  Campo Esquerdo é uma plataforma cultural que fomenta a experimentação de novas estéticas, modos de produção e experiências nos campos da arte sonora, musical e do corpo. Ao desenhar estruturas que permitam a criação conjunta entre perspectivas humanas, artefatuais, digitais e de outros seres vivos sem estabelecer hierarquias, Campo Esquerdo promove "Tecnologias", no plural. Dicotomias entre arte/tecnologia, show/festa, pista/casa, dança /inércia, coletividade/individualidade não tem lugar aqui, exceto se desmontadas e recombinadas em configurações irreconhecíveis.
+                  <br /> Campo Esquerdo é uma plataforma cultural que fomenta a experimentação de novas estéticas, modos de produção e experiências nos campos da arte sonora, musical e do corpo. Ao desenhar estruturas que permitam a criação conjunta entre perspectivas humanas, artefatuais, digitais e de outros seres vivos sem estabelecer hierarquias, Campo Esquerdo promove "Tecnologias", no plural. Dicotomias entre arte/tecnologia, show/festa, pista/casa, dança /inércia, coletividade/individualidade não tem lugar aqui, exceto se desmontadas e recombinadas em configurações irreconhecíveis.
                 </span>
                 <br />
                 <div className="h-4" />
@@ -142,7 +141,7 @@ export default function Home() {
                 </span>
                 <br />
                 <div className="h-4" />
-                <div id="praxis" className={` text-sm ${text}`}>
+                <div id="praxis" className={` font-msgothic leading-[16px] overflow-y-auto bg-white  ${text}`}>
                   <span className="text-base pl-2">Práxis</span>
                   <br />
                   <div className="h-4" />
@@ -155,181 +154,59 @@ export default function Home() {
                   <br />
                   <div className="h-4" />
                   <span className="pl-2">
-                    O formato de experiência de escuta dá o conjunto de valores do projeto, mas não é um fim em si próprio. Nos meses após a primeira edição, surgiram questões criticas como: como dar continuidade a essas experiências de forma alinhada a esses valores? Publico, gratuito, horizontal, inovador, dissidente, (estranho). Quais são as condições dignas para alcançar um estado de fluxo coletivo, capaz de transformar o projeto conforme as necessidades delo que o compõe? Como uma tentativa de respondê-las, Campo Esquerdo toma uma nova forma. O que chamamos de Campo Esquerdo Fase II.
-                  </span>
+                    O formato de experiência de escuta dá o conjunto de valores do projeto, mas não é um fim em si próprio. Nos meses após a primeira edição, surgiram questões criticas como: como dar continuidade a essas experiências de forma alinhada a esses valores? Publico, gratuito, horizontal, inovador, dissidente, (estranho). Quais são as condições dignas para alcançar um estado de fluxo coletivo, capaz de transformar o projeto conforme as necessidades delo que o compõe? Como uma tentativa de respondê-las, Campo Esquerdo toma uma nova forma. O que chamamos de Campo Esquerdo Fase II. <br />
+                   <br /></span>
                 </div>
               </div>
 
               <div className="relative">
                 <div
                   ref={mentoriasRef}
-                  className={`sticky top-0 border-b border-t flex items-center min-h-[5vh] text-lg pl-2 ${bg} z-10 ${text} ${border}`}
+                  className={`font-msgothic sticky top-0 border-b border-t flex items-center min-h-[5vh] text-lg pl-2 ${bg} z-10 ${text} ${border}`}
                 >
                   CAMPO ESQUERDO FASE II
                 </div>
+                
+               <div className="flex flex-col">
+       
 
-                {/* Mobile rows for FASE II */}
-                <div className="flex flex-col">
-                  {/* Mari Herzer Row */}
-                  <motion.div
-                    className={`border-b ${text} cursor-pointer relative overflow-hidden`}
-                    onClick={() => toggleRow(0)}
-                    initial={false}
-                    animate={{ height: openRows[0] ? "auto" : "3rem" }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                  >
-                    <div className="flex h-12 items-center justify-between px-4">
-                      <span className="whitespace-nowrap">MARI HERZER</span>
-                    </div>
-                    <AnimatePresence>
-                      {openRows[0] && (
-                        <motion.div
-                          className="px-4 pb-4"
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <div className="bg-gray-200 h-48 w-full mb-4 flex items-center justify-center">
-                            Image Placeholder
-                          </div>
-                          <p className="text-sm">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
-                          </p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
+      <div className={`font-msgothic leading-[16px] overflow-y-auto bg-white ${text}`}>
+                <span className="mb-2 pl-2">  <br /> Campo Esquerdo busca abrir espaços e criar estruturas porque acreditamos que para que floresçam novas linguagens artísticas e experiências, é necessário proporcionar condições materiais que permitam que isso aconteça. Mesmo que haja circunstâncias que estejam muito além do alcance de um projeto de nicho, pensamos que o formato mínimo viável para a sua continuidade, com um impacto alinhado a seus valores, contém: eventos públicos gratuitos recorrentes (cultura como direito), autonomia técnica e de equipamentos (sistema de som próprio), e uma comunidade engajada e dignamente compensada. Por isso, em vez de seguir realizando eventos com cobrança de ingressos (o que delegaria a responsabilidade do financiamento ao público), seguimos uma via mais paciente.    </span>
+                <br /><div className="h-4" />
+                <span className="pl-2">
+                  Por meio de fundos da Lei Aldir Blanc, e em parceria com o MAM-Rio, A Fase II, busca criar a estrutura necessária para dar continuidade ao campo esquerdo por meio de quatro passos:  </span> <br />  <br />
+                 <span className="pl-2"> 1-Residência artística semipresencial com chamada aberta para artistas sonoras e do corpo, com acompanhamento das artistas que fizeram parte das interações passadas do projeto.  <br />  <br />
+                <span className="pl-2"> 2-Ciclo de Seminários e Oficinas abertos ao público no Museu de Arte Moderna do Rio de Janeiro com artistas e pesquisadores, convidados. </span>  <br /> <br />
+                <span className="pl-2"> 3-Construção de um sistema de som que será usado nas próximas manifestações do projeto </span>  <br /> <br />
+                <span className="pl-2"> 4-Apresentação dos trabalhos dos artistas selecionados na residência artística numa experiência de escuta aos moldes do primeiro Campo Esquerdo em 2023: “Espaço efêmero de escuta ininterrupta”.  </span>  <br /> <br /></span>
+             </div> 
+            <div className="font-msgothic text-sm max-w-[80vh] px-4 py-6 text-[21px] leading-[16px] mt-8 text-center mx-auto">
+  <p className="mb-4">
+    Para fazer parte da residência, inscreva-se na chamada aberta aqui:
+  </p>
+  <div className="mb-4 flex justify-center">
+    {/* Space for button */}
+       <a
+      href="https://docs.google.com/forms/d/e/1FAIpQLSfAlhyPX9oKMl6cMtd9-Ka9T_sC8cSqvdqmq9AXpiiNu5T1UA/viewform?usp=dialog"
+      target="_blank"
+      rel="noopener noreferrer"
+    >  <br /> 
+      <img src="/inscrevabutton.png" alt="Inscreva-se" className="w-full max-w-[200px]"/>  <br /> 
+    </a>  
+  </div>
+  <p>
+    Se não deseja ou não possa participar da residência, porém tem interesse de contribuir voluntariamente para o projeto, escreva um email para: <a href="mailto:campo.esquerdo@gmail.com" className="underline">campo.esquerdo@gmail.com</a>
+  </p> 
+</div>
 
-                  {/* Kaloan Row */}
-                  <motion.div
-                    className={`border-b ${text} cursor-pointer relative overflow-hidden`}
-                    onClick={() => toggleRow(1)}
-                    initial={false}
-                    animate={{ height: openRows[1] ? "auto" : "3rem" }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                  >
-                    <div className="flex h-12 items-center justify-between px-4">
-                      <span className="whitespace-nowrap">KALOAN</span>
-                    </div>
-                    <AnimatePresence>
-                      {openRows[1] && (
-                        <motion.div
-                          className="px-4 pb-4"
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <div className="bg-gray-200 h-48 w-full mb-4 flex items-center justify-center">
-                            Image Placeholder
-                          </div>
-                          <p className="text-sm">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
-                          </p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
+      </div>
 
-                  {/* Valesuchi Row */}
-                  <motion.div
-                    className={`border-b ${text} cursor-pointer relative overflow-hidden`}
-                    onClick={() => toggleRow(2)}
-                    initial={false}
-                    animate={{ height: openRows[2] ? "auto" : "3rem" }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                  >
-                    <div className="flex h-12 items-center justify-between px-4">
-                      <span className="whitespace-nowrap">VALESUCHI</span>
-                    </div>
-                    <AnimatePresence>
-                      {openRows[2] && (
-                        <motion.div
-                          className="px-4 pb-4"
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <div className="bg-gray-200 h-48 w-full mb-4 flex items-center justify-center">
-                            Image Placeholder
-                          </div>
-                          <p className="text-sm">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
-                          </p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
-
-                  {/* Capetini Row */}
-                  <motion.div
-                    className={`border-b ${text} cursor-pointer relative overflow-hidden`}
-                    onClick={() => toggleRow(3)}
-                    initial={false}
-                    animate={{ height: openRows[3] ? "auto" : "3rem" }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                  >
-                    <div className="flex h-12 items-center justify-between px-4">
-                      <span className="whitespace-nowrap">CAPETINI</span>
-                    </div>
-                    <AnimatePresence>
-                      {openRows[3] && (
-                        <motion.div
-                          className="px-4 pb-4"
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <div className="bg-gray-200 h-48 w-full mb-4 flex items-center justify-center">
-                            Image Placeholder
-                          </div>
-                          <p className="text-sm">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
-                          </p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
-
-                  {/* Numa Gama Row */}
-                  <motion.div
-                    className={`border-b ${text} cursor-pointer relative overflow-hidden`}
-                    onClick={() => toggleRow(4)}
-                    initial={false}
-                    animate={{ height: openRows[4] ? "auto" : "3rem" }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                  >
-                    <div className="flex h-12 items-center justify-between px-4">
-                      <span className="whitespace-nowrap">NUMA GAMA</span>
-                    </div>
-                    <AnimatePresence>
-                      {openRows[4] && (
-                        <motion.div
-                          className="px-4 pb-4"
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <div className="bg-gray-200 h-48 w-full mb-4 flex items-center justify-center">
-                            Image Placeholder
-                          </div>
-                          <p className="text-sm">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
-                          </p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
-                </div>
+                
               </div>
             </div>
           </div>
         </div>
-      </div>
+      
     );
   }
 
@@ -337,9 +214,20 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <AnimatedArrows />
-      <div className={`font-ui-gothic flex items-center border min-h-[10vh] pl-2 text-[3rem] bg-white overflow-hidden ${text} ${border}`}>
-        CAMPO <img src="/logo.png" alt="icon" className="ml-2 w-15 h-12" /> ESQUERDO <img src="/logo.png" alt="icon" className="ml-2 w-15 h-12" /> CAMPO <img src="/logo.png" alt="icon" className="ml-2 w-15 h-12" /> ESQUERDO <img src="/logo.png" alt="icon" className="ml-2 w-15 h-12" /> CAMPO <img src="/logo.png" alt="icon" className="ml-2 w-15 h-12" /> ESQUERDO
-      </div>
+     <div className={`font-ui-gothic flex items-center border min-h-[10vh] pl-2 text-[3rem] 2xl:text-[6rem] bg-white overflow-hidden ${text} ${border}`}>
+  CAMPO 
+  <img src="/logo.png" alt="icon" className="ml-2 h-[1em] w-auto" /> 
+  ESQUERDO 
+  <img src="/logo.png" alt="icon" className="ml-2 h-[1em] w-auto" /> 
+  CAMPO 
+  <img src="/logo.png" alt="icon" className="ml-2 h-[1em] w-auto" /> 
+  ESQUERDO 
+  <img src="/logo.png" alt="icon" className="ml-2 h-[1em] w-auto" /> 
+  CAMPO 
+  <img src="/logo.png" alt="icon" className="ml-2 h-[1em] w-auto" /> 
+  ESQUERDO
+</div>
+
       <div className="flex flex-1 relative">
         <div
           id="site"
@@ -349,8 +237,8 @@ export default function Home() {
           }}
           onClick={openSite}
         >
-          <div className={`items-center border-b border-l min-h-[5vh] pl-2 text-lg flex items-center bg-white ${text} ${border}`}>
-            <span><img src="/logo.png" alt="icon" className="ml-2 w-10 h-7" /></span>
+          <div className={`items-center border-b border-l min-h-[5vh] max-h-[5vh] pl-2 text-lg flex items-center bg-white ${text} ${border}`}>
+            <span><img src="/logo.png" alt="icon" className="ml-2 h-[1.5em] w-auto"/></span>
           </div>
           <div id="sitespace" className={`flex-1 p-2 min-h-[80vh] border-l ${text} ${border}`} style={{ height: '80vh' }}>
             {/* Pass isMobile prop to BouncingText */}
@@ -377,7 +265,10 @@ export default function Home() {
           }}
           onClick={openSobre}
         >
-          <div className={`font-msgothic text-sm border-b pl-2 min-h-[5vh] flex items-center text-lg text-[21px] leading-[16px] ${text} ${border}`}>
+         <div className={`font-msgothic border-b pl-2 min-h-[5vh] flex items-center text-[clamp(16px,1.46vw,3rem)] leading-[16px] ${text} ${border}`}>
+
+
+
             <motion.span
               transition={{
                 type: "spring",
@@ -405,35 +296,40 @@ export default function Home() {
               }}
             >
               
-              <div className={`font-msgothic text-sm min-h-[80vh] max-h-[80vh] min-w-[155vh] max-w-[40vh] columns-2 gap-8 px-4 py-6 text-[21px] leading-[16px] overflow-hidden ${text}`}>
+            <div className={`font-msgothic text-sm min-h-[80vh] max-h-[80vh] min-w-[152vh] min-w-mbp13 min-w-mba13 text-mbp13 text-mba13 laptop1600 desktop1920 ultrawide2560 columns-2 gap-8 px-4 py-6 text-[21px] leading-[16px] ${text}`}>
+
+
                 <span className="mb-2 pl-2"> Campo Esquerdo é uma plataforma cultural que fomenta novas estéticas, modos de produção e experiências nos campos da arte sonora, musical e do corpo. Ao desenhar estruturas que permitam co-criação a partir de perspectivas humanas, técnicas e de outros seres vivos, sem hierarquias, Campo Esquerdo promove “tecnologias”, no plural. Dicotomias como arte/tecnologia, show/festa, dança/inércia, coletividade/individualidade não têm lugar aqui, exceto se desmontadas e recombinadas em configurações irreconhecíveis.  </span>
                 <br /><div className="h-4" />
+
+              
+
                 <span className="pl-2">
                   O prefixo musical <span className="italic">left-field</span> literalmente, e como sátira, Campo Esquerdo, indica variantes expandidas, singulares, ou “edgy”, de um certo gênero musical. E indo um pouco além na interpretação, não é exatamente o fazer experimental, que hoje muitas vezes existe em categorias demasiadamente solidificadas para justificar o uso do termo. O “Campo Esquerdo” é, simplesmente, o abraço à estranheza. Pode ser música/performance esquisita, que toma essa característica apenas por ser quem somos, em nossas inconformidades; ou o fazer artístico que deseja construir um mundo xenomorfo, com as regras que corpos dissidentes, mentes divergentes, possam existir sem a opressão da norma. Ou ainda, a curiosidade científica de observar o que acontece quando há permutações de tecnologias ainda não experimentadas. Campo esquerdo não é um evento de música experimental, é uma frente cultural que promove novos formatos sonoros, e propõe outros parâmetros para relações imanentes nas experiências multidisciplinares.  </span> <br /><div className="h-4" />
-                  <br /><br /><br /><br /><br /><br /><br /><br />
-                <div id="praxis" className={` font-msgothic text-sm min-h-[80vh] max-h-[80vh] min-w-[70vh] max-w-[40vh] text-[21px] leading-[16px] overflow-hidden ${text}`}> 
-                  <span className="pl-2">Práxis</span><br /><div className="h-4" />
+                  
+                  <span className="pl-2"><br /><br /><br /><br /><br /><br /><br /><br />Práxis</span><br /><div className="h-4" />
                   <span className="pl-2">Em sua concepção inicial, Campo Esquerdo  tomou a forma de um evento que combina múltiplos elementos da cultura da música eletrônica: suspensões espaço-temporais através de tensionamentos do gênero club/rave  construções musicais contínuas em um espaço de suspensão do tempo, e de livre movimento (club/rave); música ambiente e escuta profunda, mimetizando a proposta espaços de escuta hi-fi; e, sobretudo, da música experimental, onde sons, silêncio e acaso se encontram para desafiar as tradições musicais convencionais, e abre novas possibilidades de composição musical.  </span>
-                  <span>A partir desses parâmetros, manifesta-se um espaço efêmero de escuta ininterrupta focado em shows de música eletrônica left-field e performances na interseção entre corpo, tecnologia digital e som. Entre as apresentações, houve momentos de mediação e DJ sets como colagens sonoras, evitando quebras não intencionais ou mudanças bruscas de atmosfera. A mediação existe como elemento fundamental da experiência, pois acreditamos que a cultura DJ (e a pessoa DJ) em suas origens, é capaz de criar sentido entre distintas estéticas e grupos sociais, permitindo que seja criado tanto um ambiente conciso, fluido, como um solo para que as artistas autorais se sintam confortáveis em ousar ao máximo em suas apresentações.    </span><br /><div className="h-4" />
+                  <span>A partir desses parâmetros, manifesta-se um espaço efêmero de escuta ininterrupta focado em shows de música eletrônica left-field e performances na interseção entre corpo, tecnologia digital e som. Entre as apresentações, houve momentos de mediação e DJ sets como colagens sonoras, evitando quebras não intencionais ou mudanças bruscas de atmosfera. A mediação existe como elemento fundamental da experiência, pois acreditamos que a cultura DJ (e a pessoa DJ) em suas origens, é capaz de criar sentido entre distintas estéticas e grupos sociais, permitindo que seja criado tanto um ambiente conciso, fluido, como um solo para que as artistas autorais se sintam confortáveis em ousar ao máximo em suas apresentações.    </span><br />
+                  <div className="h-4" />
                   <span className="pl-2">O formato de experiência de escuta dá o conjunto de valores do projeto, mas não é um fim em si próprio. Nos meses após a primeira edição, surgiram questões críticas como: como dar continuidade a essas experiências de forma alinhada a esses valores? Público, gratuito, horizontal, inovador, dissidente, estranho. Quais são as condições dignas para alcançar um estado de fluxo coletivo, capaz de transformar o projeto conforme as necessidades do que o compõe? Como uma tentativa de respondê-las, Campo Esquerdo toma uma nova forma. O que chamamos de Campo Esquerdo Fase II.</span>
-                </div>
+                
               </div>
 
 <div className="relative">
-  <div 
-    ref={mentoriasRef}
-    className={`font-msgothic text-sm text-[21px] leading-[16px] sticky top-0 border-b border-t flex items-center min-w-[50vh] max-w-auto min-h-[5vh] max-h-[10vh] text-lg pl-2 ${bg} z-10 ${text} ${border}`}
-  >
-    CAMPO ESQUERDO FASE II
-  </div>
+  <StickyWrapper><div
+  ref={mentoriasRef}
+  className={`font-msgothic text-[clamp(21px,1.46vw,3rem)] leading-[16px] sticky top-0 border-b border-t flex items-center min-w-[50vh] max-w-auto min-h-[5vh] max-h-[10vh] pl-2 ${bg} z-10 ${text} ${border} sticky-border-transparent`}
+>
+  CAMPO ESQUERDO FASE II
+</div>  </StickyWrapper>
+
 
   {isOpen && (
     <div className="flex h-full" style={{ height: 'calc(100vh - 15vh)' }}>
       {/* Names column container - now using flex-row for side-by-side layout */}
       <div className="flex flex-col">
        
-
-      <div className={`font-msgothic text-sm min-w-[155vh] max-w-[40vh] columns-2 gap-8 px-4 py-6 text-[21px] leading-[16px] overflow-hidden ${text}`}>
+      <div className={`font-msgothic text-sm  min-w-[152vh] min-w-mbp13 min-w-mba13 text-mbp13 text-mba13 laptop1600 desktop1920 ultrawide2560 columns-2 gap-8 px-4 py-6 text-[21px] leading-[16px] ${text}`}>
                 <span className="mb-2 pl-2"> Campo Esquerdo busca abrir espaços e criar estruturas porque acreditamos que para que floresçam novas linguagens artísticas e experiências, é necessário proporcionar condições materiais que permitam que isso aconteça. Mesmo que haja circunstâncias que estejam muito além do alcance de um projeto de nicho, pensamos que o formato mínimo viável para a sua continuidade, com um impacto alinhado a seus valores, contém: eventos públicos gratuitos recorrentes (cultura como direito), autonomia técnica e de equipamentos (sistema de som próprio), e uma comunidade engajada e dignamente compensada. Por isso, em vez de seguir realizando eventos com cobrança de ingressos (o que delegaria a responsabilidade do financiamento ao público), seguimos uma via mais paciente.    </span>
                 <br /><div className="h-4" />
                 <span className="pl-2">
@@ -443,8 +339,8 @@ export default function Home() {
                 <span className="pl-2"> 3 - Construção de um sistema de som que será usado nas próximas manifestações do projeto </span>  <br /> <br />
                 <span className="pl-2"> 4 - Apresentação dos trabalhos dos artistas selecionados na residência artística numa experiência de escuta aos moldes do primeiro Campo Esquerdo em 2023: “Espaço efêmero de escuta ininterrupta”.  </span>  <br /> <br /></span>
              </div> 
-            <div className="font-msgothic text-sm max-w-[80vh] px-4 py-6 text-[21px] leading-[16px] mt-8 text-center mx-auto">
-  <p className="mb-4">
+            <div className="font-msgothic text-sm max-w-[80vh] px-4 py-6 text-[21px] leading-[16px] min-w-mbp13 min-w-mba13 text-mbp13 text-mba13 laptop1600 desktop1920 ultrawide2560 mt-8  mx-auto">
+  <p className="mb-4 flex justify-center">
     Para fazer parte da residência, inscreva-se na chamada aberta aqui:
   </p>
   <div className="mb-4 flex justify-center">
@@ -457,9 +353,9 @@ export default function Home() {
       <img src="/inscrevabutton.png" alt="Inscreva-se" className="w-full max-w-[200px]"/>  <br /> 
     </a>  
   </div>
-  <p>
-    Se não deseja ou não possa participar da residência, porém tem interesse de contribuir voluntariamente para o projeto, escreva um email para: <a href="mailto:campo.esquerdo@gmail.com" className="underline">campo.esquerdo@gmail.com</a>
-  </p> 
+ <div className="mb-4 mx-auto justify-center max-w-[80vh]">
+    Se não deseja ou não possa participar da residência, porém tem interesse de contribuir voluntariamente para o projeto, escreva um email para: <a href="mailto:campo.esquerdo@gmail.com" className="underline">campo.esquerdo@gmail.com</a> </div>
+  
 </div>
 
       </div>

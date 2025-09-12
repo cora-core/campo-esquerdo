@@ -1,0 +1,159 @@
+
+                {/* Mobile rows for FASE II */}
+
+                <div className="flex flex-col">
+                  {/* Mari Herzer Row */}
+                  <motion.div
+                    className={`border-b ${text} cursor-pointer relative overflow-hidden`}
+                    onClick={() => toggleRow(0)}
+                    initial={false}
+                    animate={{ height: openRows[0] ? "auto" : "3rem" }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                  >
+                    <div className="flex h-12 items-center justify-between px-4">
+                      <span className="whitespace-nowrap">MARI HERZER</span>
+                    </div>
+                    <AnimatePresence>
+                      {openRows[0] && (
+                        <motion.div
+                          className="px-4 pb-4"
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="bg-gray-200 h-48 w-full mb-4 flex items-center justify-center">
+                            Image Placeholder
+                          </div>
+                          <p className="text-sm">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+
+                  {/* Kaloan Row */}
+                  <motion.div
+                    className={`border-b ${text} cursor-pointer relative overflow-hidden`}
+                    onClick={() => toggleRow(1)}
+                    initial={false}
+                    animate={{ height: openRows[1] ? "auto" : "3rem" }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                  >
+                    <div className="flex h-12 items-center justify-between px-4">
+                      <span className="whitespace-nowrap">KALOAN</span>
+                    </div>
+                    <AnimatePresence>
+                      {openRows[1] && (
+                        <motion.div
+                          className="px-4 pb-4"
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="bg-gray-200 h-48 w-full mb-4 flex items-center justify-center">
+                            Image Placeholder
+                          </div>
+                          <p className="text-sm">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+
+                  {/* Valesuchi Row */}
+                  <motion.div
+                    className={`border-b ${text} cursor-pointer relative overflow-hidden`}
+                    onClick={() => toggleRow(2)}
+                    initial={false}
+                    animate={{ height: openRows[2] ? "auto" : "3rem" }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                  >
+                    <div className="flex h-12 items-center justify-between px-4">
+                      <span className="whitespace-nowrap">VALESUCHI</span>
+                    </div>
+                    <AnimatePresence>
+                      {openRows[2] && (
+                        <motion.div
+                          className="px-4 pb-4"
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="bg-gray-200 h-48 w-full mb-4 flex items-center justify-center">
+                            Image Placeholder
+                          </div>
+                          <p className="text-sm">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+
+                  {/* Capetini Row */}
+                  <motion.div
+                    className={`border-b ${text} cursor-pointer relative overflow-hidden`}
+                    onClick={() => toggleRow(3)}
+                    initial={false}
+                    animate={{ height: openRows[3] ? "auto" : "3rem" }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                  >
+                    <div className="flex h-12 items-center justify-between px-4">
+                      <span className="whitespace-nowrap">CAPETINI</span>
+                    </div>
+                    <AnimatePresence>
+                      {openRows[3] && (
+                        <motion.div
+                          className="px-4 pb-4"
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="bg-gray-200 h-48 w-full mb-4 flex items-center justify-center">
+                            Image Placeholder
+                          </div>
+                          <p className="text-sm">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+
+                  {/* Numa Gama Row */}
+                  <motion.div
+                    className={`border-b ${text} cursor-pointer relative overflow-hidden`}
+                    onClick={() => toggleRow(4)}
+                    initial={false}
+                    animate={{ height: openRows[4] ? "auto" : "3rem" }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                  >
+                    <div className="flex h-12 items-center justify-between px-4">
+                      <span className="whitespace-nowrap">NUMA GAMA</span>
+                    </div>
+                    <AnimatePresence>
+                      {openRows[4] && (
+                        <motion.div
+                          className="px-4 pb-4"
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="bg-gray-200 h-48 w-full mb-4 flex items-center justify-center">
+                            Image Placeholder
+                          </div>
+                          <p className="text-sm">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                </div>
