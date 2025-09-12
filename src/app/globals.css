@@ -45,6 +45,55 @@
   }
 }
 
+
+@media (min-width: 1280px) {
+  .min-w-mbp13 { min-width: 148vh; }
+  .text-mbp13 { font-size: 18.5px; line-height: 13px;}
+}
+@media (min-width: 1440px) {
+  .min-w-mba13 { min-width: 153vh; }
+  .text-mba13 { font-size: 21px;line-height: 15px;}
+}
+
+
+@media (min-width: 1600px) {
+  .laptop1600 {
+    min-width: 152vh;
+    font-size: 25px;
+    line-height: 17px;
+  }
+}
+
+
+@media (min-width: 1920px) {
+  .desktop1920 {
+    min-width: 140vh;
+    font-size: 32px;
+    line-height: 22px;
+  }
+}
+
+
+
+@media (min-width: 2560px) {
+  .ultrawide2560 {
+    min-width: 180vh;
+    font-size: 36px;
+    line-height: 26px;
+  }
+}
+
+
+.sticky-border-transparent {
+  border-top: 1px solid currentColor;
+  transition: border-color 0s;
+}
+
+.sticky-border-transparent.is-stuck {
+  border-top-color: transparent;
+}
+
+
 body {
   background: var(--background);
   color: var(--foreground);
