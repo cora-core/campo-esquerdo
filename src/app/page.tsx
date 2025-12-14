@@ -133,9 +133,9 @@ export default function Home() {
             SOBRE
           </div>
 
-          <div ref={sobreContainerRef} className="font-msgothic leading-[16px] overflow-y-auto bg-white ">
+          <div ref={sobreContainerRef} className="mobile-text-container overflow-y-auto bg-white ">
             <div>
-              <div className={`font-msgothic leading-[16px] overflow-y-auto bg-white ${text}`}>
+              <div className={`mobile-text-container overflow-y-auto bg-white ${text}`}>
                 <span className="mb-2 pl-2">
                   <br /> Campo Esquerdo é uma plataforma cultural que fomenta a experimentação de novas estéticas, modos de produção e experiências nos campos da arte sonora, musical e do corpo. Ao desenhar estruturas que permitam a criação conjunta entre perspectivas humanas, artefatuais, digitais e de outros seres vivos sem estabelecer hierarquias, Campo Esquerdo promove "Tecnologias", no plural. Dicotomias entre arte/tecnologia, show/festa, pista/casa, dança /inércia, coletividade/individualidade não tem lugar aqui, exceto se desmontadas e recombinadas em configurações irreconhecíveis.
                 </span>
@@ -146,7 +146,7 @@ export default function Home() {
                 </span>
                 <br />
                 <div className="h-4" />
-                <div id="praxis" className={` font-msgothic leading-[16px] overflow-y-auto bg-white  ${text}`}>
+                <div id="praxis" className={`mobile-text-container overflow-y-auto bg-white ${text}`}>
                   <span className="text-base pl-2">Práxis</span>
                   <br />
                   <div className="h-4" />
@@ -175,7 +175,7 @@ export default function Home() {
                 <div className="flex flex-col">
 
 
-                  <div className={`font-msgothic leading-[16px] overflow-y-auto bg-white ${text}`}>
+                  <div className={`mobile-text-container overflow-y-auto bg-white ${text}`}>
                     <span className="mb-2 pl-2">  <br /> Campo Esquerdo busca abrir espaços e criar estruturas porque acreditamos que para que floresçam novas linguagens artísticas e experiências, é necessário proporcionar condições materiais que permitam que isso aconteça. Mesmo que haja circunstâncias que estejam muito além do alcance de um projeto de nicho, pensamos que o formato mínimo viável para a sua continuidade, com um impacto alinhado a seus valores, contém: eventos públicos gratuitos recorrentes (cultura como direito), autonomia técnica e de equipamentos (sistema de som próprio), e uma comunidade engajada e dignamente compensada. Por isso, em vez de seguir realizando eventos com cobrança de ingressos (o que delegaria a responsabilidade do financiamento ao público), seguimos uma via mais paciente.    </span>
                     <br /><div className="h-4" />
                     <span className="pl-2">
@@ -185,7 +185,7 @@ export default function Home() {
                       <span className="pl-2"> 3-Construção de um sistema de som que será usado nas próximas manifestações do projeto </span>  <br /> <br />
                       <span className="pl-2"> 4-Apresentação dos trabalhos dos artistas selecionados na residência artística numa experiência de escuta aos moldes do primeiro Campo Esquerdo em 2023: "Espaço efêmero de escuta ininterrupta".  </span>  <br /> <br /></span>
                   </div>
-                  <div className="font-msgothic text-sm max-w-[80vh] px-4 py-6 text-[21px] leading-[16px] mt-8 text-center mx-auto">
+                  <div className="mobile-text-container max-w-[80vh] px-4 py-6 mt-8 text-center mx-auto">
                     <p className="mb-4">
                       Para fazer parte da residência, inscreva-se na chamada aberta aqui:
                     </p>
@@ -310,7 +310,7 @@ export default function Home() {
               }}
             >
 
-              <div className={`font-msgothic text-sm min-h-[80vh] max-h-[80vh] min-w-[152vh] min-w-mbp13 min-w-mba13 text-mbp13 text-mba13 laptop1600 desktop1920 ultrawide2560 columns-2 gap-8 px-4 py-6 text-[21px] leading-[16px] ${text}`}>
+              <div className={`sobre-text-container min-h-[80vh] max-h-[80vh] ${text}`}>
 
 
                 <span className="mb-2 pl-2"> Campo Esquerdo é uma plataforma cultural que fomenta novas estéticas, modos de produção e experiências nos campos da arte sonora, musical e do corpo. Ao desenhar estruturas que permitam co-criação a partir de perspectivas humanas, técnicas e de outros seres vivos, sem hierarquias, Campo Esquerdo promove "tecnologias", no plural. Dicotomias como arte/tecnologia, show/festa, dança/inércia, coletividade/individualidade não têm lugar aqui, exceto se desmontadas e recombinadas em configurações irreconhecíveis.  </span>
@@ -338,10 +338,9 @@ export default function Home() {
                 </div>  </StickyWrapper>
 
                 {isOpen && (
-                  <div className="flex h-full" style={{ height: 'calc(100vh - 15vh)' }}>
-                    <div className="flex flex-col">
+                  <div className="flex flex-col">
 
-                      <div className={`font-msgothic text-sm  min-w-[152vh] min-w-mbp13 min-w-mba13 text-mbp13 text-mba13 laptop1600 desktop1920 ultrawide2560 columns-2 gap-8 px-4 py-6 text-[21px] leading-[16px] ${text}`}>
+                      <div className={`sobre-text-container ${text}`}>
                         <span className="mb-2 pl-2"> Campo Esquerdo busca abrir espaços e criar estruturas porque acreditamos que para que floresçam novas linguagens artísticas e experiências, é necessário proporcionar condições materiais que permitam que isso aconteça. Mesmo que haja circunstâncias que estejam muito além do alcance de um projeto de nicho, pensamos que o formato mínimo viável para a sua continuidade, com um impacto alinhado a seus valores, contém: eventos públicos gratuitos recorrentes (cultura como direito), autonomia técnica e de equipamentos (sistema de som próprio), e uma comunidade engajada e dignamente compensada. Por isso, em vez de seguir realizando eventos com cobrança de ingressos (o que delegaria a responsabilidade do financiamento ao público), seguimos uma via mais paciente.    </span>
                         <br /><div className="h-4" />
                         <span className="pl-2">
@@ -351,8 +350,8 @@ export default function Home() {
                           <span className="pl-2"> 3 - Construção de um sistema de som que será usado nas próximas manifestações do projeto </span>  <br /> <br />
                           <span className="pl-2"> 4 - Apresentação dos trabalhos dos artistas selecionados na residência artística numa experiência de escuta aos moldes do primeiro Campo Esquerdo em 2023: "Espaço efêmero de escuta ininterrupta".  </span>  <br /> <br /></span>
                       </div>
-                      <div className="font-msgothic text-sm max-w-[80vh] px-4 py-6 text-[21px] leading-[16px] min-w-mbp13 min-w-mba13 text-mbp13 text-mba13 laptop1600 desktop1920 ultrawide2560 mt-8  mx-auto">
-                        <p className="mb-4 flex justify-center">
+                      <div className="font-msgothic mt-4 mb-8 mx-auto px-4 text-center" style={{ maxWidth: '50rem' }}>
+                        <p className="mb-4">
                           Para fazer parte da residência, inscreva-se na chamada aberta aqui:
                         </p>
                         <div className="mb-4 flex justify-center">
@@ -360,37 +359,36 @@ export default function Home() {
                             href="https://docs.google.com/forms/d/e/1FAIpQLSfAlhyPX9oKMl6cMtd9-Ka9T_sC8cSqvdqmq9AXpiiNu5T1UA/viewform?usp=dialog"
                             target="_blank"
                             rel="noopener noreferrer"
-                          >  <br />
-                            <img src="/inscrevabutton.png" alt="Inscreva-se" className="w-full max-w-[200px]" />  <br />
+                          >
+                            <img src="/inscrevabutton.png" alt="Inscreva-se" className="w-full max-w-[200px]" />
                           </a>
                         </div>
-                        <div className="mb-4 mx-auto justify-center max-w-[80vh]">
-                          Se não deseja ou não possa participar da residência, porém tem interesse de contribuir voluntariamente para o projeto, escreva um email para: <a href="mailto:campo.esquerdo@gmail.com" className="underline">campo.esquerdo@gmail.com</a> </div>
-
+                        <p>
+                          Se não deseja ou não possa participar da residência, porém tem interesse de contribuir voluntariamente para o projeto, escreva um email para: <a href="mailto:campo.esquerdo@gmail.com" className="underline">campo.esquerdo@gmail.com</a>
+                        </p>
                       </div>
 
-                    </div>
                   </div>
                 )}
               </div>
-
-              {/* EVENTOS Section for Desktop */}
+                
+              {/* EVENTOS Section for Desktop 
               <div className="relative">
                 <StickyWrapper>
                   <div
                     ref={eventosRef}
                     className={`font-msgothic text-[clamp(21px,1.46vw,3rem)] leading-[16px] sticky top-0 border-b border-t flex items-center min-w-[50vh] max-w-auto min-h-[5vh] max-h-[10vh] pl-2 ${bg} z-10 ${text} ${border} sticky-border-transparent`}
                   >
-                    EVENTOS
+                    +++++++++
                   </div>
                 </StickyWrapper>
 
                 {isOpen && (
                   <div className="p-6 bg-white">
                     <SimpleCalendar />
-                  </div>
-                )}
-              </div>
+                  </div> 
+                )} 
+              </div> */}
 
             </motion.div>
           </div>

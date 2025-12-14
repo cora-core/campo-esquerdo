@@ -83,6 +83,90 @@
   }
 }
 
+/* ========================================
+   SOBRE TEXT CONTAINER
+   Edit values directly per screen size
+   All values in rem (1rem = 16px)
+   ======================================== */
+
+.sobre-text-container {
+  font-family: 'msgothic', 'MS UI Gothic', sans-serif;
+  columns: 2;
+  column-gap: 2rem;
+  padding: 1.5rem 1rem;
+  box-sizing: border-box;
+  
+  /* Base / default values */
+  min-width: 62.5rem;
+  font-size: 1rem;
+  line-height: 1rem;
+}
+
+/* MacBook Pro 13" (1280px) */
+@media (min-width: 1280px) {
+  .sobre-text-container {
+    min-width: 72.5rem;
+    font-size: 1.15rem;
+    line-height: 1rem;
+  }
+}
+
+/* MacBook Air 13" (1440px) */
+@media (min-width: 1440px) {
+  .sobre-text-container {
+    min-width: 95.5rem;
+    font-size: 1.3rem;
+    line-height: 0.95rem;
+  }
+}
+
+/* Laptop 1600px */
+@media (min-width: 1600px) {
+  .sobre-text-container {
+    min-width: 70rem;
+    font-size: 1.55rem;
+    line-height: 1.25rem;
+  }
+}
+
+/* Desktop 1920px */
+@media (min-width: 1920px) {
+  .sobre-text-container {
+    min-width: 87.5rem;
+    font-size: 2rem;
+    line-height: 1.4rem;
+  }
+}
+
+/* Ultrawide 2560px */
+@media (min-width: 2560px) {
+  .sobre-text-container {
+    min-width: 112.5rem;
+    font-size: 2.25rem;
+    line-height: 1.6rem;
+  }
+}
+
+/* ========================================
+   MOBILE TEXT CONTAINER
+   For mobile sections (under 768px)
+   All values in rem (1rem = 16px)
+   ======================================== */
+
+.mobile-text-container {
+  font-family: 'msgothic', 'MS UI Gothic', sans-serif;
+  line-height: 1rem;
+  font-size: 1rem;
+}
+
+/* Mobile (default, under 768px) */
+@media (max-width: 767px) {
+  .mobile-text-container {
+    line-height: 1rem;
+    font-size: 1rem;
+    padding:0.25rem;
+  }
+}
 
 .sticky-border-transparent {
   border-top: 1px solid currentColor;
