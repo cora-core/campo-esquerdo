@@ -112,12 +112,22 @@
 }
 
 
+
 /* MacBook Pro 13" (1280px) */
-@media (min-width: 1260px) {
+@media (min-width: 1280px) {
   .sobre-text-container {
     min-width: 64.5rem;
-    font-size: 1.3rem;
+    font-size: 1rem;
     line-height: 0.9rem;
+  }
+}
+
+/* MacBook Air 13" firefox (1376x) */
+@media (min-width: 1376px) {
+  .sobre-text-container {
+    min-width: 72.5rem;
+    font-size: 1.3rem;
+    line-height: 0.95rem;
   }
 }
 
