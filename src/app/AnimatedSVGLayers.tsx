@@ -28,7 +28,7 @@ const AnimatedSVGLayers = () => {
       if (property && value) {
         // Convert kebab-case to camelCase for React
         const camelCaseProperty = property.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
-        styleObj[camelCaseProperty as keyof React.CSSProperties] = value;
+        styleObj[camelCaseProperty as keyof React.CSSProperties] = value as any;
       }
     });
     
