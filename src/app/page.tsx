@@ -7,6 +7,7 @@ import { useThemeClasses } from "@/hooks/useThemeClasses";
 import BouncingText from "@/components/BouncingText";
 import StickyWrapper from "@/components/StickyWrapper";
 import { SimpleCalendar } from "@/components/SimpleCalendar";
+import { ContentHub } from "@/components/ContentHub";
 
 
 
@@ -211,19 +212,19 @@ export default function Home() {
 
               </div>
 
-              {/* EVENTOS Section for Mobile 
+              {/* ++++++ Section for Mobile */}
               <div className="relative">
                 <div
                   ref={eventosRef}
                   className={`font-msgothic sticky top-0 border-b border-t flex items-center min-h-[5vh] text-lg pl-2 ${bg} z-10 ${text} ${border}`}
                 >
-                  EVENTOS
+                  +++++++++
                 </div>
 
-                <div className=" bg-white">
-                  <SimpleCalendar />
+                <div className="bg-white">
+                  <ContentHub />
                 </div>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
@@ -375,7 +376,7 @@ export default function Home() {
                 )}
               </div>
                 
-              {/* EVENTOS Section for Desktop 
+              {/* ++++++ Section for Desktop */}
               <div className="relative">
                 <StickyWrapper>
                   <div
@@ -388,10 +389,10 @@ export default function Home() {
 
                 {isOpen && (
                   <div className="p-6 bg-white">
-                    <SimpleCalendar />
+                    <ContentHub />
                   </div> 
                 )} 
-              </div> */}
+              </div>
 
             </motion.div>
           </div>
