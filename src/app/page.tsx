@@ -211,7 +211,7 @@ export default function Home() {
 
               </div>
 
-              {/* EVENTOS Section for Mobile */}
+              {/* EVENTOS Section for Mobile 
               <div className="relative">
                 <div
                   ref={eventosRef}
@@ -223,7 +223,7 @@ export default function Home() {
                 <div className=" bg-white">
                   <SimpleCalendar />
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
