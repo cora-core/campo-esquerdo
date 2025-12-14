@@ -8,6 +8,9 @@ import BouncingText from "@/components/BouncingText";
 import StickyWrapper from "@/components/StickyWrapper";
 import { SimpleCalendar } from "@/components/SimpleCalendar";
 
+
+
+
 /* Simple breakpoint hook (md: 768px) */
 function useIsMobile(breakpoint = 768) {
   const [isMobile, setIsMobile] = useState(false);

@@ -102,26 +102,36 @@
   line-height: 1rem;
 }
 
-/* MacBook Pro 13" (1280px) */
-@media (min-width: 1280px) {
+/* larger text" (1024px) */
+@media (min-width: 1010px) {
   .sobre-text-container {
-    min-width: 72.5rem;
-    font-size: 1.15rem;
-    line-height: 1rem;
+    min-width: 50.5rem;
+    font-size: 0.8rem;
+    line-height: 0.7rem;
   }
 }
 
-/* MacBook Air 13" (1440px) */
-@media (min-width: 1440px) {
+
+/* MacBook Pro 13" (1280px) */
+@media (min-width: 1260px) {
   .sobre-text-container {
-    min-width: 95.5rem;
+    min-width: 64.5rem;
+    font-size: 1.3rem;
+    line-height: 0.9rem;
+  }
+}
+
+/* MacBook Air 13" (1400px) */
+@media (min-width: 1400px) {
+  .sobre-text-container {
+    min-width: 72.5rem;
     font-size: 1.3rem;
     line-height: 0.95rem;
   }
 }
 
 /* Laptop 1600px */
-@media (min-width: 1600px) {
+@media (min-width: 1550px) {
   .sobre-text-container {
     min-width: 70rem;
     font-size: 1.55rem;
@@ -130,7 +140,7 @@
 }
 
 /* Desktop 1920px */
-@media (min-width: 1920px) {
+@media (min-width: 1900px) {
   .sobre-text-container {
     min-width: 87.5rem;
     font-size: 2rem;
@@ -139,7 +149,7 @@
 }
 
 /* Ultrawide 2560px */
-@media (min-width: 2560px) {
+@media (min-width: 2500px) {
   .sobre-text-container {
     min-width: 112.5rem;
     font-size: 2.25rem;
