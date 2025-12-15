@@ -132,21 +132,21 @@ export default function Home() {
         </div>
 
         {/* SOBRE (below) */}
-        <div>
-          <div className={`font-ui-gothic sticky top-0 border-b border-t flex items-center min-h-[5vh] text-lg pl-2 bg-white ${text} ${border}`}>
-            SOBRE
+        <div> 
+          <div className={`font-ui-gothic sticky sticky-border-transparent  top-0 border-b border-t flex items-center min-h-[5vh] text-lg pl-2 bg-white ${text} ${border}`}>
+            SOBRE 
           </div>
 
-          <div ref={sobreContainerRef} className="mobile-text-container overflow-y-auto bg-white ">
+          <div ref={sobreContainerRef} className="mobile-text-container bg-white ">
             <div>
-              <div className={`mobile-text-container overflow-y-auto bg-white ${text}`}>
+              <div className={`mobile-text-container p-1 bg-white ${text}`}>
                 <span className="mb-2 pl-2">
-                  <br /> Campo Esquerdo é uma plataforma cultural que fomenta a experimentação de novas estéticas, modos de produção e experiências nos campos da arte sonora, musical e do corpo. Ao desenhar estruturas que permitam a criação conjunta entre perspectivas humanas, artefatuais, digitais e de outros seres vivos sem estabelecer hierarquias, Campo Esquerdo promove "Tecnologias", no plural. Dicotomias entre arte/tecnologia, show/festa, pista/casa, dança /inércia, coletividade/individualidade não tem lugar aqui, exceto se desmontadas e recombinadas em configurações irreconhecíveis.
+                  <br /> Campo Esquerdo é uma plataforma cultural que fomenta novas estéticas, modos de produção e experiências nos campos da arte sonora, musical e do corpo. Ao desenhar estruturas que permitam co-criação a partir de perspectivas humanas, técnicas e de outros seres vivos, sem hierarquias, Campo Esquerdo promove "tecnologias", no plural. Dicotomias como arte/tecnologia, show/festa, dança/inércia, coletividade/individualidade não têm lugar aqui, exceto se desmontadas e recombinadas em configurações irreconhecíveis. 
                 </span>
                 <br />
                 <div className="h-4" />
                 <span className="pl-2">
-                  O prefixo musical "left-field", literalmente, e como sátira, Campo Esquerdo, indica variantes expandidas, singulares, ou "edgy", de um certo gênero musical. E indo um pouco além na interpretação, não é exatamente o fazer experimental, que hoje existe em categorias demasiadamente solidificadas para justificar o uso do nome. O "Campo Esquerdo" é, simplesmente, o abraço, a estranheza. Pode ser música/performance esquisita, que existe apenas porque somos quem somos, em nossas inconformidades; ou o fazer artístico que deseja um mundo xenomorfo, com as regras que corpos dissidentes, mentes divergentes, possam existir sem a opressão da norma. Ainda, a curiosidade cientifiao de observar o que acontece quando há combinações, permutações de tecnologias ainda não experimentadas. Campo esquerdo não é um evento de música experimental, é alternativa cultural que promove novos formatos musicais, e propõe outros parâmetros para relações que se formam em experiências multidisciplinares.
+                  O prefixo musical <span className="italic">left-field</span> literalmente, e como sátira, Campo Esquerdo, indica variantes expandidas, singulares, ou "edgy", de um certo gênero musical. E indo um pouco além na interpretação, não é exatamente o fazer experimental, que hoje muitas vezes existe em categorias demasiadamente solidificadas para justificar o uso do termo. O "Campo Esquerdo" é, simplesmente, o abraço à estranheza. Pode ser música/performance esquisita, que toma essa característica apenas por ser quem somos, em nossas inconformidades; ou o fazer artístico que deseja construir um mundo xenomorfo, com as regras que corpos dissidentes, mentes divergentes, possam existir sem a opressão da norma. Ou ainda, a curiosidade científica de observar o que acontece quando há permutações de tecnologias ainda não experimentadas. Campo esquerdo não é um evento de música experimental, é uma frente cultural que promove novos formatos sonoros, e propõe outros parâmetros para relações imanentes nas experiências multidisciplinares. 
                 </span>
                 <br />
                 <div className="h-4" />
@@ -155,31 +155,33 @@ export default function Home() {
                   <br />
                   <div className="h-4" />
                   <span className="pl-2">
-                    Em sua concepção inicial, campo esquerdo tomou forma de um evento num formato que combina elementos da cultura da música eletrônica: com construções musicais continuas em um espaço de suspensão do tempo, e de livre movimento (club/rave); da música ambiente, escuta profunda, mimetizando a proposta bares de escuta hi-fi japoneses; e da música experimental: onde sons, silêncio e acaso se encontram para desafiar as tradições musicais convencionais e abrir novas possibilidades de composição musical.
+                    Em sua concepção inicial, Campo Esquerdo  tomou a forma de um evento que combina múltiplos elementos da cultura da música eletrônica: suspensões espaço-temporais através de tensionamentos do gênero club/rave  construções musicais contínuas em um espaço de suspensão do tempo, e de livre movimento (club/rave); música ambiente e escuta profunda, mimetizando a proposta espaços de escuta hi-fi; e, sobretudo, da música experimental, onde sons, silêncio e acaso se encontram para desafiar as tradições musicais convencionais, e abre novas possibilidades de composição musical. 
                   </span>
                   <span>
-                    Assim, manifestou-se pela primeira vez, em um "espaço efêmero de escuta ininterrupta" focado em shows de música eletrônica left-field e performances na interseção entre corpo, tecnologia digital e som. Entre as apresentações, houve momentos de mediação, DJ sets como colagem sonoras, evitando quebras não intencionais ou mudanças bruscas de atmosfera entre as apresentações. A mediação existe como elemento fundamental da experiência, pois acreditamos que a cultura DJ, a pessoa DJ, em suas origens, é capaz de criar sentido entre distintas estéticas, e grupos sociais, permitindo que seja criado tanto um ambiente conciso, fluido, assim como prepara o solo para que as artistas autorais se sintam confortáveis de ousar ao máximo em suas apresentações.
+                   A partir desses parâmetros, manifesta-se um espaço efêmero de escuta ininterrupta focado em shows de música eletrônica left-field e performances na interseção entre corpo, tecnologia digital e som. Entre as apresentações, houve momentos de mediação e DJ sets como colagens sonoras, evitando quebras não intencionais ou mudanças bruscas de atmosfera. A mediação existe como elemento fundamental da experiência, pois acreditamos que a cultura DJ (e a pessoa DJ) em suas origens, é capaz de criar sentido entre distintas estéticas e grupos sociais, permitindo que seja criado tanto um ambiente conciso, fluido, como um solo para que as artistas autorais se sintam confortáveis em ousar ao máximo em suas apresentações. 
                   </span>
                   <br />
                   <div className="h-4" />
                   <span className="pl-2">
-                    O formato de experiência de escuta dá o conjunto de valores do projeto, mas não é um fim em si próprio. Nos meses após a primeira edição, surgiram questões criticas como: como dar continuidade a essas experiências de forma alinhada a esses valores? Publico, gratuito, horizontal, inovador, dissidente, (estranho). Quais são as condições dignas para alcançar um estado de fluxo coletivo, capaz de transformar o projeto conforme as necessidades delo que o compõe? Como uma tentativa de respondê-las, Campo Esquerdo toma uma nova forma. O que chamamos de Campo Esquerdo Fase II. <br />
+                    O formato de experiência de escuta dá o conjunto de valores do projeto, mas não é um fim em si próprio. Nos meses após a primeira edição, surgiram questões críticas como: como dar continuidade a essas experiências de forma alinhada a esses valores? Público, gratuito, horizontal, inovador, dissidente, estranho. Quais são as condições dignas para alcançar um estado de fluxo coletivo, capaz de transformar o projeto conforme as necessidades do que o compõe? Como uma tentativa de respondê-las, Campo Esquerdo toma uma nova forma. O que chamamos de Campo Esquerdo Fase II.<br />
                     <br /></span>
                 </div>
-              </div>
+              </div> 
 
-              <div className="relative">
+              <div className="relative"> 
+               
+               
                 <div
                   ref={mentoriasRef}
-                  className={`font-msgothic sticky top-0 border-b border-t flex items-center min-h-[5vh] text-lg pl-2 ${bg} z-10 ${text} ${border}`}
+                  className={`font-msgothic sticky sticky-border-transparent top-0 border-b border-t flex items-center min-h-[5vh] text-lg pl-2 ${bg} z-10 ${text} ${border}`}
                 >
                   CAMPO ESQUERDO FASE II
-                </div>
+                </div> 
 
                 <div className="flex flex-col">
 
 
-                  <div className={`mobile-text-container overflow-y-auto bg-white ${text}`}>
+                  <div className={`mobile-text-container p-1 overflow-y-auto bg-white ${text}`}>
                     <span className="mb-2 pl-2">  <br /> Campo Esquerdo busca abrir espaços e criar estruturas porque acreditamos que para que floresçam novas linguagens artísticas e experiências, é necessário proporcionar condições materiais que permitam que isso aconteça. Mesmo que haja circunstâncias que estejam muito além do alcance de um projeto de nicho, pensamos que o formato mínimo viável para a sua continuidade, com um impacto alinhado a seus valores, contém: eventos públicos gratuitos recorrentes (cultura como direito), autonomia técnica e de equipamentos (sistema de som próprio), e uma comunidade engajada e dignamente compensada. Por isso, em vez de seguir realizando eventos com cobrança de ingressos (o que delegaria a responsabilidade do financiamento ao público), seguimos uma via mais paciente.    </span>
                     <br /><div className="h-4" />
                     <span className="pl-2">
@@ -199,7 +201,7 @@ export default function Home() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >  <br />
-                        <img src="/inscrevabutton.png" alt="Inscreva-se" className="w-full max-w-[200px]" />  <br />
+                        <img src="/inscrevabutton.png" alt="Inscreva-se" className="w-full max-w-[200px] z-10" />  <br />
                       </a>
                     </div>
                     <p>
@@ -216,7 +218,7 @@ export default function Home() {
               <div className="relative">
                 <div
                   ref={eventosRef}
-                  className={`font-msgothic sticky top-0 border-b border-t flex items-center min-h-[5vh] text-lg pl-2 ${bg} z-10 ${text} ${border}`}
+                  className={`font-msgothic sticky sticky-border-transparent top-0 border-b border-t flex items-center min-h-[5vh] text-lg pl-2 ${bg} z-10 ${text} ${border}`}
                 >
                   +++++++++
                 </div>
@@ -336,7 +338,7 @@ export default function Home() {
               <div className="relative">
                 <StickyWrapper><div
                   ref={mentoriasRef}
-                  className={`font-msgothic text-[clamp(21px,1.46vw,3rem)] leading-[16px] sticky top-0 border-b border-t flex items-center min-w-[50vh] max-w-auto min-h-[5vh] max-h-[10vh] pl-2 ${bg} z-10 ${text} ${border} sticky-border-transparent`}
+                  className={`font-msgothic text-[clamp(21px,1.46vw,3rem)] leading-[16px] sticky top-0 border-b border-t flex items-center min-w-[50vh] max-w-auto min-h-[5vh] max-h-[10vh] pl-2 ${bg} z-10 ${text} ${border} sticky-border-transparent `}
                 >
                   CAMPO ESQUERDO FASE II
                 </div>  </StickyWrapper>
@@ -381,7 +383,7 @@ export default function Home() {
                 <StickyWrapper>
                   <div
                     ref={eventosRef}
-                    className={`font-msgothic text-[clamp(21px,1.46vw,3rem)] leading-[16px] sticky top-0 border-b border-t flex items-center min-w-[50vh] max-w-auto min-h-[5vh] max-h-[10vh] pl-2 ${bg} z-10 ${text} ${border} sticky-border-transparent`}
+                    className={`font-msgothic text-[clamp(21px,1.46vw,3rem)] leading-[16px] sticky sticky-border-transparent top-0 border-b border-t flex items-center min-w-[50vh] max-w-auto min-h-[5vh] max-h-[10vh] pl-2 ${bg} z-10 ${text} ${border} sticky-border-transparent`}
                   >
                     +++++++++
                   </div>

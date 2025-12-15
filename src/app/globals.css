@@ -184,7 +184,7 @@
   .mobile-text-container {
     line-height: 1rem;
     font-size: 1rem;
-    padding:0.25rem;
+    
   }
 }
 
@@ -195,6 +195,15 @@
 
 .sticky-border-transparent.is-stuck {
   border-top-color: transparent;
+}
+
+.sticky-border-transparent-bottom {
+  border-bottom: 1px solid currentColor;
+  transition: border-color 0s;
+}
+
+.sticky-border-transparent-bottom {
+  border-bottom-color: transparent;
 }
 
 
