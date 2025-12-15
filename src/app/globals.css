@@ -175,17 +175,31 @@
 
 .mobile-text-container {
   font-family: 'msgothic', 'MS UI Gothic', sans-serif;
-  line-height: 1rem;
-  font-size: 1rem;
+  line-height: 1.35rem;
+  font-size: 1.2rem;
+  text-align: justify;
 }
 
 /* Mobile (default, under 768px) */
 @media (max-width: 767px) {
   .mobile-text-container {
-    line-height: 1rem;
-    font-size: 1rem;
-    
+    line-height: 1.35rem;
+    font-size: 1.2rem;
+    text-align: justify;
   }
+}
+
+
+.mobile-text-padding {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  padding-left: 0.7rem !important;
+  padding-right: 0.7rem !important;
+}
+
+.mobile-no-padding {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .sticky-border-transparent {
@@ -217,4 +231,37 @@ body {
 /* Single utility class for UI Gothic */
 .font-ui-gothic {
   font-family: 'msgothic', 'MS UI Gothic', sans-serif;
+}
+
+/* ========================================
+   MARQUEE ANIMATION FOR MOBILE HEADER
+   ======================================== */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.marquee-content {
+  display: inline-flex;
+  flex-shrink: 0;
+  animation: marquee 15s linear infinite;
+}
+
+.marquee-content > span {
+  flex-shrink: 0;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
 }

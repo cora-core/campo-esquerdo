@@ -98,11 +98,11 @@ const ContentHub: React.FC<ContentHubProps> = ({ defaultMode = 'calendar' }) => 
   // Base content that's shared between normal and expanded views
   const hubContent = (
     <div 
-      className={`content-hub w-full font-ui-gothic relative py-4 px-2 md:py-12 md:px-16 ${isExpanded ? 'max-w-5xl' : 'bg-white'}`}
+      className={`content-hub w-full font-ui-gothic relative py-0 px-0 md:py-12 md:px-16 ${isExpanded ? 'max-w-5xl' : 'bg-white'}`}
       style={isExpanded ? { background: 'transparent' } : undefined}
     >
       {/* Mobile: Simple layout */}
-      <div className="md:hidden border border-black bg-white mb-0">
+       <div className="md:hidden border-x border-b border-t-0 border-black bg-white mb-0">
         {/* Content area */}
         <div className="relative overflow-hidden">
           {/* Calendar always rendered to set size */}

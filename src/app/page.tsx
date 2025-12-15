@@ -120,8 +120,15 @@ export default function Home() {
     return (
       <div className="min-h-screen flex flex-col">
         <AnimatedArrows />
-        <div className={`font-ui-gothic top-0 border-b border-t flex items-center min-h-[5vh] text-lg pl-2 bg-white ${text} ${border}`}>
-          CAMPO ESQUERDO
+        <div className={`font-ui-gothic top-0 border-b border-t flex items-center min-h-[5vh] text-2xl bg-white ${text} ${border} marquee-container`}>
+          <div className="marquee-content flex-shrink-0">
+            <span className="inline-flex items-center">
+              CAMPO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />ESQUERDO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />CAMPO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />ESQUERDO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />CAMPO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />ESQUERDO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />CAMPO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />ESQUERDO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />
+            </span>
+            <span className="inline-flex items-center">
+              CAMPO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />ESQUERDO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />CAMPO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />ESQUERDO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />CAMPO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />ESQUERDO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />CAMPO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />ESQUERDO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />
+            </span>
+          </div>
         </div>
 
         {/* SITE (top) */}
@@ -133,15 +140,15 @@ export default function Home() {
 
         {/* SOBRE (below) */}
         <div> 
-          <div className={`font-ui-gothic sticky sticky-border-transparent  top-0 border-b border-t flex items-center min-h-[5vh] text-lg pl-2 bg-white ${text} ${border}`}>
+          <div className={`font-ui-gothic sticky sticky-border-transparent  top-0 border-b border-t flex items-center min-h-[5vh] text-2xl pl-2 bg-white ${text} ${border}`}>
             SOBRE 
           </div>
 
           <div ref={sobreContainerRef} className="mobile-text-container bg-white ">
             <div>
-              <div className={`mobile-text-container p-1 bg-white ${text}`}>
-                <span className="mb-2 pl-2">
-                  <br /> Campo Esquerdo é uma plataforma cultural que fomenta novas estéticas, modos de produção e experiências nos campos da arte sonora, musical e do corpo. Ao desenhar estruturas que permitam co-criação a partir de perspectivas humanas, técnicas e de outros seres vivos, sem hierarquias, Campo Esquerdo promove "tecnologias", no plural. Dicotomias como arte/tecnologia, show/festa, dança/inércia, coletividade/individualidade não têm lugar aqui, exceto se desmontadas e recombinadas em configurações irreconhecíveis. 
+              <div className={`mobile-text-container mobile-text-padding bg-white ${text}`}>
+                <span className="mb-2">
+                  Campo Esquerdo é uma plataforma cultural que fomenta novas estéticas, modos de produção e experiências nos campos da arte sonora, musical e do corpo. Ao desenhar estruturas que permitam co-criação a partir de perspectivas humanas, técnicas e de outros seres vivos, sem hierarquias, Campo Esquerdo promove "tecnologias", no plural. Dicotomias como arte/tecnologia, show/festa, dança/inércia, coletividade/individualidade não têm lugar aqui, exceto se desmontadas e recombinadas em configurações irreconhecíveis. 
                 </span>
                 <br />
                 <div className="h-4" />
@@ -173,7 +180,7 @@ export default function Home() {
                
                 <div
                   ref={mentoriasRef}
-                  className={`font-msgothic sticky sticky-border-transparent top-0 border-b border-t flex items-center min-h-[5vh] text-lg pl-2 ${bg} z-10 ${text} ${border}`}
+                  className={`font-msgothic sticky sticky-border-transparent top-0 border-b border-t flex items-center min-h-[5vh] text-2xl pl-2 ${bg} z-10 ${text} ${border}`}
                 >
                   CAMPO ESQUERDO FASE II
                 </div> 
@@ -181,8 +188,8 @@ export default function Home() {
                 <div className="flex flex-col">
 
 
-                  <div className={`mobile-text-container p-1 overflow-y-auto bg-white ${text}`}>
-                    <span className="mb-2 pl-2">  <br /> Campo Esquerdo busca abrir espaços e criar estruturas porque acreditamos que para que floresçam novas linguagens artísticas e experiências, é necessário proporcionar condições materiais que permitam que isso aconteça. Mesmo que haja circunstâncias que estejam muito além do alcance de um projeto de nicho, pensamos que o formato mínimo viável para a sua continuidade, com um impacto alinhado a seus valores, contém: eventos públicos gratuitos recorrentes (cultura como direito), autonomia técnica e de equipamentos (sistema de som próprio), e uma comunidade engajada e dignamente compensada. Por isso, em vez de seguir realizando eventos com cobrança de ingressos (o que delegaria a responsabilidade do financiamento ao público), seguimos uma via mais paciente.    </span>
+                  <div className={`mobile-text-container mobile-text-padding overflow-y-auto bg-white ${text}`}>
+                    <span className="mb-2">Campo Esquerdo busca abrir espaços e criar estruturas porque acreditamos que para que floresçam novas linguagens artísticas e experiências, é necessário proporcionar condições materiais que permitam que isso aconteça. Mesmo que haja circunstâncias que estejam muito além do alcance de um projeto de nicho, pensamos que o formato mínimo viável para a sua continuidade, com um impacto alinhado a seus valores, contém: eventos públicos gratuitos recorrentes (cultura como direito), autonomia técnica e de equipamentos (sistema de som próprio), e uma comunidade engajada e dignamente compensada. Por isso, em vez de seguir realizando eventos com cobrança de ingressos (o que delegaria a responsabilidade do financiamento ao público), seguimos uma via mais paciente.    </span>
                     <br /><div className="h-4" />
                     <span className="pl-2">
                       Por meio de fundos da Lei Aldir Blanc, e em parceria com o MAM-Rio, A Fase II, busca criar a estrutura necessária para dar continuidade ao campo esquerdo por meio de quatro passos:  </span> <br />  <br />
@@ -201,7 +208,7 @@ export default function Home() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >  <br />
-                        <img src="/inscrevabutton.png" alt="Inscreva-se" className="w-full max-w-[200px] z-10" />  <br />
+                        <img src="/inscrevabutton.png" alt="Inscreva-se" className="w-full max-w-[200px]" />  <br />
                       </a>
                     </div>
                     <p>
@@ -218,12 +225,12 @@ export default function Home() {
               <div className="relative">
                 <div
                   ref={eventosRef}
-                  className={`font-msgothic sticky sticky-border-transparent top-0 border-b border-t flex items-center min-h-[5vh] text-lg pl-2 ${bg} z-10 ${text} ${border}`}
+                  className={`font-msgothic sticky sticky-border-transparent top-0 border-b border-t flex items-center min-h-[5vh] text-2xl pl-2 ${bg} ${text} ${border}`}
                 >
                   +++++++++
                 </div>
 
-                <div className="bg-white">
+                <div className="bg-white mobile-no-padding">
                   <ContentHub />
                 </div>
               </div>
