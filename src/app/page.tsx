@@ -204,7 +204,7 @@ export default function Home() {
                     </p>
                     <div className="mb-4 flex justify-center">
                       <a
-                        href="https://docs.google.com/forms/d/e/1FAIpQLSfAlhyPX9oKMl6cMtd9-Ka9T_sC8cSqvdqmq9AXpiiNu5T1UA/viewform?usp=dialog"
+                        href="https://campoesquerdo.eco.br"
                         target="_blank"
                         rel="noopener noreferrer"
                       >  <br />
@@ -369,7 +369,7 @@ export default function Home() {
                         </p>
                         <div className="mb-4 flex justify-center">
                           <a
-                            href="/campoesquerdo.eco.br"
+                            href="https://campoesquerdo.eco.br"
                             target="_blank"
                             rel="noopener noreferrer"
                           >

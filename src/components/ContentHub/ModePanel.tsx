@@ -98,7 +98,7 @@ const ContentHub: React.FC<ContentHubProps> = ({ defaultMode = 'calendar' }) => 
   // Base content that's shared between normal and expanded views
   const hubContent = (
     <div 
-      className={`content-hub  w-full font-ui-gothic relative py-0 px-0 md:py-12 md:px-16 x1:px-20 ${isExpanded ? 'max-w-5xl' : 'bg-white'}`}
+      className={`content-hub w-full font-ui-gothic relative py-0 px-0 md:py-12 md:px-16 ${isExpanded ? 'max-w-5xl' : 'bg-white'}`}
       style={isExpanded ? { background: 'transparent' } : undefined}
     >
       {/* Mobile: Simple layout */}
@@ -247,7 +247,7 @@ const ContentHub: React.FC<ContentHubProps> = ({ defaultMode = 'calendar' }) => 
               }`}
               style={{
                 left: '0px',
-                top: '15%',
+                top: '6.8vh',
                 transform: 'translateX(-100%) rotate(180deg)',
                 writingMode: 'vertical-rl',
                 textOrientation: 'mixed',
@@ -270,8 +270,8 @@ const ContentHub: React.FC<ContentHubProps> = ({ defaultMode = 'calendar' }) => 
               }`}
               style={{
                 right: '0px',
-                top: '50%',
-                transform: 'translateX(100%) translateY(-50%)',
+                top: isExpanded ? '25vh' : '25vh',
+                transform: 'translateX(100%)',
                 writingMode: 'vertical-rl',
                 textOrientation: 'mixed',
                 fontSize: buttonFontSize,
@@ -292,7 +292,7 @@ const ContentHub: React.FC<ContentHubProps> = ({ defaultMode = 'calendar' }) => 
                   : 'bg-white hover:bg-gray-50'
               }`}
               style={{
-                bottom: '0px',
+                bottom: '0vh',
                 transform: 'translateX(-40%) translateY(100%)',
                 fontSize: buttonFontSize,
                 height: btnSize,
@@ -313,7 +313,7 @@ const ContentHub: React.FC<ContentHubProps> = ({ defaultMode = 'calendar' }) => 
     return (
       <div
         ref={dragRef}
-        className="fixed z-50 w-[70vw] max-w-5xl max-h-[80vh] overflow-hidden"
+        className="fixed z-50 w-[70vw] max-w-5xl max-h-[80vh] overflow-auto"
         style={{
           left: position.x,
           top: position.y,
