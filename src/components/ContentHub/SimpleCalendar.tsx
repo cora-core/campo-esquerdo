@@ -124,9 +124,10 @@ export function SimpleCalendar({ className = "" }: SimpleCalendarProps) {
               return (
                 <div
                   key={di}
-                  className={`h-20 border-l first:border-l-0 border-black p-0.5 relative text-xs ${
+                  className={`min-h-[4.5rem] md:min-h-[5rem] border-l first:border-l-0 border-black p-0.5 relative text-xs ${
                     event ? "bg-black text-white" : ""
                   }`}
+                  style={{ aspectRatio: 'auto' }}
                 >
                   {day && (
                     <div className={`absolute top-0.5 right-0.5 text-xs ${

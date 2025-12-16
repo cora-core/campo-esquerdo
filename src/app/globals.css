@@ -30,13 +30,7 @@
   --font-custom: 'msgothic', 'MS UI Gothic', sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-custom: var(--font-custom);
-}
+
 
 @media (prefers-color-scheme: default) {
   :root {
@@ -64,12 +58,10 @@
   }
 }
 
-
+/*
 @media (min-width: 1920px) {
   .desktop1920 {
     min-width: 140vh;
-    font-size: 32px;
-    line-height: 22px;
   }
 }
 
@@ -81,7 +73,7 @@
     font-size: 36px;
     line-height: 26px;
   }
-}
+} */
 
 /* ========================================
    SOBRE TEXT CONTAINER
@@ -114,10 +106,10 @@
 
 
 /* MacBook Pro 13" (1280px) */
-@media (min-width: 1280px) {
+@media (min-width: 1200px) {
   .sobre-text-container {
     min-width: 64.5rem;
-    font-size: 1rem;
+    font-size: 1.3rem;
     line-height: 0.9rem;
   }
 }
@@ -144,34 +136,31 @@
 @media (min-width: 1550px) {
   .sobre-text-container {
     min-width: 70rem;
-    font-size: 1.55rem;
+    font-size: 1.45rem;
     line-height: 1.25rem;
   }
 }
 
-/* Desktop 1920px */
+
+
+/* Desktop 1920px - using 1900px to account for scrollbar */
 @media (min-width: 1900px) {
   .sobre-text-container {
-    min-width: 87.5rem;
-    font-size: 2rem;
-    line-height: 1.4rem;
+    min-width: 65rem !important;
+    font-size: 1.5rem !important;
+    line-height: 1.4rem !important;
   }
 }
 
 /* Ultrawide 2560px */
 @media (min-width: 2500px) {
   .sobre-text-container {
-    min-width: 112.5rem;
-    font-size: 2.25rem;
-    line-height: 1.6rem;
+    min-width: 112.5rem !important;
+    font-size: 2.5rem !important;
+    line-height: 2.2rem !important;
   }
 }
 
-/* ========================================
-   MOBILE TEXT CONTAINER
-   For mobile sections (under 768px)
-   All values in rem (1rem = 16px)
-   ======================================== */
 
 .mobile-text-container {
   font-family: 'msgothic', 'MS UI Gothic', sans-serif;
@@ -233,10 +222,6 @@ body {
   font-family: 'msgothic', 'MS UI Gothic', sans-serif;
 }
 
-/* ========================================
-   MARQUEE ANIMATION FOR MOBILE HEADER
-   ======================================== */
-
 @keyframes marquee {
   0% {
     transform: translateX(0);
@@ -265,3 +250,39 @@ body {
 .marquee-content:hover {
   animation-play-state: paused;
 }
+
+
+.content-hub {
+  /* Use min-height instead of relying on content */
+  box-sizing: border-box;
+}
+
+/* Calendar cell heights - normalized across browsers */
+.calendar-view {
+  /* Prevent layout shifts */
+  contain: layout;
+}
+
+/* Firefox-specific adjustments via @supports */
+@supports (-moz-appearance: none) {
+  .content-hub {
+    /* Firefox renders slightly taller, compensate */
+    font-size: 0.98em;
+    padding-bottom:2rem;
+    overflow: hidden
+  }
+}
+
+@media (min-width: 1350px) and (max-width: 1399px) {
+  .content-hub {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+  
+  .sobre-text-container {
+    min-width: 70rem;
+    font-size: 1.25rem;
+    line-height: 0.92rem;
+  }

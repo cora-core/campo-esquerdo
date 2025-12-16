@@ -208,7 +208,7 @@ export default function Home() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >  <br />
-                        <img src="/inscrevabutton.png" alt="Inscreva-se" className="w-full max-w-[200px]" />  <br />
+                        <img src="/inscrevabutton.png" alt="Inscreva-se" className="w-full max-w-[200px] z-10" />  <br />
                       </a>
                     </div>
                     <p>
@@ -225,7 +225,7 @@ export default function Home() {
               <div className="relative">
                 <div
                   ref={eventosRef}
-                  className={`font-msgothic sticky sticky-border-transparent top-0 border-b border-t flex items-center min-h-[5vh] text-2xl pl-2 ${bg} ${text} ${border}`}
+                  className={`font-msgothic sticky sticky-border-transparent top-0 border-b border-t flex items-center min-h-[5vh] text-2xl pl-2 ${bg} z-10 ${text} ${border}`}
                 >
                   +++++++++
                 </div>
@@ -369,7 +369,7 @@ export default function Home() {
                         </p>
                         <div className="mb-4 flex justify-center">
                           <a
-                            href="https://docs.google.com/forms/d/e/1FAIpQLSfAlhyPX9oKMl6cMtd9-Ka9T_sC8cSqvdqmq9AXpiiNu5T1UA/viewform?usp=dialog"
+                            href="/campoesquerdo.eco.br"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
@@ -401,8 +401,11 @@ export default function Home() {
                     <ContentHub />
                   </div> 
                 )} 
+      
               </div>
 
+            
+                  
             </motion.div>
           </div>
         </motion.div>

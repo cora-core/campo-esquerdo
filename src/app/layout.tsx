@@ -22,11 +22,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Campo Esquerdo",
     description: "núcleo focado em música eletrônica leftfield, ambiente, e performances nas interseções entre corpo, som e outras tecnologias",
-    images: ['/logo.png'],
+    images: ['https://campoesquerdo.eco.br/logo.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['/logo.png'],
+    images: ['https://campoesquerdo.eco.br/logo.png'],
   },
 };
 
