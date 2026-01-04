@@ -39,7 +39,8 @@ const getNextEventDate = (events: Event[]): Date => {
 
 export function SimpleCalendar({ className = "" }: SimpleCalendarProps) {
   const events: Event[] = [
-    { day: 5, month: 0, year: 2026, title: "CHAMADA ABERTA", description: "S000N" },
+    { day: 6, month: 0, year: 2026, title: "CHAMADA ABERTA", description: "em breve" },
+    { day: 26, month: 0, year: 2026, title: "FIM DA CHAMADA", description: "x" },
     { day: 7, month: 9, year: 2025, title: "EVENTO", description: "EVENTO EVENTO EVENTO" },
   ];
 
