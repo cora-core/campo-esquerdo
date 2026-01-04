@@ -202,14 +202,22 @@ export default function Home() {
                     <p className="mb-4">
                       Para fazer parte da residência, inscreva-se na chamada aberta aqui:
                     </p>
-                    <div className="mb-4 flex justify-center">
+                    <div className="mb-4 flex justify-center gap-4">
                       <a
-                        href="https://campoesquerdo.eco.br"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >  <br />
-                        <img src="/inscrevabutton.png" alt="Inscreva-se" className="w-full max-w-[200px] z-10" />  <br />
-                      </a>
+                            href="/editalcampoesquerdo.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <img src="/editalbotao.png" alt="Informações" className="w-full max-w-[200px]" />
+                          </a>
+
+                          <a
+                            href="/soon"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <img src="/inscrevabutton.png" alt="Inscreva-se" className="w-full max-w-[200px]" />
+                          </a>
                     </div>
                     <p>
                       Se não deseja ou não possa participar da residência, porém tem interesse de contribuir voluntariamente para o projeto, escreva um email para: <a href="mailto:campo.esquerdo@gmail.com" className="underline">campo.esquerdo@gmail.com</a>
@@ -268,7 +276,7 @@ export default function Home() {
           }}
           onClick={openSite}
         >
-          <div className={`items-center border-b border-l min-h-[5vh] max-h-[5vh] pl-2 text-lg flex items-center bg-white ${text} ${border}`}>
+          <div className={`items-center border-b border-l min-h-[5vh] max-h-[5vh] pl-2 text-lg flex bg-white ${text} ${border}`}>
             <span><img src="/logo.png" alt="icon" className="ml-2 h-[1.5em] w-auto" /></span>
           </div>
           <div id="sitespace" className={`flex-1 p-2 min-h-[80vh] border-l ${text} ${border}`} style={{ height: '80vh' }}>
@@ -367,14 +375,24 @@ export default function Home() {
                         <p className="mb-4">
                           Para fazer parte da residência, inscreva-se na chamada aberta aqui:
                         </p>
-                        <div className="mb-4 flex justify-center">
+                        <div className="mb-4 flex justify-center gap-4">
+                         
                           <a
-                            href="https://campoesquerdo.eco.br"
+                            href="/editalcampoesquerdo.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <img src="/editalbotao.png" alt="Informações" className="w-full max-w-[200px]" />
+                          </a>
+
+                          <a
+                            href="/soon"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
                             <img src="/inscrevabutton.png" alt="Inscreva-se" className="w-full max-w-[200px]" />
                           </a>
+                           
                         </div>
                         <p>
                           Se não deseja ou não possa participar da residência, porém tem interesse de contribuir voluntariamente para o projeto, escreva um email para: <a href="mailto:campo.esquerdo@gmail.com" className="underline">campo.esquerdo@gmail.com</a>

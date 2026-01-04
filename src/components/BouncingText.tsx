@@ -124,7 +124,7 @@ isDragging.current = false;
     
     setTimeout(() => {
   window.open(
-    "https://docs.google.com/forms/d/e/1FAIpQLSfAlhyPX9oKMl6cMtd9-Ka9T_sC8cSqvdqmq9AXpiiNu5T1UA/viewform",
+    "editalcampoesquerdo.pdf",
     "_blank"
   );
 }, 1000); // delay in milliseconds (2000ms = 2 seconds)
