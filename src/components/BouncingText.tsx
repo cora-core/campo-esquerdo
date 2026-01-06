@@ -124,7 +124,7 @@ isDragging.current = false;
     
     setTimeout(() => {
   window.open(
-    "editalcampoesquerdo.pdf",
+    "https://forms.gle/DCzftrMMDWw6kSZdA",
     "_blank"
   );
 }, 1000); // delay in milliseconds (2000ms = 2 seconds)
@@ -152,10 +152,9 @@ isDragging.current = false;
 
 
 
-const [lines, setLines] = useState<{ text: string; dx: number; y?: number }[]>([
+const [lines, setLines] = useState<{ text: string; dx: number; y: number }[]>([
   { text: "CHAMADA", dx: 20, y: 0 },
-  { text: "ABERTA", dx: 10, y: 18 },
-  { text: "(EM BREVE)", dx: 10, y: 18 },
+  { text: "ABERTA", dx: 50, y: 18 },
 ]);
 
 
@@ -245,7 +244,7 @@ return [...prev, { text: baseLine.text, dx: randomDx, y: randomY }];
   return (
     <div ref={containerRef} className="w-full h-full relative overflow-hidden">
       <svg
-        className="absolute cursor-move hover:cursor-grab active:cursor-grabbing"
+        className="absolute cursor-pointer active:cursor-grabbing"
         overflow="visible"
         style={{ transform: `translate(${pos.x}px, ${pos.y}px)` }}
         onMouseDown={handleMouseDown}

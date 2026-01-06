@@ -212,7 +212,7 @@ export default function Home() {
                           </a>
 
                           <a
-                            href="/soon"
+                            href="https://forms.gle/DCzftrMMDWw6kSZdA"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
@@ -344,7 +344,7 @@ export default function Home() {
 
                 <span className="pl-2"><br /><br /><br /><br /><br /><br /><br /><br />Práxis</span><br /><div className="h-4" />
                 <span className="pl-2">Em sua concepção inicial, Campo Esquerdo  tomou a forma de um evento que combina múltiplos elementos da cultura da música eletrônica: suspensões espaço-temporais através de tensionamentos do gênero club/rave  construções musicais contínuas em um espaço de suspensão do tempo, e de livre movimento (club/rave); música ambiente e escuta profunda, mimetizando a proposta espaços de escuta hi-fi; e, sobretudo, da música experimental, onde sons, silêncio e acaso se encontram para desafiar as tradições musicais convencionais, e abre novas possibilidades de composição musical.  </span>
-                <span>A partir desses parâmetros, manifesta-se um espaço efêmero de escuta ininterrupta focado em shows de música eletrônica left-field e performances na interseção entre corpo, tecnologia digital e som. Entre as apresentações, houve momentos de mediação e DJ sets como colagens sonoras, evitando quebras não intencionais ou mudanças bruscas de atmosfera. A mediação existe como elemento fundamental da experiência, pois acreditamos que a cultura DJ (e a pessoa DJ) em suas origens, é capaz de criar sentido entre distintas estéticas e grupos sociais, permitindo que seja criado tanto um ambiente conciso, fluido, como um solo para que as artistas autorais se sintam confortáveis em ousar ao máximo em suas apresentações.    </span><br />
+                <span>A partir desses parâmetros, manifesta-se um espaço efêmero de escuta ininterrupta focado em shows de música eletrônica left-field e performances na interseção entre corpo, tecnologia digital e som. Entre as apresentações, houve momentos de mediação: DJ sets como colagens sonoras, evitando quebras não intencionais ou mudanças bruscas de atmosfera. A mediação existe como elemento fundamental da experiência, pois acreditamos que a cultura DJ (e a pessoa DJ) em suas origens, é capaz de criar sentido entre distintas estéticas e grupos sociais, permitindo que seja criado tanto um ambiente conciso, fluido, como um solo para que as artistas autorais se sintam confortáveis em ousar ao máximo em suas apresentações.    </span><br />
                 <div className="h-4" />
                 <span className="pl-2">O formato de experiência de escuta dá o conjunto de valores do projeto, mas não é um fim em si próprio. Nos meses após a primeira edição, surgiram questões críticas como: como dar continuidade a essas experiências de forma alinhada a esses valores? Público, gratuito, horizontal, inovador, dissidente, estranho. Quais são as condições dignas para alcançar um estado de fluxo coletivo, capaz de transformar o projeto conforme as necessidades do que o compõe? Como uma tentativa de respondê-las, Campo Esquerdo toma uma nova forma. O que chamamos de Campo Esquerdo Fase II.</span>
 
@@ -386,7 +386,7 @@ export default function Home() {
                           </a>
 
                           <a
-                            href="/soon"
+                            href="https://forms.gle/DCzftrMMDWw6kSZdA"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
