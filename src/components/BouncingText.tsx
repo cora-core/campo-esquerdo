@@ -124,7 +124,7 @@ isDragging.current = false;
     
     setTimeout(() => {
   window.open(
-    "https://forms.gle/DCzftrMMDWw6kSZdA",
+    "/",
     "_blank"
   );
 }, 1000); // delay in milliseconds (2000ms = 2 seconds)
@@ -153,8 +153,8 @@ isDragging.current = false;
 
 
 const [lines, setLines] = useState<{ text: string; dx: number; y: number }[]>([
-  { text: "CHAMADA", dx: 20, y: 0 },
-  { text: "ABERTA", dx: 50, y: 18 },
+  { text: "RESULTADO", dx: 20, y: 0 },
+  { text: "EM BREVE", dx: 50, y: 18 },
 ]);
 
 

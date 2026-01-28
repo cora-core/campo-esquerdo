@@ -212,7 +212,7 @@ export default function Home() {
                           </a>
 
                           <a
-                            href="https://forms.gle/DCzftrMMDWw6kSZdA"
+                            href="/"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
@@ -386,7 +386,7 @@ export default function Home() {
                           </a>
 
                           <a
-                            href="https://forms.gle/DCzftrMMDWw6kSZdA"
+                            href="/"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
