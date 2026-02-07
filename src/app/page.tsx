@@ -133,14 +133,28 @@ export default function Home() {
 
         {/* SITE (top) */}
         <div id="site" className="flex flex-col border-l border-r">
-          <div className={`p-2 min-h-[76vh] ${text}`} style={{ height: '40vh' }}>
+          <div className={`p-2 min-h-[90vh] ${text}`} style={{ height: '40vh' }}>
             <BouncingText isMobile={true} />
+          </div>
+        </div>
+
+        {/* ++++++ Section for Mobile - MOVED TO TOP */}
+        <div className="relative">
+          <div
+            ref={eventosRef}
+            className={`font-msgothic overflow-hidden sticky sticky-border-transparent top-0 border-b border-t flex items-center min-h-[5vh] text-2xl pl-2 ${bg} z-10 ${text} ${border}`}
+          >
+             <div className="marquee-content flex-shrink-0">INFOS + INFOS + INFOS + INFOS + INFOS + INFOS + INFOS + INFOS + </div>
+          </div>
+
+          <div className="bg-white mobile-no-padding">
+            <ContentHub />
           </div>
         </div>
 
         {/* SOBRE (below) */}
         <div> 
-          <div className={`font-ui-gothic sticky sticky-border-transparent  top-0 border-b border-t flex items-center min-h-[5vh] text-2xl pl-2 bg-white ${text} ${border}`}>
+          <div className={`font-ui-gothic z-20 overflow-hidden sticky sticky-border-transparent  top-0 border-b border-t flex items-center min-h-[5vh] text-2xl pl-2 bg-white ${text} ${border}`}>
             SOBRE 
           </div>
 
@@ -180,7 +194,7 @@ export default function Home() {
                
                 <div
                   ref={mentoriasRef}
-                  className={`font-msgothic sticky sticky-border-transparent top-0 border-b border-t flex items-center min-h-[5vh] text-2xl pl-2 ${bg} z-10 ${text} ${border}`}
+                  className={`font-msgothic z-20 sticky overflow-hidden sticky-border-transparent top-0 border-b border-t flex items-center min-h-[5vh] text-2xl pl-2 ${bg} z-10 ${text} ${border}`}
                 >
                   CAMPO ESQUERDO FASE II
                 </div> 
@@ -229,19 +243,6 @@ export default function Home() {
 
               </div>
 
-              {/* ++++++ Section for Mobile */}
-              <div className="relative">
-                <div
-                  ref={eventosRef}
-                  className={`font-msgothic sticky sticky-border-transparent top-0 border-b border-t flex items-center min-h-[5vh] text-2xl pl-2 ${bg} z-10 ${text} ${border}`}
-                >
-                  +++++++++
-                </div>
-
-                <div className="bg-white mobile-no-padding">
-                  <ContentHub />
-                </div>
-              </div>
             </div>
           </div>
         </div>

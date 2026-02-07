@@ -102,7 +102,7 @@ const ContentHub: React.FC<ContentHubProps> = ({ defaultMode = 'calendar' }) => 
       style={isExpanded ? { background: 'transparent' } : undefined}
     >
       {/* Mobile: Simple layout */}
-       <div className="md:hidden border-x border-b border-t-0 border-black bg-white mb-0">
+       <div className="md:hidden border-x border-t-0 border-black bg-white mb-0">
         {/* Content area */}
         <div className="relative overflow-hidden">
           {/* Calendar always rendered to set size */}
