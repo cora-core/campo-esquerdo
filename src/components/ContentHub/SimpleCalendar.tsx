@@ -42,6 +42,10 @@ export function SimpleCalendar({ className = "" }: SimpleCalendarProps) {
     { day: 6, month: 0, year: 2026, title: "CHAMADA ABERTA", description: "em breve" },
     { day: 26, month: 0, year: 2026, title: "FIM DA CHAMADA", description: "x" },
     { day: 7, month: 9, year: 2025, title: "EVENTO", description: "EVENTO EVENTO EVENTO" },
+    { day: 2, month: 2, year: 2026, title: "SEMINÁRIOS", description: "14:00; Mari Herzer, J-P Caron" },
+    { day: 3, month: 2, year: 2026, title: "OFICINAS", description: "14:00; Escola de Mistérios, Capetini, Kaloan" },
+    { day: 6, month: 2, year: 2026, title: "EXPERIÊNCIA", description: "15:00; Anti Ribeiro, Nãovenhasemrosto, Pek0" },
+    
   ];
 
   const initialDate = useMemo(() => getNextEventDate(events), []);
