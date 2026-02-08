@@ -15,8 +15,8 @@ const EventDetailView: React.FC<EventDetailViewProps> = ({ event, onBack, onPrev
   return (
     <div className="event-detail-view text-xs h-full flex flex-col">
       {/* Header row - matches calendar header */}
-      <div className="grid grid-cols-7">
-        <div className="col-span-5 text-left pl-2 pt-1 font-bold text-xl">
+      <div className="grid grid-cols-7 -mb-1">
+        <div className="col-span-5 text-left pl-2 py-1 font-bold text-xl">
           {event.title} {dateStr}
         </div>
         <div className="col-span-2 flex items-center justify-end space-x-1 text-xs px-2 py-1">

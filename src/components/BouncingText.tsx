@@ -153,8 +153,8 @@ isDragging.current = false;
 
 
 const [lines, setLines] = useState<{ text: string; dx: number; y: number }[]>([
-  { text: "RESULTADO", dx: 20, y: 0 },
-  { text: "EM BREVE", dx: 50, y: 18 },
+  { text: "PRÓXIMO CAMPO", dx: 20, y: 0 },
+  { text: "2,3 E 6 DE MARÇO", dx: 50, y: 18 },
 ]);
 
 
@@ -162,24 +162,24 @@ const [lines, setLines] = useState<{ text: string; dx: number; y: number }[]>([
 
 // add below the state above
 const linePattern: { text: string; dx: number; dy: number }[] = [ 
-  { text: "CHAMADA", dx: 20, dy:0},
-  { text: "ABERTA", dx: 10, dy:0 },
-  { text: "CHAMADA", dx: 30, dy:0 },
-  { text: "ABERTA", dx: 40, dy:0},
-  { text: "CHAMADA", dx: 50, dy:0},
-  { text: "ABERTA", dx: 60, dy:0},
-  { text: "CHAMA", dx: 70, dy:0},
-  { text: "DA", dx: 80, dy:0},
-  { text: "A", dx: 90, dy:0},
-  { text: "CHAMADA", dx: -20, dy:20}, 
-  { text: "ABERTA", dx: -10, dy:20 },
-  { text: "CHAMADA", dx: -30, dy:20 },
-  { text: "ABERTA", dx: -40   , dy:20},
-  { text: "CHAMADA", dx: -50, dy:20},
-  { text: "ABERTA", dx: -60, dy:20},
-  { text: "CHAMA", dx: -70, dy:20},
-  { text: "DA", dx: -80, dy:20},
-  { text: "A", dx: -90, dy:20},
+  { text: "2", dx: 20, dy:0},
+  { text: "3", dx: 10, dy:0 },
+  { text: "6", dx: 30, dy:0 },
+  { text: "DE", dx: 40, dy:0},
+  { text: "MARÇO", dx: 50, dy:0},
+  { text: "3", dx: 60, dy:0},
+  { text: "2", dx: 70, dy:0},
+  { text: "6", dx: 80, dy:0},
+  { text: "2", dx: 90, dy:0},
+  { text: "MARÇO", dx: -20, dy:20}, 
+  { text: "SAVE THE DATE", dx: -10, dy:20 },
+  { text: "2", dx: -30, dy:20 },
+  { text: "ANTI RIBEIRO", dx: -40   , dy:20},
+  { text: "PEK0", dx: -50, dy:20},
+  { text: "NÃOVENHASEMROSCO", dx: -60, dy:20},
+  { text: "6", dx: -70, dy:20},
+  { text: "DE", dx: -80, dy:20},
+  { text: "MARÇØ", dx: -90, dy:20},
 ];
 
 
