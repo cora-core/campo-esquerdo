@@ -133,7 +133,7 @@ export default function Home() {
 
         {/* SITE (top) */}
         <div id="site" className="flex flex-col border-l border-r">
-          <div className={`p-2 min-h-[90vh] ${text}`} style={{ height: '40vh' }}>
+          <div className={`p-2 min-h-[80vh] ${text}`} style={{ height: '40vh' }}>
             <BouncingText isMobile={true} />
           </div>
         </div>
