@@ -1,5 +1,5 @@
 import React from 'react';
-import type { CalendarEvent } from './SimpleCalendar';
+import type { CalendarEvent } from './events';
 
 interface EventDetailViewProps {
   event: CalendarEvent;

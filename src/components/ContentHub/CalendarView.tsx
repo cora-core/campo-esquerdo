@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import { SimpleCalendar, sortedCalendarEvents, type CalendarEvent } from './SimpleCalendar';
+import { SimpleCalendar } from './SimpleCalendar';
+import { sortedCalendarEvents, type CalendarEvent } from './events';
 import EventDetailView from './EventDetailView';
 
 const CalendarView: React.FC = () => {
