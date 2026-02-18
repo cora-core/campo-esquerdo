@@ -50,6 +50,13 @@
 }
 
 
+
+.scrollbar-minimal {
+  scrollbar-width: none;
+  scrollbar-color: #000 transparent;
+}
+
+
 @media (min-width: 1600px) {
   .laptop1600 {
     min-width: 152vh;
