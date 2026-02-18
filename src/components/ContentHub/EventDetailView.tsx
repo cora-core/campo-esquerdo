@@ -9,6 +9,17 @@ interface EventDetailViewProps {
   onNext?: () => void;
 }
 
+// Helper function to render text with newline support
+const renderTextWithLineBreaks = (text?: string) => {
+  if (!text) return null;
+  return text.split('\n').map((line, index) => (
+    <React.Fragment key={index}>
+      {line}
+      {index < text.split('\n').length - 1 && <br />}
+    </React.Fragment>
+  ));
+};
+
 const EventDetailView: React.FC<EventDetailViewProps> = ({ event, onBack, onPrev, onNext }) => {
   const dateStr = `${String(event.day).padStart(2, '0')}/${String(event.month + 1).padStart(2, '0')}`;
 
@@ -42,7 +53,7 @@ const EventDetailView: React.FC<EventDetailViewProps> = ({ event, onBack, onPrev
           <div className="flex gap-3 flex-1 min-h-0">
             <div className="flex-1 text-sm leading-snug min-w-0">
               {event.fullDescription ? (
-                <p>{event.fullDescription}</p>
+                <p>{renderTextWithLineBreaks(event.fullDescription)}</p>
               ) : (
                 <p className="text-gray-400 italic">Sem descrição disponível.</p>
               )}
@@ -95,7 +106,7 @@ const EventDetailView: React.FC<EventDetailViewProps> = ({ event, onBack, onPrev
           {/* Body text */}
           <div className="text-base leading-relaxed">
             {event.fullDescription ? (
-              <p>{event.fullDescription}</p>
+              <p>{renderTextWithLineBreaks(event.fullDescription)}</p>
             ) : (
               <p className="text-gray-400 italic">Sem descrição disponível.</p>
             )}
