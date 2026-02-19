@@ -51,7 +51,7 @@ const EventDetailView: React.FC<EventDetailViewProps> = ({ event, onBack, onPrev
         <div className="md:hidden flex flex-col flex-1 min-h-0 p-3 gap-2">
           {/* Top: description + small image side by side */}
           <div className="flex gap-3 flex-1 min-h-0 overflow-y-auto scrollbar-minimal">
-            <div className="flex-1 text-xs leading-tight min-w-0">
+            <div className="flex-1 text-sm leading-tight min-w-0">
               {event.fullDescription ? (
                 <p>{renderTextWithLineBreaks(event.fullDescription)}</p>
               ) : (
@@ -101,36 +101,42 @@ const EventDetailView: React.FC<EventDetailViewProps> = ({ event, onBack, onPrev
         </div>
 
         {/* === DESKTOP LAYOUT === */}
-        {/* Left column: description + meta */}
-        <div className="hidden md:flex flex-1 p-4 flex-col justify-between min-w-0 min-h-0 overflow-y-auto scrollbar-minimal">
-          {/* Body text */}
-          <div className="text-sm leading-relaxed">
+        {/* Left column: description only */}
+        <div className="hidden md:flex flex-1 p-4 overflow-y-auto scrollbar-minimal min-w-0 min-h-0">
+          <div className="text-base leading-relaxed">
             {event.fullDescription ? (
               <p>{renderTextWithLineBreaks(event.fullDescription)}</p>
             ) : (
               <p className="text-gray-400 italic">Sem descrição disponível.</p>
             )}
           </div>
+        </div>
 
-          {/* Bottom: local/hora */}
-          <div className="mt-auto pt-6 text-sm">
+        {/* Right column: image only */}
+        <div className="hidden md:flex md:flex-col w-[38%] flex-shrink-0 p-4 items-center justify-center min-h-0">
+          {event.image ? (
+            <img
+              src={event.image}
+              alt={event.title}
+              className="w-full h-full object-contain"
+            />
+          ) : (
+            <div className="w-full h-full" />
+          )}
+        </div>
+
+      </div>
+
+      {/* Desktop footer: local/hora + link button */}
+      <div className="hidden md:flex border-t border-black">
+        <div className="flex-1 p-4 text-sm flex items-end">
+          <div>
             <div>local: {event.local || ''}</div>
             <div>hora: {event.hora || ''}</div>
           </div>
         </div>
 
-        {/* Right column: image + link button below */}
-        <div className="hidden md:flex md:flex-col w-[38%] flex-shrink-0 p-4 items-center gap-2 min-h-0">
-          {event.image ? (
-            <img
-              src={event.image}
-              alt={event.title}
-              className="w-full min-h-0 flex-1 object-contain"
-            />
-          ) : (
-            <div className="w-full flex-1" />
-          )}
-
+        <div className="w-[38%] flex-shrink-0 p-4 flex items-center justify-center">
           {/* Link button with arc chevron */}
           <a
             href={event.link || '#'}
@@ -157,7 +163,6 @@ const EventDetailView: React.FC<EventDetailViewProps> = ({ event, onBack, onPrev
             </span>
           </a>
         </div>
-
       </div>
     </div>
   );
