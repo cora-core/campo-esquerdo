@@ -415,11 +415,9 @@ export default function Home() {
                   </div>
                 </StickyWrapper>
 
-                {isOpen && (
-                  <div className="p-6 bg-white">
-                    <ContentHub />
-                  </div> 
-                )} 
+                <div className="p-6 bg-white">
+                  <ContentHub />
+                </div> 
       
               </div>
 

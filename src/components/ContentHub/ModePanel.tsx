@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import { useContentHub } from '@/contexts/ContentHubContext';
 import CalendarView from './CalendarView';
 import GaleriaView from './GaleriaView';
 import LinksView from './LinksView';
@@ -27,6 +28,9 @@ const ContentHub: React.FC<ContentHubProps> = ({ defaultMode = 'calendar' }) => 
   const [isDragging, setIsDragging] = useState(false);
   const dragRef = useRef<HTMLDivElement>(null);
   const dragStartRef = useRef({ x: 0, y: 0 });
+
+  // Get context for external open/close control
+  const { isOpen, defaultMode: contextDefaultMode, closeContentHub } = useContentHub();
 
   // ========== BUTTON CONFIG (edit here to change all buttons) ==========
   // Font size uses clamp(min, preferred, max) for proportional scaling with rem units
@@ -71,6 +75,21 @@ const ContentHub: React.FC<ContentHubProps> = ({ defaultMode = 'calendar' }) => 
     };
   }, [isDragging]);
 
+  // Sync with context - when context requests to open, expand the ContentHub
+  useEffect(() => {
+    if (isOpen && !isExpanded) {
+      // Update mode from context if provided
+      if (contextDefaultMode && contextDefaultMode !== currentMode) {
+        setCurrentMode(contextDefaultMode);
+      }
+      // Set center position and expand
+      const centerX = window.innerWidth / 2 - 400;
+      const centerY = window.innerHeight / 2 - 300;
+      setPosition({ x: centerX, y: centerY });
+      setIsExpanded(true);
+    }
+  }, [isOpen, isExpanded, contextDefaultMode, currentMode]);
+
   // Reset position when collapsing
   const handleToggleExpand = () => {
     if (isExpanded) {
@@ -80,6 +99,7 @@ const ContentHub: React.FC<ContentHubProps> = ({ defaultMode = 'calendar' }) => 
         setIsExpanded(false);
         setIsClosing(false);
         setPosition({ x: 0, y: 0 });
+        closeContentHub(); // Notify context that we've closed
       }, 300);
     } else {
       // Set center position immediately, then expand
@@ -321,6 +341,7 @@ const ContentHub: React.FC<ContentHubProps> = ({ defaultMode = 'calendar' }) => 
           transition: isDragging ? 'none' : 'left 0.3s ease-out, top 0.3s ease-out',
           animation: isClosing ? 'fadeScaleOut 0.3s ease-out forwards' : 'fadeScaleIn 0.3s ease-out',
         }}
+        onClick={(e) => e.stopPropagation()}
       >
         <style jsx>{`
           @keyframes fadeScaleIn {

@@ -2,6 +2,7 @@
 
 
 import React, { useEffect, useRef, useState } from "react";
+import { useContentHub } from "@/contexts/ContentHubContext";
 
 interface BouncingTextProps {
   isMobile?: boolean;
@@ -13,6 +14,7 @@ export default function BouncingText({ isMobile = false }: BouncingTextProps) {
   const isDragging = useRef(false);
   const dragStart = useRef({ x: 0, y: 0 });
   const dragOffset = useRef({ x: 0, y: 0 });
+  const { openContentHub } = useContentHub();
 
   // Set different initial velocities based on device type
   const [pos, setPos] = useState({ x: 50, y: 50 });
@@ -123,11 +125,10 @@ setIsBouncing(false); // 👈 stop movement
 isDragging.current = false;
     
     setTimeout(() => {
-  window.open(
-    "/",
-    "_blank"
-  );
-}, 1000); // delay in milliseconds (2000ms = 2 seconds)
+  if (!isMobile) {
+    openContentHub('calendar');
+  }
+}, 1000); // delay in milliseconds (1000ms = 1 second)
 
     
     
