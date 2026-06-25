@@ -6,6 +6,7 @@ import { Delaunay } from "d3-delaunay";
 import { useThemeClasses } from "@/hooks/useThemeClasses";
 import type { BlogPost } from "@/lib/blog";
 import { documentToPlainText } from "@/lib/blog";
+export const runtime = 'edge'
 
 interface BlogGraphProps {
   posts?: BlogPost[];
