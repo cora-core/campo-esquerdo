@@ -33,10 +33,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  blogModal,
 }: Readonly<{
   children: React.ReactNode;
-  blogModal: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -45,7 +43,6 @@ export default function RootLayout({
       ><ThemeProvider>
         <ContentHubProvider>
           {children}
-          {blogModal}
         </ContentHubProvider>
         </ThemeProvider>
       </body>

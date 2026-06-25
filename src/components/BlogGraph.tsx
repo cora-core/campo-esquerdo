@@ -6,10 +6,9 @@ import { Delaunay } from "d3-delaunay";
 import { useThemeClasses } from "@/hooks/useThemeClasses";
 import type { BlogPost } from "@/lib/blog";
 import { documentToPlainText } from "@/lib/blog";
-export const runtime = 'edge'
 
 interface BlogGraphProps {
-  posts?: BlogPost[];
+  posts: BlogPost[];
 }
 
 
@@ -197,47 +196,11 @@ export default function BlogGraph({ posts }: BlogGraphProps) {
   const [size, setSize] = useState({ width: 0, height: 0 });
   const [nodes, setNodes] = useState<NodeState[]>([]);
   const [activeSlug, setActiveSlug] = useState<string | null>(null);
-  const [remotePosts, setRemotePosts] = useState<BlogPost[]>([]);
-  const resolvedPosts = posts ?? remotePosts;
-  const postCount = resolvedPosts.length;
+  const postCount = posts.length;
   const wobble = React.useMemo(
     () => Math.min(0.02 + 0.004 * postCount, 0.14),
     [postCount]
   );
-
-  useEffect(() => {
-    if (posts) {
-      setRemotePosts([]);
-      return;
-    }
-
-    let isMounted = true;
-
-    const loadPosts = async () => {
-      try {
-        const response = await fetch("/api/blog-posts");
-        if (!response.ok) {
-          throw new Error(`Failed to load blog posts: ${response.status}`);
-        }
-
-        const data = (await response.json()) as BlogPost[];
-
-        if (isMounted) {
-          setRemotePosts(data);
-        }
-      } catch {
-        if (isMounted) {
-          setRemotePosts([]);
-        }
-      }
-    };
-
-    void loadPosts();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [posts]);
 
   const isMobile = size.width > 0 && size.width <= 768;
   const graphSize = {
@@ -250,11 +213,11 @@ export default function BlogGraph({ posts }: BlogGraphProps) {
       return [];
     }
 
-    if (resolvedPosts.length === 0) {
+    if (posts.length === 0) {
       return [];
     }
 
-    const texts = resolvedPosts.map((post) => {
+    const texts = posts.map((post) => {
       const bodyText = post.body ? documentToPlainText(post.body) : "";
       const tagsText = Array.isArray(post.tags) ? post.tags.join(" ") : "";
 
@@ -319,10 +282,10 @@ export default function BlogGraph({ posts }: BlogGraphProps) {
     const rangeX = Math.max(maxX - minX, 0.1);
     const rangeY = Math.max(maxY - minY, 0.1);
 
-    if (resolvedPosts.length === 1) {
+    if (posts.length === 1) {
       return [
         {
-          slug: resolvedPosts[0].slug,
+          slug: posts[0].slug,
           x: graphSize.width / 2,
           y: graphSize.height / 2,
           targetX: graphSize.width / 2,
@@ -333,8 +296,8 @@ export default function BlogGraph({ posts }: BlogGraphProps) {
       ];
     }
 
-    if (resolvedPosts.length === 2) {
-      return resolvedPosts.map((post, index) => ({
+    if (posts.length === 2) {
+      return posts.map((post, index) => ({
         slug: post.slug,
         x: graphSize.width * (index === 0 ? 0.3 : 0.7),
         y: graphSize.height / 2,
@@ -345,7 +308,7 @@ export default function BlogGraph({ posts }: BlogGraphProps) {
       }));
     }
 
-    const positions = resolvedPosts.map((post, index) => ({
+    const positions = posts.map((post, index) => ({
       slug: post.slug,
       x: margin + ((xCoords[index] - minX) / rangeX) * usableWidth,
       y: margin + ((yCoords[index] - minY) / rangeY) * usableHeight,
@@ -385,7 +348,7 @@ export default function BlogGraph({ posts }: BlogGraphProps) {
     }
 
     return positions;
-  }, [graphSize.width, graphSize.height, isMobile, resolvedPosts]);
+  }, [graphSize.width, graphSize.height, isMobile, posts]);
 
   useEffect(() => {
     if (semanticPositions.length === 0) {
@@ -532,7 +495,7 @@ export default function BlogGraph({ posts }: BlogGraphProps) {
             if (!path || !center) {
               return null;
             }
-            const post = resolvedPosts.find((item) => item.slug === slug);
+            const post = posts.find((item) => item.slug === slug);
             if (!post) {
               return null;
             }

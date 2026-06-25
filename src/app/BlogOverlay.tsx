@@ -1,8 +1,9 @@
 import BlogGraph from "@/components/BlogGraph";
+import { BlogPost } from "@/lib/blog";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 
-export function BlogOverlay({showBlog}:{showBlog: boolean}) {
+export function BlogOverlay({showBlog, posts}:{showBlog: boolean, posts: BlogPost[]}) {
   return <AnimatePresence mode="wait" initial={false}>
     {showBlog && (
       <motion.div
@@ -22,7 +23,7 @@ export function BlogOverlay({showBlog}:{showBlog: boolean}) {
             ← VOLTAR
           </Link>
         </div>  <div className="fixed right-4 top-4 z-50"> <img src="/logo.png" alt="icon" className="h-[2.5em]" /></div>
-        <BlogGraph />
+        <BlogGraph posts={posts} />
       </motion.div>
     )}
   </AnimatePresence>;
