@@ -1,0 +1,1 @@
+- some months with 31 days makes the calendar component bigger than it should, creating a scroll element. can be fixed later 

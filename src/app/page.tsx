@@ -8,6 +8,11 @@ import BouncingText from "@/components/BouncingText";
 import StickyWrapper from "@/components/StickyWrapper";
 import { SimpleCalendar } from "@/components/SimpleCalendar";
 import { ContentHub } from "@/components/ContentHub";
+import BlogGraph from "@/components/BlogGraph";
+import { BlogOverlay } from "./BlogOverlay";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Blogbutton from "@/components/Blogbutton";
 
 
 
@@ -29,6 +34,8 @@ export default function Home() {
 
   /* ——— general stuff ——— */
   const [isOpen, setIsOpen] = useState(false);
+  const pathname =usePathname()
+  const isBlogOpen = pathname === '/blog'
   const [scrollProgress, setScrollProgress] = useState(0);
   const [openColumns, setOpenColumns] = useState([false, false, false, false, false]);
   const [openRows, setOpenRows] = useState([false, false, false, false, false]);
@@ -120,31 +127,42 @@ export default function Home() {
     return (
       <div className="min-h-screen flex flex-col">
         <AnimatedArrows />
-        <div className={`font-ui-gothic top-0 border-b border-t flex items-center min-h-[5vh] text-2xl bg-white ${text} ${border} marquee-container`}>
-          <div className="marquee-content flex-shrink-0">
-            <span className="inline-flex items-center">
+
+        <Link
+            type="button"
+            href="/blog"
+            className="absolute tick-stroke size-animation left-2 top-1/2 z-2 px-2 py-2 font-msgothic uppercase"
+          >
+           
+          </Link>
+
+        <div className={`font-ui-gothic top-0 flex border-1 items-center min-h-[5vh] text-2xl bg-white ${text} marquee-container`}>
+        
+          <div className=" flex-shrink-0 flex items-center min-h-[5vh] text-2xl pl-2 ${bg} z-10 ${text} ${border}">
+            <span className="marquee-content inline-flex items-center">
               CAMPO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />ESQUERDO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />CAMPO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />ESQUERDO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />CAMPO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />ESQUERDO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />CAMPO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />ESQUERDO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />
             </span>
-            <span className="inline-flex items-center">
-              CAMPO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />ESQUERDO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />CAMPO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />ESQUERDO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />CAMPO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />ESQUERDO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />CAMPO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />ESQUERDO<img src="/logo.png" alt="icon" className="ml-1 mr-1 h-[1em] w-auto inline" />
-            </span>
+           
           </div>
         </div>
 
-        {/* SITE (top) */}
+       
         <div id="site" className="flex flex-col border-l border-r">
           <div className={`p-2 min-h-[80vh] ${text}`} style={{ height: '40vh' }}>
-            <BouncingText isMobile={true} />
-          </div>
+            <Blogbutton isMobile={true} /> 
+          </div> 
+
+
         </div>
 
-        {/* ++++++ Section for Mobile - MOVED TO TOP */}
+
+       
         <div className="relative">
           <div
             ref={eventosRef}
             className={`font-msgothic overflow-hidden sticky sticky-border-transparent top-0 border-b border-t flex items-center min-h-[5vh] text-2xl pl-2 ${bg} z-10 ${text} ${border}`}
           >
-             <div className="marquee-content flex-shrink-0">INFOS + INFOS + INFOS + INFOS + INFOS + INFOS + INFOS + INFOS + </div>
+             <div className="marquee-content flex-shrink-0">INFOS + INFOS + INFOS + INFOS + INFOS + INFOS + INFOS + INFOS +  </div>
           </div>
 
           <div className="bg-white mobile-no-padding">
@@ -152,7 +170,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* SOBRE (below) */}
+        
         <div> 
           <div className={`font-ui-gothic z-20 overflow-hidden sticky sticky-border-transparent  top-0 border-b border-t flex items-center min-h-[5vh] text-2xl pl-2 bg-white ${text} ${border}`}>
             SOBRE 
@@ -246,6 +264,8 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        <BlogOverlay showBlog={isBlogOpen} />
       </div>
     );
   }
@@ -266,6 +286,7 @@ export default function Home() {
         CAMPO
         <img src="/logo.png" alt="icon" className="ml-2 h-[1em] w-auto" />
         ESQUERDO
+    
       </div>
 
       <div className="flex flex-1 relative">
@@ -280,10 +301,18 @@ export default function Home() {
           <div className={`items-center border-b border-l min-h-[5vh] max-h-[5vh] pl-2 text-lg flex bg-white ${text} ${border}`}>
             <span><img src="/logo.png" alt="icon" className="ml-2 h-[1.5em] w-auto" /></span>
           </div>
-          <div id="sitespace" className={`flex-1 p-2 min-h-[80vh] border-l ${text} ${border}`} style={{ height: '80vh' }}>
+          <div id="sitespace" className={`flex-1 min-h-[80vh] border-l ${text} ${border}`} style={{ height: '80vh' }}>
             <BouncingText isMobile={false} />
           </div>
-          <div className={`border-t border-l border-b min-h-[5vh] pl-2 flex items-center bg-white ${text} ${border}`}></div>
+          <div className={`border-t border-l border-b min-h-[5vh] flex  bg-white ${text} ${border}`}>
+            <Link
+              type="button"
+              href="/blog"
+              className="font-msgothic inline-flex items-center justify-center border-r-1 bg-transparent px-20 text-[clamp(16px,1.46vw,3rem)] uppercase transition hover:bg-black hover:text-white"
+            >
+              blog
+            </Link>
+          </div>
         </div>
 
         <motion.div
@@ -427,6 +456,7 @@ export default function Home() {
           </div>
         </motion.div>
       </div>
+      <BlogOverlay showBlog={isBlogOpen} />
     </div>
   );
 }

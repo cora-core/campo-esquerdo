@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^cd '/Users/gama/Campo Esquerdo Website/campo-esquerdo' && python3 - <<'PY'\nfrom pathlib import Path\np = Path\\('src/components/BlogGraph\\.tsx'\\)\ntext = p\\.read_text\\(errors='replace'\\)\nprint\\(repr\\(text\\[:2000\\]\\)\\)\nPY$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}
