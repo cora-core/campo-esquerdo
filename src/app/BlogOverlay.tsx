@@ -1,9 +1,16 @@
 import BlogGraph from "@/components/BlogGraph";
 import { BlogPost } from "@/lib/blog";
+import { getBlogPosts } from "@/lib/contentful";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-export function BlogOverlay({showBlog, posts}:{showBlog: boolean, posts: BlogPost[]}) {
+export function BlogOverlay({showBlog}:{showBlog: boolean}) {
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  useEffect(() => {
+     getBlogPosts().then(setPosts)
+  }, []);
+
   return <AnimatePresence mode="wait" initial={false}>
     {showBlog && (
       <motion.div
