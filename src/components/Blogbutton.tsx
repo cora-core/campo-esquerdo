@@ -2,19 +2,19 @@
 
 
 import React, { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useContentHub } from "@/contexts/ContentHubContext";
 
-interface BlogbuttonProps {
+interface BouncingTextProps {
   isMobile?: boolean;
 }
 
-export default function Blogbutton({ isMobile = false }: BlogbuttonProps) {
+export default function BouncingText({ isMobile = false }: BouncingTextProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<SVGTextElement>(null);
   const isDragging = useRef(false);
   const dragStart = useRef({ x: 0, y: 0 });
   const dragOffset = useRef({ x: 0, y: 0 });
-  const router = useRouter();
+  const { openContentHub } = useContentHub();
 
   // Set different initial velocities based on device type
   const [pos, setPos] = useState({ x: 50, y: 50 });
@@ -125,8 +125,10 @@ setIsBouncing(false); // 👈 stop movement
 isDragging.current = false;
     
     setTimeout(() => {
-      router.push('/blog');
-    }, 1200);
+  if (!isMobile) {
+    openContentHub('calendar');
+  }
+}, 1000); // delay in milliseconds (1000ms = 1 second)
 
     
     
@@ -152,9 +154,9 @@ isDragging.current = false;
 
 
 const [lines, setLines] = useState<{ text: string; dx: number; y: number }[]>([
-  { text: "BLOG", dx: 50, y: 0 },
+  { text: "PUBLICAÇÕES", dx: 50, y: 0 },
   { text: "CAMPO ESQUERDO", dx: 50, y: 18 },
-  { text: "OIII", dx: 70, y: 18 },
+  { text: "AKY", dx: 70, y: 18 },
 ]);
 
 
@@ -225,7 +227,7 @@ const progressivelyFillLines = () => {
 const baseLine = linePattern[Math.floor(Math.random() * linePattern.length)];
 
 // add some horizontal randomness
-const randomDx = baseLine.dx + (Math.random() - 0.5) * 60; // ±20px jitter
+const randomDx = baseLine.dx + (Math.random() - 0.5) * 40; // ±20px jitter
 
 const lastY = prev[prev.length - 1]?.y ?? 0;
 const randomY = lastY + LINE_HEIGHT + (Math.random() - 0.5) * 10; // ±5px

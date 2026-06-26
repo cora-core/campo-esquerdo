@@ -161,6 +161,21 @@
   margin: 0;
 }
 
+.contentful-post-body blockquote {
+  text-align: justify;
+  text-align-last: right;
+  padding-left: 10rem;
+}
+
+.contentful-post-body ul {
+  text-align: justify;
+  text-align-last: left;
+}
+
+.contentful-post-body b {
+  -webkit-text-stroke: 0.025em currentColor;
+}
+
 .contentful-post-body a {
   color: var(--custom-color);
 }

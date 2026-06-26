@@ -307,7 +307,7 @@ export default function Home() {
               href="/blog"
               className="font-msgothic inline-flex items-center justify-center border-r-1 bg-transparent px-20 text-[clamp(16px,1.46vw,3rem)] uppercase transition hover:bg-black hover:text-white"
             >
-              blog
+              ESCRITOS
             </Link>
           </div>
         </div>
