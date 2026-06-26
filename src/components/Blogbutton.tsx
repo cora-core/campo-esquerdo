@@ -153,8 +153,8 @@ isDragging.current = false;
 
 const [lines, setLines] = useState<{ text: string; dx: number; y: number }[]>([
   { text: "BLOG", dx: 50, y: 0 },
-  { text: "ESQUERDO", dx: 50, y: 18 },
-  { text: "AQUI", dx: 70, y: 18 },
+  { text: "CAMPO ESQUERDO", dx: 50, y: 18 },
+  { text: "OIII", dx: 70, y: 18 },
 ]);
 
 

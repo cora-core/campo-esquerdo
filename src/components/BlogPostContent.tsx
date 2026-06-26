@@ -84,7 +84,7 @@ export default function BlogPostContent({ slug }: BlogPostContentProps) {
   const customColorStyle = { "--custom-color": post.customcolor ?? "#5B0F00" } as CSSProperties;
 
   return (
-    <div className={`min-h-screen ${bg} ${text}`} style={customColorStyle}>
+    <div className={`min-h-screen overflow-hidden ${bg} ${text}`} style={customColorStyle}>
       <div className="relative left-4 top-4 z-50">
         <button
           type="button"
@@ -95,7 +95,9 @@ export default function BlogPostContent({ slug }: BlogPostContentProps) {
 
         </button>
       </div>
-      <div className="fixed left-4 bottom-4 z-50"> <img src="/logo.png" alt="icon" className="h-[2.5em]" /></div>
+       <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 md:left-4 md:translate-x-0"> 
+          <img src="/logo.png" alt="icon" className="h-[2.5em]" />
+        </div>
 
 
       <div className={`px-4 ${backgroundClass} py-8 sm:px-8`}>

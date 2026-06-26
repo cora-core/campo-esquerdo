@@ -21,7 +21,7 @@ export function BlogOverlay({showBlog}:{showBlog: boolean}) {
         transition={{ duration: 0.75, ease: "easeOut" }}
         className="fixed inset-0 z-50 overflow-auto bg-white"
       >
-        <div className="fixed left-4 bottom-4 z-50">
+        <div className="fixed left-4 top-4 z-50">
           <Link
             type="button"
             href='/'
