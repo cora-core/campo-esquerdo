@@ -31,11 +31,5 @@ export default async function BlogPostPage(props: {
   params: Promise<{ slug: string }>;
 }) {
   const params = await props.params;
-  const [post, posts] = await Promise.all([getBlogPostBySlug(params.slug), getBlogPosts()]);
-
-  if (!post) {
-    notFound();
-  }
-
-  return <BlogPostContent post={post} posts={posts} />;
+  return <BlogPostContent slug={params.slug} />;
 }

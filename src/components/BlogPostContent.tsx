@@ -1,12 +1,13 @@
 'use client';
 
-import { useRouter } from "next/navigation";
-import type { CSSProperties } from "react";
+import { notFound, useRouter } from "next/navigation";
+import { useEffect, useState, type CSSProperties } from "react";
 import { useThemeClasses } from "@/hooks/useThemeClasses";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, type Document } from "@contentful/rich-text-types";
 import type { BlogPost } from "@/lib/blog";
 import { normalizeAssetUrl } from "@/lib/blog";
+import { getBlogPostBySlug, getBlogPosts } from "@/lib/contentful";
 
 const formatDate = (date: string) =>
   new Intl.DateTimeFormat("pt-BR", {
@@ -16,14 +17,25 @@ const formatDate = (date: string) =>
   }).format(new Date(date + "T12:00:00"));
 
 interface BlogPostContentProps {
-  post: BlogPost;
-  posts: BlogPost[];
+  slug: string
 }
 
-export default function BlogPostContent({ post, posts }: BlogPostContentProps) {
+export default function BlogPostContent({ slug }: BlogPostContentProps) {
+  const [{ post, posts }, setData] = useState<{ post: BlogPost | null; posts: BlogPost[] | null }>({ post: null, posts: null });
   const { text, border, bg } = useThemeClasses();
-  const backgroundClass = post.backgroundcolor ?? bg;
   const router = useRouter();
+  
+  useEffect(() => {
+    (async () => {
+      const [post, posts] = await Promise.all([getBlogPostBySlug(slug), getBlogPosts()]);
+      setData({ post, posts });
+    })();
+  }, [slug]);
+
+  if (!post || !posts) {
+    return <div>loading...</div>
+  }
+  const backgroundClass = post.backgroundcolor ?? bg;
 
   const handleBack = () => {
     if (typeof window !== "undefined" && window.history.length > 1) {
@@ -73,18 +85,18 @@ export default function BlogPostContent({ post, posts }: BlogPostContentProps) {
 
   return (
     <div className={`min-h-screen ${bg} ${text}`} style={customColorStyle}>
-      <div className="fixed left-4 top-4 z-50">
+      <div className="relative left-4 top-4 z-50">
         <button
           type="button"
           onClick={handleBack}
           className="inline-flex items-center gap-2 border border-current bg-white px-3 py-2 text-sm uppercase tracking-[0.35em] transition hover:bg-black hover:text-white"
         >
           ← VOLTAR
-         
+
         </button>
       </div>
-<div className="fixed left-4 bottom-4 z-50"> <img src="/logo.png" alt="icon" className="h-[2.5em]" /></div>
-      
+      <div className="fixed left-4 bottom-4 z-50"> <img src="/logo.png" alt="icon" className="h-[2.5em]" /></div>
+
 
       <div className={`px-4 ${backgroundClass} py-8 sm:px-8`}>
         <article className="mx-auto max-w-3xl space-y-6 ">
@@ -120,11 +132,11 @@ export default function BlogPostContent({ post, posts }: BlogPostContentProps) {
           </div>
 
           <div className="text-xs uppercase tracking-[0.2em] opacity-70">
-              {formatDate(post.date)}
-            </div>
+            {formatDate(post.date)}
+          </div>
 
           <div className="flex flex-wrap gap-3 pt-2">
-            
+
             <button
               type="button"
               onClick={handleRandom}
