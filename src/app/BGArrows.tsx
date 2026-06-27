@@ -7,11 +7,16 @@ import { useTheme } from "@/contexts/ThemeContext";
 
 engine.useDefaultMainLoop = false;
 
-const AnimatedArrows = () => {
+const AnimatedArrows = ({ slow }: { slow: boolean }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { bgColor, arrowColor } = useTheme();
   const sceneRef = useRef<THREE.Scene | null>(null);
   const arrowsRef = useRef<THREE.Object3D[]>([]);
+
+  const slowRef = useRef<boolean>(false);
+  useEffect(() => {
+    slowRef.current = slow;
+  }, [slow]);
 
   useEffect(() => {
     const $container = containerRef.current;
@@ -68,7 +73,7 @@ const AnimatedArrows = () => {
       }
 
       // floating motion
-      const duration = utils.random(7200, 15600); //
+      const duration = utils.random(7200, 15600);
       createTimeline({ defaults: { loop: true, duration, ease: "linear" } })
         .add(
           sprite.position,
@@ -99,8 +104,33 @@ const AnimatedArrows = () => {
 
     spawnWave();
 
+    let mouseX = 0.5;
+    let mouseY = 0.5;
+    let mouseTargetX = 0.5;
+    let mouseTargetY = 0.5;
+
+    // more number = more smooth
+    const moveMoveSmoothness = 500;
+
+    // more number = more strong
+    const mouseMoveStrength = 3;
+
+    const mouseMoveListener = (ev: MouseEvent) => {
+      if (!slowRef.current) {
+        mouseTargetX = ev.clientX / window.innerWidth;
+        mouseTargetY = ev.clientY / window.innerHeight;
+      }
+    };
+
+    window.addEventListener("mousemove", mouseMoveListener);
+
+    function lerp(a: number, b: number, t: number) {
+      return a + (b - a) * t;
+    }
+
     function render() {
       engine.update();
+      engine.speed = lerp(engine.speed, slowRef.current ? 0.15 : 1, 0.04);
 
       arrows.forEach((sprite, index) => {
         if (sprite.position.z > 20) {
@@ -110,6 +140,14 @@ const AnimatedArrows = () => {
           activeArrows--;
         }
       });
+
+      if (!slowRef.current) {
+        mouseX = lerp(mouseX, mouseTargetX, 1 / moveMoveSmoothness);
+        mouseY = lerp(mouseY, mouseTargetY, 1 / moveMoveSmoothness);
+      }
+
+      camera.position.x = (mouseX - 0.5) * -mouseMoveStrength
+      camera.position.y = (mouseY - 0.5) * mouseMoveStrength
 
       renderer.render(scene, camera);
     }
@@ -127,6 +165,7 @@ const AnimatedArrows = () => {
 
     return () => {
       renderer.setAnimationLoop(null);
+      window.removeEventListener("mousemove", mouseMoveListener);
       window.removeEventListener("resize", handleResize);
       if ($container.contains(renderer.domElement)) {
         $container.removeChild(renderer.domElement);

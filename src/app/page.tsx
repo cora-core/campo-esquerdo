@@ -123,7 +123,7 @@ export default function Home() {
   if (isMobile) {
     return (
       <div className="min-h-screen flex flex-col">
-        <AnimatedArrows />
+        <AnimatedArrows slow={isOpen}/>
 
         <Link
             type="button"
@@ -270,7 +270,7 @@ export default function Home() {
   /* ——— DESKTOP LAYOUT ——— */
   return (
     <div className="min-h-screen flex flex-col">
-      <AnimatedArrows />
+      <AnimatedArrows slow={isOpen}/>
       <div className={`font-ui-gothic flex items-center border min-h-[10vh] pl-2 text-[3rem] 2xl:text-[6rem] bg-white overflow-hidden ${text} ${border}`}>
         CAMPO
         <img src="/logo.png" alt="icon" className="ml-2 h-[1em] w-auto" />
