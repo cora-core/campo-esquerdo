@@ -2,19 +2,20 @@
 
 
 import React, { useEffect, useRef, useState } from "react";
-import { useContentHub } from "@/contexts/ContentHubContext";
+import { useRouter } from "next/navigation";
 
 interface BouncingTextProps {
   isMobile?: boolean;
 }
 
 export default function BouncingText({ isMobile = false }: BouncingTextProps) {
+  const router = useRouter();
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<SVGTextElement>(null);
   const isDragging = useRef(false);
   const dragStart = useRef({ x: 0, y: 0 });
   const dragOffset = useRef({ x: 0, y: 0 });
-  const { openContentHub } = useContentHub();
+  const navigateTimeoutRef = useRef<number | null>(null);
 
   // Set different initial velocities based on device type
   const [pos, setPos] = useState({ x: 50, y: 50 });
@@ -56,6 +57,14 @@ const [isBouncing, setIsBouncing] = useState(true);
     frame = requestAnimationFrame(update);
     return () => cancelAnimationFrame(frame);
   }, [pos, vel, isBouncing]); // 👈 include isBouncing
+
+  useEffect(() => {
+    return () => {
+      if (navigateTimeoutRef.current !== null) {
+        clearTimeout(navigateTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -102,36 +111,24 @@ const [isBouncing, setIsBouncing] = useState(true);
   const handleMouseUp = (e: MouseEvent) => {
     document.removeEventListener('mousemove', handleMouseMove as any);
     document.removeEventListener('mouseup', handleMouseUp);
-    
+
     if (isDragging.current) {
       isDragging.current = false;
       return;
     }
-    
-const baseLine = linePattern[Math.floor(Math.random() * linePattern.length)];
-const randomDx = baseLine.dx + (Math.random() - 0.5) * 2; 
-const randomDy = baseLine.dy + (Math.random() - 0.5) * 2; 
-
-
-
-
-
 
     // start filling on click
-progressivelyFillLines();
-setIsBouncing(false); // 👈 stop movement
+    progressivelyFillLines();
+    setIsBouncing(false); // 👈 stop movement
+    isDragging.current = false;
 
+    if (navigateTimeoutRef.current !== null) {
+      clearTimeout(navigateTimeoutRef.current);
+    }
 
-isDragging.current = false;
-    
-    setTimeout(() => {
-  if (!isMobile) {
-    openContentHub('calendar');
-  }
-}, 1000); // delay in milliseconds (1000ms = 1 second)
-
-    
-    
+    navigateTimeoutRef.current = window.setTimeout(() => {
+      router.push("/blog");
+    }, 80);
   };
 
   // const lines = [
