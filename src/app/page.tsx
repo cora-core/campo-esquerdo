@@ -7,6 +7,7 @@ import BouncingText from "@/components/BouncingText";
 import StickyWrapper from "@/components/StickyWrapper";
 import { ContentHub } from "@/components/ContentHub";
 import { BlogOverlay } from "./BlogOverlay";
+import { SoundSystemOverlay } from "./SoundSystemOverlay";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Blogbutton from "@/components/Blogbutton";
@@ -33,6 +34,7 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname =usePathname()
   const isBlogOpen = pathname === '/blog'
+  const isSoundSystemOpen = pathname === '/soundsystem'
   const [scrollProgress, setScrollProgress] = useState(0);
   const [openColumns, setOpenColumns] = useState([false, false, false, false, false]);
   const [openRows, setOpenRows] = useState([false, false, false, false, false]);
@@ -254,6 +256,7 @@ export default function Home() {
         </div>
 
         <BlogOverlay showBlog={isBlogOpen} />
+        <SoundSystemOverlay showSoundSystem={isSoundSystemOpen} />
       </div>
     );
   }
@@ -299,6 +302,13 @@ export default function Home() {
               className="font-msgothic inline-flex items-center justify-center border-r-1 bg-transparent px-20 text-[clamp(16px,1.46vw,3rem)] uppercase transition hover:bg-black hover:text-white"
             >
               ESCRITOS
+            </Link>
+            <Link
+              type="button"
+              href="/soundsystem"
+              className="font-msgothic inline-flex items-center justify-center border-r-1 bg-transparent px-20 text-[clamp(16px,1.46vw,3rem)] uppercase transition hover:bg-black hover:text-white"
+            >
+              SOUND SYSTEM
             </Link>
           </div>
         </div>
@@ -438,6 +448,7 @@ export default function Home() {
         </motion.div>
       </div>
       <BlogOverlay showBlog={isBlogOpen} />
+      <SoundSystemOverlay showSoundSystem={isSoundSystemOpen} />
     </div>
   );
 }

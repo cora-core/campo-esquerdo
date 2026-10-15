@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
     return [{
       source: '/blog',
       destination: '/'
+    }, {
+      source: '/soundsystem',
+      destination: '/'
     }]
   }
 };
