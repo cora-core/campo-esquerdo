@@ -15,7 +15,7 @@ function corsHeaders(request, env) {
   const origin = request.headers.get("Origin") || "";
   const allowed = (env.ALLOWED_ORIGINS || "")
     .split(",")
-    .map((s) => s.trim())
+    .map((s) => s.trim().replace(/\/+$/, "")) // tolerate a trailing slash in the config
     .filter(Boolean);
   const headers = {
     "Access-Control-Allow-Methods": "POST, OPTIONS",
@@ -44,7 +44,14 @@ function csvCell(value) {
 async function subscribe(request, env) {
   const cors = corsHeaders(request, env);
   if (!cors["Access-Control-Allow-Origin"]) {
-    return json({ ok: false, error: "origin" }, 403);
+    const origin = request.headers.get("Origin") || "(no Origin header)";
+    // Logged so `npx wrangler tail` shows the exact origin to add to ALLOWED_ORIGINS.
+    console.warn(`[newsletter] blocked Origin: ${origin}`);
+    // Echo the origin on this 403 too: otherwise the browser reports a CORS failure
+    // and the site can only say "request failed" instead of "origin not allowed".
+    const denyHeaders = { ...cors };
+    if (origin !== "(no Origin header)") denyHeaders["Access-Control-Allow-Origin"] = origin;
+    return json({ ok: false, error: "origin", origin }, 403, denyHeaders);
   }
 
   let data;
@@ -118,7 +125,16 @@ export default {
     const url = new URL(request.url);
 
     if (request.method === "OPTIONS") {
-      return new Response(null, { status: 204, headers: corsHeaders(request, env) });
+      const cors = corsHeaders(request, env);
+      if (!cors["Access-Control-Allow-Origin"]) {
+        const origin = request.headers.get("Origin") || "(no Origin header)";
+        console.warn(`[newsletter] preflight from blocked Origin: ${origin}`);
+        return json({ ok: false, error: "origin", origin }, 403, {
+          ...cors,
+          ...(origin !== "(no Origin header)" ? { "Access-Control-Allow-Origin": origin } : {}),
+        });
+      }
+      return new Response(null, { status: 204, headers: cors });
     }
     if (url.pathname === "/subscribe" && request.method === "POST") {
       try {

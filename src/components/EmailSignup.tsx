@@ -11,7 +11,28 @@ import React, { useEffect, useState } from 'react';
  *   https://campo-esquerdo-newsletter.<subdomain>.workers.dev/subscribe
  */
 
-const NEWSLETTER_URL = process.env.NEXT_PUBLIC_NEWSLETTER_URL;
+const RAW_NEWSLETTER_URL = process.env.NEXT_PUBLIC_NEWSLETTER_URL;
+
+// The value lives in .env.local and is baked in when the app is compiled, so it must
+// be a real URL at build/dev time. Anything else (undefined, or the unfilled
+// "...campo-esquerdo-newsletter.<you>.workers.dev..." placeholder) is treated as
+// "not configured" instead of being handed to fetch(), where it only surfaces as a
+// generic TypeError.
+const NEWSLETTER_URL =
+  RAW_NEWSLETTER_URL && /^https?:\/\/[^<>\s]+$/.test(RAW_NEWSLETTER_URL.trim())
+    ? RAW_NEWSLETTER_URL.trim()
+    : undefined;
+
+/** Human-readable reason for the failure, shown as a tooltip and logged to the console. */
+function describeFailure(status: number, data: { error?: string }): string {
+  const code = data?.error;
+  if (code === 'origin') return 'The worker rejected this page origin — add it to ALLOWED_ORIGINS in newsletter-worker/wrangler.toml.';
+  if (code === 'email') return 'The worker rejected the email address.';
+  if (code === 'choice') return 'No newsletter option was selected.';
+  if (code === 'json') return 'The worker could not parse the request body.';
+  if (code === 'server') return 'The worker threw an error — check its logs (npx wrangler tail).';
+  return `The worker answered HTTP ${status}.`;
+}
 
 interface EmailSignupProps {
   isOpen: boolean;
@@ -25,6 +46,7 @@ export default function EmailSignup({ isOpen, onClose }: EmailSignupProps) {
   const [events, setEvents] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
+  const [errorDetail, setErrorDetail] = useState('');
   const [website, setWebsite] = useState(''); // honeypot, stays empty for humans
 
   // Same sizing as the ContentHub buttons
@@ -42,6 +64,7 @@ export default function EmailSignup({ isOpen, onClose }: EmailSignupProps) {
         setEvents(false);
       }
       setStatus('idle');
+      setErrorDetail('');
       onClose();
     }, 300);
   };
@@ -61,11 +84,17 @@ export default function EmailSignup({ isOpen, onClose }: EmailSignupProps) {
     e.preventDefault();
     if (status === 'sending') return;
     if (!NEWSLETTER_URL) {
-      console.error('NEXT_PUBLIC_NEWSLETTER_URL is not set');
+      console.error(
+        '[newsletter] NEXT_PUBLIC_NEWSLETTER_URL is missing or still a placeholder:',
+        RAW_NEWSLETTER_URL ?? '(unset)',
+        '— set it to the deployed worker URL (…/subscribe) in .env.local, then restart `next dev` / rebuild.'
+      );
+      setErrorDetail('Form endpoint not configured (NEXT_PUBLIC_NEWSLETTER_URL).');
       setStatus('error');
       return;
     }
     setStatus('sending');
+    setErrorDetail('');
     try {
       const res = await fetch(NEWSLETTER_URL, {
         method: 'POST',
@@ -73,8 +102,21 @@ export default function EmailSignup({ isOpen, onClose }: EmailSignupProps) {
         body: JSON.stringify({ email, blog: blogPosts, eventos: events, website }),
       });
       const data = await res.json().catch(() => ({}));
-      setStatus(res.ok && data.ok ? 'done' : 'error');
-    } catch {
+      if (res.ok && data.ok) {
+        setStatus('done');
+        return;
+      }
+      console.error('[newsletter] signup rejected', { url: NEWSLETTER_URL, status: res.status, data });
+      setErrorDetail(describeFailure(res.status, data));
+      setStatus('error');
+    } catch (err) {
+      // Network failure, CORS rejection, DNS error, invalid URL…
+      console.error('[newsletter] request failed', { url: NEWSLETTER_URL, err });
+      const msg = (err as Error)?.message ?? String(err);
+      setErrorDetail(
+        `Could not reach the worker (${msg}). If the console shows a CORS error, add ` +
+          `${window.location.origin} to ALLOWED_ORIGINS in newsletter-worker/wrangler.toml.`
+      );
       setStatus('error');
     }
   };
@@ -181,7 +223,9 @@ export default function EmailSignup({ isOpen, onClose }: EmailSignupProps) {
 
               <div className="flex items-center justify-end gap-4">
                 {status === 'error' && (
-                  <span className="text-xs" role="alert">ERRO AO ENVIAR. TENTE NOVAMENTE.</span>
+                  <span className="text-xs" role="alert" title={errorDetail} data-reason={errorDetail}>
+                    ERRO AO ENVIAR. TENTE NOVAMENTE.
+                  </span>
                 )}
                 <button
                   type="submit"
