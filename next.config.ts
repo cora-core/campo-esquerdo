@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
     }, {
       source: '/soundsystem',
       destination: '/'
+    }, {
+      source: '/sobre',
+      destination: '/'
     }]
   }
 };

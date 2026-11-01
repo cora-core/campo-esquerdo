@@ -8,9 +8,12 @@ import StickyWrapper from "@/components/StickyWrapper";
 import { ContentHub } from "@/components/ContentHub";
 import { BlogOverlay } from "./BlogOverlay";
 import { SoundSystemOverlay } from "./SoundSystemOverlay";
+import { SobreOverlay } from "./SobreOverlay";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Blogbutton from "@/components/Blogbutton";
+import { useContentHub } from "@/contexts/ContentHubContext";
+import EmailSignup from "@/components/EmailSignup";
 
 
 
@@ -35,6 +38,7 @@ export default function Home() {
   const pathname =usePathname()
   const isBlogOpen = pathname === '/blog'
   const isSoundSystemOpen = pathname === '/soundsystem'
+  const isSobreOpen = pathname === '/sobre'
   const [scrollProgress, setScrollProgress] = useState(0);
   const [openColumns, setOpenColumns] = useState([false, false, false, false, false]);
   const [openRows, setOpenRows] = useState([false, false, false, false, false]);
@@ -43,6 +47,8 @@ export default function Home() {
   const mentoriasRef = useRef<HTMLDivElement>(null);
   const eventosRef = useRef<HTMLDivElement>(null);
   const { text, border, bg } = useThemeClasses();
+  const { openContentHub } = useContentHub();
+  const [isEmailOpen, setIsEmailOpen] = useState(false);
 
   // Track manual open state to prevent auto-close
   const manualOpenRef = useRef(false);
@@ -146,8 +152,18 @@ export default function Home() {
         </div>
 
        
+        {/* Mobile top bar */}
+        <div className={`flex border-l border-r border-b bg-white ${border}`}>
+          <Link href="/sobre" className={`font-msgothic flex-1 border-r inline-flex items-center justify-center whitespace-nowrap min-h-[5vh] px-2 text-xl uppercase bg-white transition hover:bg-black hover:text-white ${text} ${border}`}>
+            SOBRE
+          </Link>
+          <Link href="/soundsystem" className={`font-msgothic flex-1 inline-flex items-center justify-center whitespace-nowrap min-h-[5vh] px-2 text-xl uppercase bg-white transition hover:bg-black hover:text-white ${text} ${border}`}>
+            SOUND SYSTEM
+          </Link>
+        </div>
+
         <div id="site" className="flex flex-col border-l border-r">
-          <div className={`p-2 min-h-[80vh] ${text}`} style={{ height: '40vh' }}>
+          <div className={`p-2 min-h-[72vh] ${text}`} style={{ height: '40vh' }}>
             <Blogbutton isMobile={true} /> 
           </div> 
 
@@ -156,6 +172,16 @@ export default function Home() {
 
 
        
+        {/* Mobile bottom bar */}
+        <div className={`flex border-l border-r border-t bg-white ${border}`}>
+          <Link href="/blog" className={`font-msgothic flex-1 border-r inline-flex items-center justify-center whitespace-nowrap min-h-[5vh] px-2 text-xl uppercase bg-white transition hover:bg-black hover:text-white ${text} ${border}`}>
+            ESCRITOS
+          </Link>
+          <button type="button" onClick={() => setIsEmailOpen(true)} className={`font-msgothic flex-1 inline-flex items-center justify-center whitespace-nowrap min-h-[5vh] px-2 text-xl uppercase bg-white transition hover:bg-black hover:text-white ${text} ${border}`}>
+            NEWSLETTER
+          </button>
+        </div>
+
         <div className="relative">
           <div
             ref={eventosRef}
@@ -170,93 +196,10 @@ export default function Home() {
         </div>
 
         
-        <div> 
-          <div className={`font-ui-gothic z-20 overflow-hidden sticky sticky-border-transparent  top-0 border-b border-t flex items-center min-h-[5vh] text-2xl pl-2 bg-white ${text} ${border}`}>
-            SOBRE 
-          </div>
-
-          <div ref={sobreContainerRef} className="mobile-text-container bg-white ">
-            <div>
-              <div className={`mobile-text-container mobile-text-padding bg-white ${text}`}>
-                <p className="mb-4">
-                  Campo Esquerdo é uma protocoletividade que fomenta novas estéticas, modos de produção e experiências nos campos da arte sonora, musical e do corpo. Ao desenhar infra_estruturas que permitam co-criação a partir de perspectivas humanas, técnicas e de outros seres vivos, sem hierarquias, Campo Esquerdo promove &quot;tecnologias&quot;, no plural. Dicotomias como arte em oposição à tecnologia, performance/festa, dança/escuta, coletividade/individualidade não têm lugar aqui, exceto se desmontadas e recombinadas em configurações irreconhecíveis.
-                </p>
-                <p className="mb-4 pl-2">
-                  O prefixo musical <span className="italic">left-field</span> literalmente, e como sátira, Campo Esquerdo, indica variantes excêntricas de um certo gênero musical. E indo um pouco além na interpretação, não é exatamente o fazer “experimental” que hoje muitas vezes existe em categorias demasiadamente solidificadas e limitantes para justificar o uso do termo. O &quot;Campo Esquerdo&quot; é, simplesmente, o abraço à estranheza. Pode ser música/performance excêntrica, que toma essa característica apenas por ser quem somos, em nossas inconformidades; ou o fazer artístico que deseja fabricar/simular um mundo xenofílico onde corpos dissidentes, mentes divergentes, possam existir sem a opressão da norma. Ou ainda, a curiosidade científica de observar o que acontece quando há permutações de tecnologias ainda não experimentadas. Campo esquerdo não é um evento de música experimental; é uma interface contracultural que promove novos formatos sonoros, e propõe outros parâmetros para relações imanentes nas experiências multidisciplinares.
-                </p>
-                <div id="praxis" className={`mobile-text-container overflow-y-auto bg-white ${text}`}>
-                  <span className="text-base pl-2">Práxis</span>
-                  <br />
-                  <div className="h-4" />
-                  <p className="mb-4 pl-2">
-                    Em sua concepção inicial, Campo Esquerdo tomou a forma de um evento que combina múltiplos elementos da cultura da música eletrônica em diálogo com formatos experimentais. Estes são: 1) elaborações rítmicas repetitivas e contínuas que produzem um espaço de liberdade corporal fora do tempo, comum em gêneros musicais associados às raves e aos clubs; 2) música ambiente e escuta profunda, mimetizando a proposta de espaços de escuta hi-fi; 3) a música experimental, onde ruído, silêncio e acaso se encontram para desafiar as tradições musicais convencionais e abrir novas possibilidades de escuta. A partir desses parâmetros, manifestou-se um espaço temporário de escuta ininterrupta focado em shows de música eletrônica left-field e performances na interseção entre corpo, tecnologia digital e som. Entre as apresentações, houve momentos de mediação: DJ sets como colagens sonoras, evitando quebras não intencionais ou mudanças bruscas de atmosfera. A intermediação existe como elemento fundamental da experiência Campo Esquerdo, pois a cultura DJ (e a artista DJ) em suas origens, é capaz de criar sentido entre distintas estéticas e grupos sociais, permitindo que seja criado tanto um ambiente conciso, fluido, como um solo para que as artistas autorais se sintam confortáveis em ousar ao máximo em suas apresentações.
-                  </p>
-                  <p className="mb-4 pl-2">
-                    O formato de experiência de escuta dá o conjunto de valores do projeto, mas não é um fim em si próprio. Nos meses após a primeira edição, surgiram questões críticas, como: como dar continuidade a essas experiências de forma alinhada a esses valores? Público, gratuito, horizontal, inovador, dissidente, estranho. Quais são as condições dignas para alcançar um estado de fluxo coletivo, capaz de transformar o projeto conforme as necessidades do que o compõe? Como uma tentativa de respondê-las, Campo Esquerdo toma uma nova forma. O que chamamos de <a href="https://youtu.be/m-hjfPRXNjA" style={{ color: '#76688D' }}>Campo Esquerdo Fase II.</a>
-                  </p>
-                </div>
-              </div> 
-
-              <div className="relative"> 
-               
-               
-                <div
-                  ref={mentoriasRef}
-                  className={`font-msgothic z-20 sticky overflow-hidden sticky-border-transparent top-0 border-b border-t flex items-center min-h-[5vh] text-2xl pl-2 ${bg} z-10 ${text} ${border}`}
-                >
-                  
-                </div> 
-
-                {/* <div className="flex flex-col">
-
-
-                  <div className={`mobile-text-container mobile-text-padding overflow-y-auto bg-white ${text}`}>
-                    <span className="mb-2">Campo Esquerdo busca abrir espaços e criar infra_estruturas porque acreditamos que para que floresçam novas linguagens artísticas e experiências, é necessário proporcionar condições materiais que permitam que isso aconteça. Mesmo que haja circunstâncias que estejam muito além do alcance de um projeto de nicho, pensamos que o formato mínimo viável para a sua continuidade, com um impacto alinhado a seus valores, contém: eventos públicos gratuitos recorrentes (cultura como direito), autonomia técnica e de equipamentos (sistema de som próprio), e uma comunidade engajada e dignamente compensada. Por isso, em vez de seguir realizando eventos com cobrança de ingressos (o que delegaria a responsabilidade do financiamento ao público), seguimos uma via mais paciente.    </span>
-                    <br /><div className="h-4" />
-                    <span className="pl-2">
-                      Por meio de fundos da Lei Aldir Blanc, e em parceria com o MAM-Rio, A Fase II, busca criar a infra_estrutura necessária para dar continuidade ao campo esquerdo por meio de quatro passos:  </span> <br />  <br />
-                    <span className="pl-2"> 1-Residência artística semipresencial com chamada aberta para artistas sonoras e do corpo, com acompanhamento das artistas que fizeram parte das interações passadas do projeto.  <br />  <br />
-                      <span className="pl-2"> 2-Ciclo de Seminários e Oficinas abertos ao público no Museu de Arte Moderna do Rio de Janeiro com artistas e pesquisadores, convidados. </span>  <br /> <br />
-                      <span className="pl-2"> 3-Construção de um sistema de som que será usado nas próximas manifestações do projeto </span>  <br /> <br />
-                      <span className="pl-2"> 4-Apresentação dos trabalhos dos artistas selecionados na residência artística numa experiência de escuta aos moldes do primeiro Campo Esquerdo em 2023: "Espaço efêmero de escuta ininterrupta".  </span>  <br /> <br /></span>
-                  </div>
-                  <div className="mobile-text-container max-w-[80vh] px-4 py-6 mt-8 text-center mx-auto">
-                    <p className="mb-4">
-                      Para fazer parte da residência, inscreva-se na chamada aberta aqui:
-                    </p>
-                    <div className="mb-4 flex justify-center gap-4">
-                      <a
-                            href="/editalcampoesquerdo.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <img src="/editalbotao.png" alt="Informações" className="w-full max-w-[200px]" />
-                          </a>
-
-                          <a
-                            href="/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <img src="/inscrevabutton.png" alt="Inscreva-se" className="w-full max-w-[200px]" />
-                          </a>
-                    </div>
-                    <p>
-                      Se não deseja ou não possa participar da residência, porém tem interesse de contribuir voluntariamente para o projeto, escreva um email para: <a href="mailto:campo.esquerdo@gmail.com" className="underline">campo.esquerdo@gmail.com</a>
-                    </p>
-                  </div>
-
-                </div> */}
-
-
-              </div>
-
-            </div>
-          </div>
-        </div>
-
         <BlogOverlay showBlog={isBlogOpen} />
         <SoundSystemOverlay showSoundSystem={isSoundSystemOpen} />
+        <SobreOverlay showSobre={isSobreOpen} />
+        <EmailSignup isOpen={isEmailOpen} onClose={() => setIsEmailOpen(false)} />
       </div>
     );
   }
@@ -294,22 +237,37 @@ export default function Home() {
           </div>
           <div id="sitespace" className={`flex-1 min-h-[80vh] border-l ${text} ${border}`} style={{ height: '80vh' }}>
             <BouncingText isMobile={false} />
+
           </div>
-          <div className={`border-t border-l border-b min-h-[5vh] flex  bg-white ${text} ${border}`}>
+          <div className={`border-t border-l border-b min-h-[5vh] flex bg-white ${text} ${border}`}>
             <Link
               type="button"
               href="/blog"
-              className="font-msgothic inline-flex items-center justify-center border-r-1 bg-transparent px-20 text-[clamp(16px,1.46vw,3rem)] uppercase transition hover:bg-black hover:text-white"
+              className="font-msgothic flex-1 inline-flex items-center justify-center whitespace-nowrap border-l-1 bg-transparent text-[clamp(16px,1.46vw,3rem)] uppercase transition hover:bg-black hover:text-white"
             >
               ESCRITOS
             </Link>
             <Link
               type="button"
               href="/soundsystem"
-              className="font-msgothic inline-flex items-center justify-center border-r-1 bg-transparent px-20 text-[clamp(16px,1.46vw,3rem)] uppercase transition hover:bg-black hover:text-white"
+              className="font-msgothic flex-1 inline-flex items-center justify-center whitespace-nowrap border-l-1 bg-transparent text-[clamp(16px,1.46vw,3rem)] uppercase transition hover:bg-black hover:text-white"
             >
               SOUND SYSTEM
             </Link>
+            <button
+              type="button"
+              onClick={() => openContentHub('calendar')}
+              className="font-msgothic flex-1 inline-flex items-center justify-center whitespace-nowrap border-l-1 bg-transparent text-[clamp(16px,1.46vw,3rem)] uppercase transition hover:bg-black hover:text-white"
+            >
+              CALENDÁRIO
+            </button>
+            <button
+              type="button"
+              onClick={() => setIsEmailOpen(true)}
+              className="font-msgothic flex-1 inline-flex items-center justify-center whitespace-nowrap border-l-1 bg-transparent text-[clamp(16px,1.46vw,3rem)] uppercase transition hover:bg-black hover:text-white"
+            >
+              NEWSLETTER
+            </button>
           </div>
         </div>
 
@@ -434,10 +392,6 @@ export default function Home() {
                     +++++++++
                   </div>
                 </StickyWrapper>
-
-                <div className="p-6 bg-white">
-                  <ContentHub />
-                </div> 
       
               </div> *
 
@@ -449,6 +403,10 @@ export default function Home() {
       </div>
       <BlogOverlay showBlog={isBlogOpen} />
       <SoundSystemOverlay showSoundSystem={isSoundSystemOpen} />
+      <SobreOverlay showSobre={isSobreOpen} />
+      {/* Floating content hub (desktop). Only opened by the bouncing text and the CALENDÁRIO button. */}
+      <ContentHub variant="standalone" />
+      <EmailSignup isOpen={isEmailOpen} onClose={() => setIsEmailOpen(false)} />
     </div>
   );
 }

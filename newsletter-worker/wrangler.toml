@@ -1,0 +1,13 @@
+name = "campo-esquerdo-newsletter"
+main = "src/index.js"
+compatibility_date = "2026-07-01"
+
+[vars]
+# Sites allowed to submit the form (comma-separated, no trailing slash)
+ALLOWED_ORIGINS = "https://campoesquerdo.eco.br,https://www.campoesquerdo.eco.br,http://localhost:3000"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "campo-esquerdo-newsletter"
+# Replace with the id printed by: npx wrangler d1 create campo-esquerdo-newsletter
+database_id = "5e3b8057-b920-421e-b89b-66cde06595bf"

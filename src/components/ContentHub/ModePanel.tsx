@@ -18,9 +18,19 @@ const modeConfig: Record<Mode, { label: string; component: React.ComponentType }
 
 interface ContentHubProps {
   defaultMode?: Mode;
+  /**
+   * 'inline'     – embedded in a page section (e.g. the +++++++++ section).
+   *                Its expand button asks the standalone hub to open; it never
+   *                floats by itself and ignores context open requests.
+   * 'standalone' – mounted once at page level. Renders nothing until opened via
+   *                useContentHub().openContentHub() (bouncing text, CALENDÁRIO
+   *                button, inline expand button), then shows the floating window.
+   */
+  variant?: 'inline' | 'standalone';
 }
 
-const ContentHub: React.FC<ContentHubProps> = ({ defaultMode = 'calendar' }) => {
+const ContentHub: React.FC<ContentHubProps> = ({ defaultMode = 'calendar', variant = 'inline' }) => {
+  const isStandalone = variant === 'standalone';
   const [currentMode, setCurrentMode] = useState<Mode>(defaultMode);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
@@ -30,7 +40,7 @@ const ContentHub: React.FC<ContentHubProps> = ({ defaultMode = 'calendar' }) => 
   const dragStartRef = useRef({ x: 0, y: 0 });
 
   // Get context for external open/close control
-  const { isOpen, defaultMode: contextDefaultMode, closeContentHub } = useContentHub();
+  const { isOpen, defaultMode: contextDefaultMode, closeContentHub, openContentHub } = useContentHub();
 
   // ========== BUTTON CONFIG (edit here to change all buttons) ==========
   // Font size uses clamp(min, preferred, max) for proportional scaling with rem units
@@ -75,9 +85,10 @@ const ContentHub: React.FC<ContentHubProps> = ({ defaultMode = 'calendar' }) => 
     };
   }, [isDragging]);
 
-  // Sync with context - when context requests to open, expand the ContentHub
+  // Sync with context - when context requests to open, expand the ContentHub.
+  // Only the standalone hub listens, so the inline copy never has to be mounted for this to work.
   useEffect(() => {
-    if (isOpen && !isExpanded) {
+    if (isStandalone && isOpen && !isExpanded) {
       // Update mode from context if provided
       if (contextDefaultMode && contextDefaultMode !== currentMode) {
         setCurrentMode(contextDefaultMode);
@@ -88,10 +99,15 @@ const ContentHub: React.FC<ContentHubProps> = ({ defaultMode = 'calendar' }) => 
       setPosition({ x: centerX, y: centerY });
       setIsExpanded(true);
     }
-  }, [isOpen, isExpanded, contextDefaultMode, currentMode]);
+  }, [isStandalone, isOpen, isExpanded, contextDefaultMode, currentMode]);
 
   // Reset position when collapsing
   const handleToggleExpand = () => {
+    if (!isStandalone) {
+      // Inline copy: hand off to the standalone floating hub, keeping the current tab
+      openContentHub(currentMode);
+      return;
+    }
     if (isExpanded) {
       // Trigger closing animation in place
       setIsClosing(true);
@@ -369,6 +385,9 @@ const ContentHub: React.FC<ContentHubProps> = ({ defaultMode = 'calendar' }) => 
       </div>
     );
   }
+
+  // Standalone hub is invisible until opened
+  if (isStandalone) return null;
 
   // Normal inline view
   return hubContent;
