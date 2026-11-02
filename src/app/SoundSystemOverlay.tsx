@@ -40,7 +40,10 @@ export function SoundSystemOverlay({ showSoundSystem }: { showSoundSystem: boole
           <div className="px-4 py-8 sm:px-8">
             <article className="mx-auto max-w-3xl space-y-6">
               <div className="contentful-post-body space-y-4 text-base sm:text-lg leading-relaxed">
-                <h1>SOUND SYSTEM</h1>
+                <h1>CAMPO ESQUERDO SOUND SYSTEM</h1>
+
+                
+
 
                 <p>
                   Campo Esquerdo Sound System é um hack, uma brecha no cistema. 1-A (UMA) ritmáquina de{" "}
@@ -51,7 +54,7 @@ export function SoundSystemOverlay({ showSoundSystem }: { showSoundSystem: boole
                   Fase II; projetados com componentes de alta qualidade que equilibram peso (pressão) e definição
                   para uma escuta in_corporada.
                 </p>
-
+              
                 <p>
                   Specs atuais (Julho,2026): 2 x subwoofers de 1000 W de potência; 2 x falantes de 12 polegadas
                   500w de potência, 2 x drivers de compressão 140w. Atende até 100-120 pessoas em espaço aberto.
@@ -78,6 +81,9 @@ export function SoundSystemOverlay({ showSoundSystem }: { showSoundSystem: boole
                   <li>ser mulher e/ou pessoa LGBTQIAPN+</li>
                   <li>provar experiência prévia como téc. de som e/ou produção musical</li>
                 </ul>
+
+              <img src="/sound1.jpg" alt="soundsystemv1" className="w-full h-auto" />
+
               </div>
             </article>
           </div>

@@ -21,7 +21,12 @@ const DB = {
     return api;
   },
 };
-const env = { DB, EXPORT_KEY: "local-test-key", ALLOWED_ORIGINS: "http://localhost:3000" };
+// 127.0.0.1 and localhost are different origins to the browser; allow both locally.
+const env = {
+  DB,
+  EXPORT_KEY: "local-test-key",
+  ALLOWED_ORIGINS: "https://campoesquerdo.eco.br/,http://localhost:3000,http://127.0.0.1:3000",
+};
 
 createServer(async (req, res) => {
   const chunks = [];

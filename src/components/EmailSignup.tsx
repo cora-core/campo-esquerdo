@@ -158,7 +158,7 @@ export default function EmailSignup({ isOpen, onClose }: EmailSignupProps) {
             title="Fechar"
             aria-label="Fechar"
           >
-            <img src="/expand.svg" alt="" className="w-3/5 h-3/5 rotate-180" />
+            X
           </button>
           <div className="flex-1 border-t border-black" />
           <div
@@ -173,10 +173,10 @@ export default function EmailSignup({ isOpen, onClose }: EmailSignupProps) {
         {/* Main box */}
         <div className="border border-black border-t-0 bg-white p-6">
           {status === 'done' ? (
-            <p className="text-center text-sm py-8">OBRIGADA! EM BREVE NOTÍCIAS DO CAMPO ESQUERDO.</p>
+            <p className="text-center text-sm py-8">email cadastrado com sucesso!</p>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
-              <p className="text-center font-bold text-xl uppercase">nunca enviaremos spam</p>
+              <p className="text-center font-bold text-xl uppercase">jamais enviaremos spam</p>
 
               {/* Honeypot: hidden from people, bots fill it and get silently ignored */}
               <input
@@ -208,7 +208,7 @@ export default function EmailSignup({ isOpen, onClose }: EmailSignupProps) {
                     onChange={(e) => setBlogPosts(e.target.checked)}
                     className={`${checkboxClass} mt-0.5`}
                   />
-                  <span>receber notificações sobre novos posts no blog</span>
+                  <span>receber notificações de novas entradas no blog</span>
                 </label>
                 <label className="flex items-start gap-3 cursor-pointer">
                   <input
@@ -224,7 +224,7 @@ export default function EmailSignup({ isOpen, onClose }: EmailSignupProps) {
               <div className="flex items-center justify-end gap-4">
                 {status === 'error' && (
                   <span className="text-xs" role="alert" title={errorDetail} data-reason={errorDetail}>
-                    ERRO AO ENVIAR. TENTE NOVAMENTE.
+                    ERRO :( PROVAVELMENTE É ALGO DO NOSSO LADO. TENTE NOVAMENTE MAIS TARDE.
                   </span>
                 )}
                 <button
