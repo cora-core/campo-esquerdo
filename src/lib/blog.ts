@@ -44,6 +44,7 @@ export type BlogPost = {
   sourceLabel: string;
   date: string;
   image?: string;
+  imageContentType?: string;
   type: BlogPostType;
   author: string;
   tags: string[];
@@ -92,6 +93,7 @@ export const documentToPlainText = (document: Document) => {
 export const mapContentfulBlogPost = (entry: BlogPostEntry): BlogPost => {
   const imageFields = entry.fields.image?.fields ?? entry.fields.image;
   const imageUrl = normalizeAssetUrl(imageFields?.file?.url);
+  const imageContentType = imageFields?.file?.contentType;
   const fallbackDate = new Date().toISOString().slice(0, 10);
   const author = entry.fields.author?.trim() || entry.fields.sourceLabel?.trim() || "Campo Esquerdo";
 
@@ -107,6 +109,7 @@ export const mapContentfulBlogPost = (entry: BlogPostEntry): BlogPost => {
     sourceLabel: entry.fields.sourceLabel ?? "",
     date: entry.fields.date ?? fallbackDate,
     image: imageUrl,
+    imageContentType,
     type: entry.fields.type,
     tags: entry.fields.tags ?? [],
   };
