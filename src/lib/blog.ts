@@ -9,6 +9,12 @@ export type BlogPostAssetFields = {
     url?: string;
     contentType?: string;
   };
+  /**
+   * Contentful's Delivery API resolves a linked Asset into a full object whose
+   * data lives under `fields` (i.e. `image.fields.file.url`). The direct
+   * `file` shape is kept for legacy/JSON fields.
+   */
+  fields?: BlogPostAssetFields;
 };
 
 export type BlogPostFields = {
@@ -84,7 +90,8 @@ export const documentToPlainText = (document: Document) => {
 };
 
 export const mapContentfulBlogPost = (entry: BlogPostEntry): BlogPost => {
-  const imageUrl = normalizeAssetUrl(entry.fields.image?.file?.url);
+  const imageFields = entry.fields.image?.fields ?? entry.fields.image;
+  const imageUrl = normalizeAssetUrl(imageFields?.file?.url);
   const fallbackDate = new Date().toISOString().slice(0, 10);
   const author = entry.fields.author?.trim() || entry.fields.sourceLabel?.trim() || "Campo Esquerdo";
 

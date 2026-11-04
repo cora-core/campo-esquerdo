@@ -1,6 +1,6 @@
 import BlogPostContent from "@/components/BlogPostContent";
-import { getBlogPostBySlug, getBlogPosts, getBlogPostSlugs } from "@/lib/contentful";
-import { notFound } from "next/navigation";
+import { getBlogPostBySlug, getBlogPostSlugs } from "@/lib/contentful";
+import { buildBlogPostMetadata } from "@/lib/blogMetadata";
 
 export const revalidate = 60;
 
@@ -21,10 +21,7 @@ export async function generateMetadata(props: {
     };
   }
 
-  return {
-    title: `${post.title} | Blog | Campo Esquerdo`,
-    description: post.excerpt,
-  };
+  return buildBlogPostMetadata(post);
 }
 
 export default async function BlogPostPage(props: {
