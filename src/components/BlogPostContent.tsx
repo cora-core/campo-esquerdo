@@ -138,12 +138,13 @@ export default function BlogPostContent({ slug }: BlogPostContentProps) {
             </p>
           </div> */} 
 
+          {/* Page display only: crop the featured image to 5:4. Social cards are built in blogMetadata.ts. */}
           {post.image && (
-            <div className={`border ${border} bg-white`}>
+            <div className={`aspect-[5/4] w-full overflow-hidden border ${border} bg-white`}>
               <img
                 src={post.image}
                 alt={post.title}
-                className="h-full w-full object-cover"
+                className="block h-full w-full object-cover"
               />
             </div>
           )}
